@@ -24,15 +24,15 @@
                   <div class="row">
                     <div class="col-md-2">
                       <label>Data Entrada</label>
-                      <input type="datetime" class="form-control" value="{{reserve.dataEntrada | DateFormatPipe}}"
+                      <input type="datetime" class="form-control" value="{{reserva.dataEntrada | DateFormatPipe}}"
                       bsDatepicker [bsConfig]="bsConfig" formControlName="dataChegada"
-                      placeholder="" [(ngModel)]="reserve.dataEntrada">
+                      placeholder="" [(ngModel)]="reserva.dataEntrada">
                     </div>
                     <div class="col-md-2">
                       <label>Data Saída</label>
                       <input type="datetime" class="form-control"
-                      value="{{reserve.dataSaida | DateFormatPipe}}" bsDatepicker [bsConfig]="bsConfig" formControlName="dataSaida"
-                      placeholder="" [(ngModel)]="reserve.dataSaida">
+                      value="{{reserva.dataSaida | DateFormatPipe}}" bsDatepicker [bsConfig]="bsConfig" formControlName="dataSaida"
+                      placeholder="" [(ngModel)]="reserva.dataSaida">
                     </div>
                     <div class="col-md-4">
                       <div class="book_tabel_item">
