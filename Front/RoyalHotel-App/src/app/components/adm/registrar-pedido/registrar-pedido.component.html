@@ -1,0 +1,72 @@
+<div class="row" style="margin-bottom: 100px;">
+  <div class="container">
+    <div class="d-flex p-3 my-3 text-white bg-secondary rounded shadow-sm">
+      <div class="d-flex align-items-center mr-auto">
+        <i id="i" class="{{iconClass}} mr-3"></i>
+        <div class="lh-100">
+          <h2 class="mb-0">Pedidos</h2>
+          <small>{{subtitulo}}</small>
+        </div>
+      </div>
+      <div class="p-3">
+        <button class="btn btn-outline-light" (click)="navegar()">
+          Lista Pedidos
+        </button>
+      </div>
+    </div>
+    <div class="card rounded shadow-sm">
+      <form [formGroup]="form">
+        <div class="p-3">
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label>Nome Produto: </label>
+              <input type="text" class="form-control" [ngClass]="cssValidator(f.nomeProduto)" formControlName="nomeProduto"
+              placeholder="" >
+              <div *ngIf="f.nomeProduto.errors?.required" class="invalid-feedback">
+                Nome do Produto é obrigatório.
+              </div>
+            </div>
+            <div class="form-group col-md-6">
+              <label>Quantidade: </label>
+              <input type="text" class="form-control" [ngClass]="cssValidator(f.qtdProduto)" formControlName="qtdProduto"
+              placeholder="" >
+              <div *ngIf="f.qtdProduto.errors?.required" class="invalid-feedback">
+               Quantidade de Produto é obrigatório.
+              </div>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label>Valor: </label>
+              <input type="text" class="form-control" [ngClass]="cssValidator(f.valor)"
+              formControlName="valor" placeholder="" >
+              <div *ngIf="f.valor.errors?.required && f.valor.touched" class="invalid-feedback">
+                Valor é obrigatório.
+              </div>
+            </div>
+            <div class="form-group col-md-6">
+              <label>Hospede:  </label>
+              <input type="text" class="form-control" [ngClass]="cssValidator(f.hospede)"
+              formControlName="hospede"
+              placeholder="" >
+              <div *ngIf="f.hospede.errors?.required && f.hospede.touched" class="invalid-feedback">
+                Hospede é obrigatório.
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card-footer">
+          <div class="d-flex">
+            <button class="btn btn-outline-secondary mr-auto border" (click)="resetForm()">
+              Cancelar
+            </button>
+            <button class="btn btn-success" [disabled]="!form.valid" >
+              Salvar Pedido
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<br>

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reserve Agora</title>
+</head>
+<body>
+  <div class="section_title text-center">
+    <h2 class="title_color">Reserve Agora</h2>
+    <p>Venha viver momentos inesquecíveis!</p>
+  </div>
+  <div class="container">
+      <section style="margin-bottom: 100px;">
+        <div class="hotel_booking_area position">
+          <form [formGroup]="form">
+            <div class="container">
+              <div class="hotel_booking_table">
+                <div class="col-md-2">
+                  <h2>Reserve<br> Seu Quarto</h2>
+                </div>
+                <div class="col-md-10">
+                  <div class="row">
+                    <div class="col-md-2">
+                      <label>Data Entrada</label>
+                      <input type="datetime" class="form-control" value="{{reserve.dataEntrada | DateFormatPipe}}"
+                      bsDatepicker [bsConfig]="bsConfig" formControlName="dataChegada"
+                      placeholder="" [(ngModel)]="reserve.dataEntrada">
+                    </div>
+                    <div class="col-md-2">
+                      <label>Data Saída</label>
+                      <input type="datetime" class="form-control"
+                      value="{{reserve.dataSaida | DateFormatPipe}}" bsDatepicker [bsConfig]="bsConfig" formControlName="dataSaida"
+                      placeholder="" [(ngModel)]="reserve.dataSaida">
+                    </div>
+                    <div class="col-md-4">
+                      <div class="book_tabel_item">
+                        <div class="input-group">
+                          <select class="form-select form-select-sm" aria-label=".form-select-sm">
+                            <option selected>Adultos</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                          </select>
+                        </div>
+                        <div class="input-group">
+                          <select class="form-select form-select-sm" aria-label=".form-select-sm">
+                            <option selected>Crianças</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="book_tabel_item">
+                        <div class="input-group">
+                          <select class="form-select form-select-sm" aria-label=".form-select-sm">
+                            <option selected>Quantidade de Quartos</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                          </select>
+                        </div>
+                        <a class="book_now_btn button_hover" (click)="modalCadastro(template)">Reserve Agora</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <ng-template #template>
+              <div class="modal-header">
+                <h4 class="modal-title pull-left">Dados Para Reserva</h4>
+                <button type="button" class="close btn-close pull-right" aria-label="Close" (click)="modalRef?.hide()">
+                  <span aria-hidden="true" class="visually-hidden">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form [formGroup]="form" class="p-1">
+                  <div class="pb-2 d-block d-md-none">Dados Para Reserva
+                    <h3 class="border-bottom">Cadastro de Usuário</h3>
+                  </div>
+                  <div class="form-row">
+                    <div class="form-group col-sm-6">
+                      <label>Primeiro Nome:</label>
+                      <input type="text" class="form-control" formControlName="primeiroNome"
+                        [ngClass]="{'is-invalid': f.primeiroNome.errors && f.primeiroNome.touched}" placeholder="Insira o Primeiro nome" />
+                      <div class="invalid-feedback">
+                        Primeiro Nome é obrigatório.
+                      </div>
+                    </div>
+                    <div class="form-group col-sm-6">
+                      <label>Sobrenome:</label>
+                      <input type="text" class="form-control" formControlName="sobrenome"
+                        [ngClass]="{'is-invalid': f.sobrenome.errors && f.sobrenome.touched}" placeholder="Insira o sobrenome" />
+                      <div class="invalid-feedback">
+                        Sobrenome Nome é obrigatório.
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-row">
+                    <div class="form-group  col-sm-6">
+                      <label for="">Email:</label>
+                      <input class="form-control" type="text" formControlName="email"
+                        [ngClass]="{'is-invalid': f.email.errors && f.email.touched}" placeholder="Insira o E-mail" />
+                      <div *ngIf="f.email.errors?.required && f.email.touched" class="invalid-feedback">
+                        e-mail é obrigatório.
+                      </div>
+                      <div *ngIf="f.email.errors?.email && f.email.touched" class="invalid-feedback">
+                        Deve ser um e-mail válido.
+                      </div>
+                    </div>
+                    <div class="form-group  col-sm-6">
+                      <label for="">CPF:</label>
+                      <input class="form-control" type="text" formControlName="cpf"
+                        [ngClass]="{'is-invalid': f.cpf.errors && f.cpf.touched}" placeholder="Insira o CPF" />
+                      <div *ngIf="f.cpf.errors?.required && f.cpf.touched" class="invalid-feedback">
+                        e-mail é obrigatório.
+                      </div>
+                      <div *ngIf="f.cpf.errors?.cpf && f.cpf.touched" class="invalid-feedback">
+                        Deve ser um e-mail válido.
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-row">
+                    <div class="form-group col-sm-6">
+                      <label for="">Telefone:</label>
+                      <input class="form-control" type="text" formControlName="telefone" placeholder="Digite um número de telefone" />
+                    </div>
+                    <div class="form-group col-sm-6">
+                      <label for="">Celular:</label>
+                      <input class="form-control" type="text" formControlName="celular"
+                        [ngClass]="{'is-invalid': f.celular.errors && f.celular.touched}" placeholder="Digite um número de celular" />
+                      <div *ngIf="f.celular.errors?.required"
+                        class="invalid-feedback">
+                        Número de celular é obrigatório.
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-row">
+                    <div class="form-group col-12">
+                      <button class="btn btn-lg btn-success btn-block px-5">
+                        Reservar
+                      </button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </ng-template>
+          </form>
+        </div>
+      </section>
+  </div>
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<body>
+  <div class="container">
+    <div style="margin-left: 380px;">
+      <i class="fas fa-envelope-open-text icons"></i>
+    </div>
+    <div class="section_title text-center">
+      <h2 class="title_color">Fale Conosco</h2>
+    </div>
+    <form [formGroup]="form">
+      <div class="container">
+        <div class="form-row">
+          <div class="form-group col-md-3">
+            <div>
+              <i class="fas fa-map-marker-alt"></i><a> Costa do sauipe - BA </a>
+            </div>
+          </div>
+          <div class="verticalLine" ></div>
+          <div class="form-group col-md-3">
+            <div>
+              <i class="fas fa-envelope-square"></i><a> E-mail: comercial@royal.com.br </a>
+            </div>
+          </div>
+          <div class="verticalLine"></div>
+          <div class="form-group col-md-3">
+            <div>
+              <i class="fas fa-phone-volume"></i><a> Fone: 99 9999-9999 </a>
+            </div>
+          </div>
+          <div class="verticalLine"></div>
+          <div class="form-group col-md-2">
+            <div>
+              <i class="fas fa-phone-volume"></i><a> Reserva: 99 9999-9999 </a>
+            </div>
+          </div>
+          <div class="form-group col-md-4" style="margin-top: 30px;">
+            <label> Seu Nome</label>
+            <input type="text" class="form-control" [ngClass]="cssValidator(f.nome)" formControlName="nome"
+            placeholder="Insira o Nome" [(ngModel)]="faleConosco.nome">
+            <div *ngIf="f.nome.errors?.required" class="invalid-feedback">
+              Nome é obrigatório.
+            </div>
+            <div *ngIf="f.nome.errors?.minlength" class="invalid-feedback">
+              Nome deve ter no mínimo 4 caracteres.
+            </div>
+            <div *ngIf="f.nome.errors?.maxlength" class="invalid-feedback">
+              Nome deve ter no máximo 50 caracteres.
+            </div>
+          </div>
+          <div class="form-group col-md-4" style="margin-top: 30px;">
+            <label>e-mail</label>
+            <input type="text" class="form-control" [ngClass]="cssValidator(f.email)"
+            formControlName="email" placeholder="e-mail" [(ngModel)]="faleConosco.email">
+            <div *ngIf="f.email.errors?.required && f.email.touched" class="invalid-feedback">
+              e-mail é obrigatório.
+            </div>
+            <div *ngIf="f.email.errors?.email && f.email.touched" class="invalid-feedback">
+              Deve ser um endereço de e-mail válido
+            </div>
+          </div>
+          <div class="form-group col-md-4" style="margin-top: 30px;">
+            <label>Assunto</label>
+            <input type="text" class="form-control" [ngClass]="cssValidator(f.assunto)" formControlName="assunto"
+            placeholder="Insira o assunto" [(ngModel)]="faleConosco.assunto">
+            <div *ngIf="f.assunto.errors?.required" class="invalid-feedback">
+              Assunto é obrigatório.
+            </div>
+            <div *ngIf="f.assunto.errors?.minlength" class="invalid-feedback">
+              Assunto deve ter no mínimo 4 caracteres.
+            </div>
+            <div *ngIf="f.assunto.errors?.maxlength" class="invalid-feedback">
+              Assunto deve ter no máximo 50 caracteres.
+            </div>
+          </div>
+          <div class="form-group col-md-12">
+            <div class="form-floating">
+              <textarea class="form-control" placeholder="Escreva sua Observação" formControlName="messagem" [(ngModel)]="faleConosco.menssagem"
+              id="floatingTextarea2" style="height: 100px"></textarea>
+            </div>
+          </div>
+        </div>
+        <button class="btn btn-outline-secondary mr-auto border" (click)="resetForm()">
+          Cancelar
+        </button>
+        <button class="btn btn-success" [disabled]="!form.valid" (click)="enviar()" style="float: right;">
+          Enviar
+        </button>
+      </div>
+    </form>
+  </div>
+</body>
+</html>

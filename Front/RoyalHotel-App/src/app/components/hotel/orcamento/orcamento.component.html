@@ -1,0 +1,139 @@
+<div class="card rounded shadow-sm">
+  <form [formGroup]="form">
+    <div class="container">
+      <div style="margin-left: 380px;">
+        <i class="fas fa-envelope-open-text icons"></i>
+      </div>
+      <div class="section_title text-center">
+        <h2 class="title_color">Orçamento</h2>
+      </div>
+      <div class="p-3">
+        <div class="form-row">
+          <div class="form-group col-md-4">
+            <label>Nome Hospede</label>
+            <input type="text" class="form-control" [ngClass]="cssValidator(f.nome)" formControlName="nome"
+            placeholder="Insira o Nome" [(ngModel)]="orcamento.nome">
+            <div *ngIf="f.nome.errors?.required" class="invalid-feedback">
+              Nome é obrigatório.
+            </div>
+            <div *ngIf="f.nome.errors?.minlength" class="invalid-feedback">
+              Nome deve ter no mínimo 4 caracteres.
+            </div>
+            <div *ngIf="f.nome.errors?.maxlength" class="invalid-feedback">
+              Nome deve ter no máximo 50 caracteres.
+            </div>
+          </div>
+          <div class="form-group col-md-4">
+            <label>e-mail</label>
+            <input type="text" class="form-control" [ngClass]="cssValidator(f.email)"
+            formControlName="email" placeholder="e-mail" [(ngModel)]="orcamento.email">
+            <div *ngIf="f.email.errors?.required && f.email.touched" class="invalid-feedback">
+              e-mail é obrigatório.
+            </div>
+            <div *ngIf="f.email.errors?.email && f.email.touched" class="invalid-feedback">
+              Deve ser um endereço de e-mail válido
+            </div>
+          </div>
+          <div class="form-group col-md-4">
+            <label>Cidade</label>
+            <input type="text" class="form-control" [ngClass]="cssValidator(f.cidade)"
+            formControlName="cidade" placeholder="" [(ngModel)]="orcamento.cidade">
+            <div *ngIf="f.cidade.errors?.required && f.cidade.touched" class="invalid-feedback">
+              Cidade é obrigatório.
+            </div>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-4">
+            <label>Estado</label>
+            <input type="text" class="form-control" [ngClass]="cssValidator(f.estado)"
+            formControlName="estado" placeholder="" [(ngModel)]="orcamento.estado">
+            <div *ngIf="f.estado.errors?.required && f.estado.touched" class="invalid-feedback">
+              Estado é obrigatório.
+            </div>
+          </div>
+          <div class="form-group col-md-4">
+            <label>Data Chegada</label>
+            <input type="datetime" class="form-control" [ngClass]="cssValidator(f.dataEntrada)"
+            value="{{orcamento.dataEntrada | DateFormatPipe}}" bsDatepicker [bsConfig]="bsConfig" formControlName="dataEntrada"
+            placeholder="" [(ngModel)]="orcamento.dataEntrada">
+            <div *ngIf="f.dataEntrada.errors?.required && f.dataEntrada.touched" class="invalid-feedback">
+              Data é obrigatório.
+            </div>
+          </div>
+          <div class="form-group col-md-4">
+            <label>Data Saída</label>
+            <input type="datetime" class="form-control" [ngClass]="cssValidator(f.dataSaida)"
+            value="{{orcamento.dataSaida | DateFormatPipe}}" bsDatepicker [bsConfig]="bsConfig" formControlName="dataSaida"
+            placeholder="" [(ngModel)]="orcamento.dataSaida">
+            <div *ngIf="f.dataSaida.errors?.required && f.dataSaida.touched" class="invalid-feedback">
+              Data é obrigatório.
+            </div>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-4">
+            <label>Celular</label>
+            <input type="text" class="form-control" [ngClass]="cssValidator(f.celular)"
+            formControlName="celular" placeholder="(000) 90000-0000" [(ngModel)]="orcamento.celular">
+            <div *ngIf="f.celular.errors?.required && f.celular.touched" class="invalid-feedback">
+              Celular é obrigatório.
+            </div>
+          </div>
+          <div class="form-group col-md-4">
+            <label>Telefone</label>
+            <input type="text" class="form-control" formControlName="telefone" placeholder="(000) 90000-0000" [(ngModel)]="orcamento.telefone">
+          </div>
+          <div class="form-group col-md-2">
+            <label>Quantidade Adultos</label>
+            <input type="number" class="form-control" [ngClass]="cssValidator(f.qtdAdultos)" formControlName="qtdAdultos"
+            placeholder="" [(ngModel)]="orcamento.qtdAdultos">
+            <div *ngIf="f.qtdAdultos.errors?.required && f.qtdAdultos.touched" class="invalid-feedback">
+              Qtd Adultos é obrigatório.
+            </div>
+            <div *ngIf="f.qtdAdultos.errors?.max && f.qtdAdultos.touched" class="invalid-feedback">
+              Qtd Adultos deve ser menor que 1000.
+            </div>
+          </div>
+          <div class="form-group col-md-2">
+            <label>Quantidade Crianças</label>
+            <input type="number" class="form-control" formControlName="qtdCriancas"
+            placeholder="" [(ngModel)]="orcamento.qtdCriancas">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-4">
+            <label>Quantidade Apartamentos</label>
+            <input type="number" class="form-control" [ngClass]="cssValidator(f.qtdApartamentos)" formControlName="qtdApartamentos"
+            placeholder="" [(ngModel)]="orcamento.qtdApartamentos">
+            <div *ngIf="f.qtdApartamentos.errors?.required && f.qtdApartamentos.touched" class="invalid-feedback">
+              Qtd Apartamentos é obrigatório.
+            </div>
+            <div *ngIf="f.qtdApartamentos.errors?.max && f.qtdApartamentos.touched" class="invalid-feedback">
+              Qtd Apartamentos deve ser menor que 1000.
+            </div>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-12">
+            <div class="form-floating">
+              <label for="">Observação: </label>
+              <textarea class="form-control" placeholder="Escreva sua Observação" formControlName="observacao" [(ngModel)]="orcamento.observacao"
+              id="floatingTextarea2" style="height: 100px"></textarea>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-footer">
+      <div class="d-flex">
+        <button class="btn btn-outline-secondary mr-auto border" (click)="resetForm()">
+          Cancelar Alteração
+        </button>
+        <button class="btn btn-success" [disabled]="!form.valid" (click)="salvarOrcamento()">
+          Salvar Orçamento
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

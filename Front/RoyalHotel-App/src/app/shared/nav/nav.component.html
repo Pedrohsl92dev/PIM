@@ -1,0 +1,65 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm" *ngIf="showMenu()">
+  <div class="container">
+    <a class="navbar-brand" routerLink="dashboard">
+      <img src="../../../assets/img/Logo.png" alt="">
+    </a>
+    <button class="navbar-toggler" (click)="isCollapsed = !isCollapsed" type="button" data-bs-toggle="collapse"
+      data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" [collapse]="isCollapsed" [isAnimated]="true" id="navbarNav">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item" routerLinkActive="active">
+          <a class="nav-link" aria-current="/dashboard" routerLink="">Inicio</a>
+        </li>
+        <li class="nav-item" routerLinkActive="active">
+          <a class="nav-link" routerLink="acomodacoes">Acomodações</a>
+        </li>
+        <li class="nav-item" routerLinkActive="active">
+          <a class="nav-link" routerLink="reserve-agora">Reserve Agora</a>
+        </li>
+        <li class="nav-item" routerLinkActive="active">
+          <a class="nav-link" routerLink="hotel/orcamento">Orçamento</a>
+        </li>
+        <ul class="navbar-nav">
+          <li class="nav-item dropdown" dropdown>
+            <a dropdownToggle class="nav-link dropdown-toggle" style="cursor: pointer;" id="navbarDropdownMenuLink" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">
+              O Hotel
+            </a>
+            <div *dropdownMenu class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <a class="dropdown-item" routerLink="hotel/servico">
+                Serviços
+              </a>
+              <div role="separator" class="divider"></div>
+              <a class="dropdown-item" routerLink="hotel/faq">
+                FAQ
+              </a>
+              <div role="separator" class="divider"></div>
+              <a class="dropdown-item" routerLink="hotel/fale-conosco">
+                Fale Conosco
+              </a>
+            </div>
+          </li>
+        </ul>
+      </ul>
+      <ul class="navbar-nav">
+        <li class="nav-item dropdown" dropdown>
+          <a dropdownToggle class="nav-link dropdown-toggle" style="cursor: pointer;" id="navbarDropdownMenuLink" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Login
+          </a>
+          <div *dropdownMenu class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <a class="dropdown-item" routerLink="user/login">
+              Login
+            </a>
+            <div role="separator" class="divider"></div>
+            <!-- <a class="dropdown-item" routerLink="user/registration">
+              Registrar
+            </a> -->
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
