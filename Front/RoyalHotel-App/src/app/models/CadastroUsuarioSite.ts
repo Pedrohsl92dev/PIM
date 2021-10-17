@@ -3,6 +3,7 @@ export interface CadastroUsuario {
   sobrenome: string;
   usuario: string;
   senha: string;
+  confirmeSenha: string;
   email: string;
   categoria: number;
 }

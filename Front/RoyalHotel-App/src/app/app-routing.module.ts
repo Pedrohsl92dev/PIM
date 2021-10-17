@@ -14,7 +14,6 @@ import { FaleConoscoComponent } from './components/hotel/fale-conosco/fale-conos
 import { ReserveAgoraComponent } from './components/reserve-agora/reserve-agora.component';
 import { DashboardAdmComponent } from './components/adm/dashboardAdm/dashboardAdm.component';
 import { NovaReservaComponent } from './components/adm/hospede/nova-reserva/nova-reserva.component';
-import { HospedeComponent } from './components/adm/hospede/hospede.component';
 import { HospedeDetalheComponent } from './components/adm/hospede/hospede-detalhe/hospede-detalhe.component';
 import { CadastrarProdutoComponent } from './components/adm/cadastrar-produto/cadastrar-produto.component';
 import { ListaFornecedoresComponent } from './components/adm/lista-fornecedores/lista-fornecedores.component';
@@ -28,6 +27,8 @@ import { CadastrarApartamentosComponent } from './components/adm/cadastrar-apart
 import { ListarApartamentoComponent } from './components/adm/listar-apartamento/listar-apartamento.component';
 import { PerfilComponent } from './components/user/perfil/perfil.component';
 import { ListarReservasComponent } from './components/adm/listar-reservas/listar-reservas.component';
+import { FecharContaComponent } from './components/adm/fechar-conta/fechar-conta.component';
+import { MensagensFaleConoscoComponent } from './components/adm/mensagens-fale-conosco/mensagens-fale-conosco.component';
 
 const routes: Routes = [
   {
@@ -38,18 +39,20 @@ const routes: Routes = [
       { path: 'hospede', component: PerfilComponent },
     ]
   },
-  { path: 'listar-hospede', component: HospedeListaComponent },
+  { path: 'listar-hospedes', component: HospedeListaComponent },
   { path: 'cadastro-hospede', component: HospedeDetalheComponent },
   { path: 'listar-pedido', component: ListarPedidoComponent },
   { path: 'registrar-pedido', component: RegistrarPedidoComponent },
   { path: 'nova-reserva', component: NovaReservaComponent },
   { path: 'reservas', component: ListarReservasComponent },
+  { path: 'fechar-conta', component: FecharContaComponent },
   { path: 'adm', component: DashboardAdmComponent,
     children: [
       { path: 'inicio', component: InicioAdmComponent }
     ]
   },
   { path: 'cadastrar-produto', component: CadastrarProdutoComponent },
+  { path: 'mensagens-fale-conosco', component: MensagensFaleConoscoComponent },
   { path: 'listar-produto', component: ListaProdutosComponent },
   { path: 'cadastrar-fornecedor', component: FornecedorComponent },
   { path: 'listar-fornecedor', component: ListaFornecedoresComponent },

@@ -18,7 +18,7 @@ class CreateFaleConoscosTable extends Migration
             $table->string('nome');
             $table->string('email');
             $table->string('assunto');
-            $table->string('menssagem');
+            $table->string('mensagem');
             $table->timestamps();
         });
     }

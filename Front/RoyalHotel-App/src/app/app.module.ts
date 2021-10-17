@@ -52,6 +52,8 @@ import { CadastrarApartamentosComponent } from './components/adm/cadastrar-apart
 import { ListarApartamentoComponent } from './components/adm/listar-apartamento/listar-apartamento.component';
 import { PerfilComponent } from './components/user/perfil/perfil.component';
 import { ListarReservasComponent } from './components/adm/listar-reservas/listar-reservas.component';
+import { FecharContaComponent } from './components/adm/fechar-conta/fechar-conta.component';
+import { MensagensFaleConoscoComponent } from './components/adm/mensagens-fale-conosco/mensagens-fale-conosco.component';
 
 defineLocale('pt-br', ptBrLocale);
 
@@ -90,7 +92,9 @@ defineLocale('pt-br', ptBrLocale);
     CadastrarApartamentosComponent,
     ListarApartamentoComponent,
     PerfilComponent,
-    ListarReservasComponent
+    ListarReservasComponent,
+    FecharContaComponent,
+    MensagensFaleConoscoComponent
   ],
   imports: [
     BrowserModule,
@@ -106,7 +110,7 @@ defineLocale('pt-br', ptBrLocale);
     ModalModule.forRoot(),
     ToastrModule.forRoot({
       timeOut: 4000,
-      positionClass: 'toast-bottom-right',
+      // positionClass: 'toast-bottom-right',
       preventDuplicates: true,
       progressBar: true
     }),

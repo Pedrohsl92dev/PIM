@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Orcamento } from '@app/models/Orcamento';
+import { FaleConosco } from '@app/models/FaleConosco';
 import { environment } from '@environments/environment';
 import { Observable } from 'rxjs';
 import { take } from 'rxjs/operators';
@@ -8,16 +8,15 @@ import { take } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
-export class OrcamentoService {
+export class FaleConoscoService {
 
-  baseURL = environment.apiURL + 'orcamento';
+  baseURL = environment.apiURL + 'fale-conosco';
 
   constructor(private http: HttpClient) { }
 
-  public post(orcamento: Orcamento): Observable<Orcamento> {
+  public post(faleConosco: FaleConosco): Observable<FaleConosco> {
     return this.http
-      .post<Orcamento>(this.baseURL, orcamento)
+      .post<FaleConosco>(this.baseURL, faleConosco)
       .pipe(take(1));
   }
-
 }

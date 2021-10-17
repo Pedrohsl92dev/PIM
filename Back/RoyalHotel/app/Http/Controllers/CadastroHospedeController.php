@@ -13,7 +13,7 @@ class CadastroHospedeController extends Controller
      */
     public function index()
     {
-        //
+        return \App\Models\CadastroHospede::all();
     }
 
     /**
@@ -34,7 +34,7 @@ class CadastroHospedeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return \App\Models\CadastroHospede::create($request->all());
     }
 
     /**

@@ -3,5 +3,5 @@ export interface FaleConosco{
   nome: string;
   email: string;
   assunto: string;
-  menssagem: string;
+  mensagem: string;
 }

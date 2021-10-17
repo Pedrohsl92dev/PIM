@@ -16,6 +16,7 @@ class CadastroHospede extends Model
         'email',
         'usuario',
         'senha',
+        'confirmeSenha',
         'categoria'
     ];
 }

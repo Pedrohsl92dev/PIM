@@ -63,6 +63,10 @@ export class RegistrarPedidoComponent implements OnInit {
     });
   }
 
+  public registrarPedido(): void {
+
+  }
+
   navegar(): void {
     this.router.navigate([`/listar-pedido`]);
   }

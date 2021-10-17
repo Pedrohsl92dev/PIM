@@ -14,6 +14,6 @@ class FaleConosco extends Model
         'nome',
         'assunto',
         'email',
-        'menssagem',
+        'mensagem',
     ];
 }

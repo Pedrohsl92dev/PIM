@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ReservaApartamento } from '@app/models/ReservaApartamento';
@@ -13,6 +13,10 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./nova-reserva.component.scss']
 })
 export class NovaReservaComponent implements OnInit {
+
+  @Input() titulo: string;
+  @Input() iconClass = 'fa fa-user';
+  @Input() subtitulo = 'Desde 2021';
 
   form: FormGroup;
 
@@ -59,6 +63,10 @@ export class NovaReservaComponent implements OnInit {
       statusPagamento: ['', Validators.required],
       tipoQuarto: ['', Validators.required],
     });
+  }
+
+  listar(): void {
+    this.router.navigate([`/adm`]);
   }
 
   public resetForm(): void {

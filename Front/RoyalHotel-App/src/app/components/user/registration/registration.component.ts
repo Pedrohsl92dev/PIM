@@ -2,6 +2,9 @@ import { ValidatorField } from './../../../helpers/ValidatorField';
 import { AbstractControlOptions, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { CadastroUsuario } from '@app/models/CadastroUsuarioSite';
+import { RegistrarUsuarioService } from '@app/services/registrarUsuario.service';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-registration',
@@ -14,7 +17,12 @@ export class RegistrationComponent implements OnInit {
 
   usuario = {} as CadastroUsuario;
 
-  constructor(public fb: FormBuilder) { }
+  constructor(
+    private fb: FormBuilder,
+    private usuarioService: RegistrarUsuarioService,
+    private router: Router,
+    private toastr: ToastrService,
+  ) { }
 
   get f(): any { return this.form.controls; }
 
@@ -30,7 +38,7 @@ export class RegistrationComponent implements OnInit {
 
     this.form = this.fb.group({
       primeiroNome: ['', Validators.required],
-      sobreNome: ['', Validators.required],
+      sobrenome: ['', Validators.required],
       email: ['',
         [Validators.required, Validators.email]
       ],
@@ -45,8 +53,25 @@ export class RegistrationComponent implements OnInit {
   public cadastroUsuario(): void {
     if (this.form.valid) {
       this.usuario.categoria = 2;
-      this.usuario = { ...this.form.value };
-      console.log(this.usuario);
+      this.usuario.primeiroNome = this.form.value.primeiroNome;
+      this.usuario.sobrenome = this.form.value.sobrenome;
+      this.usuario.email = this.form.value.email;
+      this.usuario.usuario = this.form.value.usuario;
+      this.usuario.senha = this.form.value.senha;
+      this.usuario.confirmeSenha = this.form.value.confirmeSenha;
+      this.usuarioService.post(this.usuario).subscribe(
+        () => {
+          this.toastr.success('Cadastro realizado com Sucesso!', ' Sucesso');
+          this.form.reset();
+          this.router.navigate([`/user/login`]);
+        },
+        (error: any) => {
+          this.toastr.error('Erro ao cadastrar usuário.', 'Erro!');
+          console.log(error);
+        }
+      );
+    } else {
+      this.toastr.error('Preencha os campos obrigatórios.', 'Erro!');
     }
   }
 

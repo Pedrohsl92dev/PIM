@@ -21,41 +21,45 @@
             <div class="row">
               <div class="form-group col-md-4">
                 <label>Razão Social: </label>
-                <input
-                type="text"
-                class="form-control"
-                formControlName="razaoSocial"
-                placeholder="">
+                <input type="text" class="form-control" formControlName="razaoSocial" placeholder="" [ngClass]="cssValidator(f.razaoSocial)">
+                <div *ngIf="f.razaoSocial.errors?.required && f.razaoSocial.touched" class="invalid-feedback">
+                  Razão Social é obrigatório.
+                </div>
               </div>
               <div class="form-group col-md-4">
                 <label>CNPJ: </label>
-                <input type="text" class="form-control"
-                formControlName="cnpj"
-                placeholder="">
+                <input type="text" class="form-control" formControlName="cnpj" placeholder="" [ngClass]="cssValidator(f.cnpj)">
+                <div *ngIf="f.cnpj.errors?.required && f.cnpj.touched" class="invalid-feedback">
+                  CNPJ é obrigatório.
+                </div>
               </div>
               <div class="form-group col-md-4">
                 <label>Endereço: : </label>
-                <input type="text" class="form-control"
-                formControlName="endereco"
-                placeholder="">
+                <input type="text" class="form-control" formControlName="endereco" placeholder="" [ngClass]="cssValidator(f.endereco)">
+                <div *ngIf="f.endereco.errors?.required && f.endereco.touched" class="invalid-feedback">
+                  Endereço é obrigatório.
+                </div>
               </div>
               <div class="form-group col-md-4">
                 <label>Cidade: </label>
-                <input type="text" class="form-control"
-                formControlName="cidade"
-                placeholder="">
+                <input type="text" class="form-control" formControlName="cidade" placeholder="" [ngClass]="cssValidator(f.cidade)">
+                <div *ngIf="f.cidade.errors?.required && f.cidade.touched" class="invalid-feedback">
+                  Cidade é obrigatório.
+                </div>
               </div>
               <div class="form-group col-md-4">
                 <label>Estado: </label>
-                <input type="text" class="form-control"
-                formControlName="estado"
-                placeholder="">
+                <input type="text" class="form-control" formControlName="estado" placeholder="" [ngClass]="cssValidator(f.estado)">
+                <div *ngIf="f.estado.errors?.required && f.estado.touched" class="invalid-feedback">
+                  Estado é obrigatório.
+                </div>
               </div>
               <div class="form-group col-md-4">
                 <label>Inscrição Estadual: </label>
-                <input type="text" class="form-control"
-                formControlName="ie"
-                placeholder="">
+                <input type="text" class="form-control" formControlName="ie" placeholder="" [ngClass]="cssValidator(f.ie)">
+                <div *ngIf="f.ie.errors?.required && f.ie.touched" class="invalid-feedback">
+                  IE é obrigatório.
+                </div>
               </div>
             </div>
           </div>

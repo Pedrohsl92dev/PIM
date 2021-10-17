@@ -56,7 +56,7 @@ export class FornecedorComponent implements OnInit {
   public validation(): void {
     this.form = this.fb.group({
       razaoSocial: ['', Validators.required],
-      cnpf: ['', Validators.required],
+      cnpj: ['', Validators.required],
       endereco: ['', Validators.required],
       cidade: ['', Validators.required],
       estado: ['', Validators.required],
@@ -75,4 +75,5 @@ export class FornecedorComponent implements OnInit {
   public cssValidator(campoForm: FormControl | AbstractControl): any {
     return { 'is-invalid': campoForm.errors && campoForm.touched };
   }
+
 }

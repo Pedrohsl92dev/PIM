@@ -20,6 +20,7 @@ class CreateCadastroHospedesTable extends Migration
             $table->string('email');
             $table->string('usuario');
             $table->string('senha');
+            $table->string('confirmeSenha');
             $table->integer('categoria');
             $table->timestamps();
         });

@@ -15,7 +15,6 @@
           <h6>Bem-vindo ao</h6>
           <h2>Royal Hotel</h2>
           <p>Todo mundo merece um descanso, venha aproveitar!<br>Aqui é o lugar para o seu descanso.</p>
-          <!-- <a href="#" class="btn theme_btn button_hover">Reserva</a> -->
         </div>
       </div>
     </div>
@@ -40,37 +39,30 @@
                   placeholder="" [(ngModel)]="reserva.dataSaida">
                 </div>
                 <div class="col-md-4">
-                  <div class="book_tabel_item">
-                    <div class="input-group">
-                      <select class="form-select form-select-sm" aria-label=".form-select-sm" formControlName="qtdAdultos" [(ngModel)]="reserva.qtdAdultos">
-                        <option selected>Adultos</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4+</option>
-                      </select>
+                  <div class="col-md-12">
+                    <input type="number" class="form-control" formControlName="qtdAdultos"
+                      [ngClass]="{'is-invalid': f.qtdAdultos.errors && f.qtdAdultos.touched}" placeholder="Quantidade de Adultos" />
+                    <div class="invalid-feedback">
+                      Quantidade de Adultos é obrigatório.
                     </div>
-                    <div class="input-group">
-                      <select class="form-select form-select-sm" aria-label=".form-select-sm" formControlName="qtdCriancas" [(ngModel)]="reserva.qtdCriancas">
-                        <option selected>Crianças</option>
-                        <option value="1">0</option>
-                        <option value="2">1</option>
-                        <option value="3">2</option>
-                        <option value="4">3+</option>
-                      </select>
+                  </div>
+                  <br>
+                  <div class="col-md-12">
+                    <input type="number" class="form-control" formControlName="qtdCriancas"
+                      [ngClass]="{'is-invalid': f.qtdCriancas.errors && f.qtdCriancas.touched}" placeholder="Quantidade de Crianças" />
+                    <div class="invalid-feedback">
+                      Quantidade de Crianças é obrigatório.
                     </div>
                   </div>
                 </div>
                 <div class="col-md-4">
-                  <div class="book_tabel_item">
-                    <div class="input-group">
-                      <select class="form-select form-select-sm" aria-label=".form-select-sm" formControlName="qtdApartamentos" [(ngModel)]="reserva.qtdApartamentos">
-                        <option selected>Quantidade de Apartamentos</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                      </select>
+                  <div class="col-md-12">
+                    <input type="number" class="form-control" formControlName="qtdApartamentos"
+                      [ngClass]="{'is-invalid': f.qtdApartamentos.errors && f.qtdApartamentos.touched}" placeholder="Quantidade de Apartamentos" />
+                    <div class="invalid-feedback">
+                      Quantidade de Apartamentos é obrigatório.
                     </div>
+                    <br>
                     <a class="book_now_btn button_hover" (click)="modalCadastro(template)">Reserve Agora</a>
                   </div>
                 </div>
@@ -148,9 +140,14 @@
           </div>
         </div>
         <div class="form-row">
-          <div class="form-group col-12">
+          <div class="form-group col-6">
             <button class="btn btn-lg btn-success btn-block px-5" (click)="salvarReserva()">
               Reservar
+            </button>
+          </div>
+          <div class="form-group col-6">
+            <button class="btn btn-lg btn-danger btn-block px-5" (click)="cancelar()">
+              Cancelar
             </button>
           </div>
         </div>

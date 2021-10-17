@@ -1,6 +1,12 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ReservaSiteController;
+use App\Http\Controllers\CadastroHospedeController;
+use App\Http\Controllers\OrcamentoController;
+use App\Http\Controllers\FaleConoscoController;
+use App\Http\Controllers\CadastroApartamento;
+
 
 /*
 |--------------------------------------------------------------------------
