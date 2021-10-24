@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Fornecedor } from '@app/models/Fornecedor';
-import { Produtos } from '@app/models/Produtos';
+import { Produto } from '@app/models/Produto';
 import { BsLocaleService } from 'ngx-bootstrap/datepicker';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { NgxSpinnerService } from 'ngx-spinner';
@@ -21,7 +21,7 @@ export class CadastrarProdutoComponent implements OnInit {
 
   form: FormGroup;
 
-  produto = {} as Produtos;
+  produto = {} as Produto;
   fornecedor: any[] = [];
 
   modalRef: BsModalRef;

@@ -1,12 +1,10 @@
 import { Fornecedor } from './Fornecedor';
 
-export interface Produtos {
-  id: number;
+export interface Produto {
   nome: string;
   quantidade: number;
   dataValidade: string;
   marca: string;
   valor: string;
   fornecedor: Fornecedor[];
-  fornecedorId: number;
 }

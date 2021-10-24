@@ -4,6 +4,6 @@ export interface Endereco {
   cep: string;
   endereco: string;
   complemento: string;
-  hospedeId: number;
-  funcionarioId: number;
+  hospedeId?: number;
+  funcionarioId?: number;
 }

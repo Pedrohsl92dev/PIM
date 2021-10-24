@@ -13,9 +13,6 @@ class Fornecedor extends Model
         'id',
         'razaoSocial',
         'cnpf',
-        'endereco',
-        'cidade',
-        'estado',
         'ie',
         'endereco_id',
         'produto_id'

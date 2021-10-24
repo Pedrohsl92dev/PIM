@@ -35,9 +35,18 @@
           </div>
           <div class="form-row">
             <div class="form-group col-md-4">
-              <label>Apartamento</label>
-              <input type="text" class="form-control" [ngClass]="cssValidator(f.apartamento)"
-              formControlName="apartamento" placeholder="" >
+              <label>Apartamento:  </label>
+              <select [(ngModel)]="apartamento" class="form-control" formControlName="apartamento" [ngClass]="cssValidator(f.apartamento)">
+                <option selected>Selecione um apartamento</option>
+                <option value="Duplo Deluxe">Duplo Deluxe</option>
+                <option value="Individual Deluxe">Individual Deluxe</option>
+                <option value="Suíte de Lua de Mel">Suíte de Lua de Mel</option>
+                <option value="Econômico Duplo">Econômico Duplo</option>
+                <option value="Suite Master">Suite Master</option>
+                <option value="Suíte Núpsia">Suíte Núpsia</option>
+                <option value="Suíte Super Luxo">Suíte Super Luxo</option>
+                <option value="Suíte P.N.E">Suíte P.N.E</option>
+              </select>
               <div *ngIf="f.apartamento.errors?.required && f.apartamento.touched" class="invalid-feedback">
                 Apartamento é obrigatório.
               </div>
@@ -74,15 +83,11 @@
               </div>
             </div>
             <div class="form-group col-md-4">
-              <label>Status Pagamento</label>
-              <input type="text" class="form-control" [ngClass]="cssValidator(f.statusPagamento)"
-              formControlName="statusPagamento" placeholder="" >
-              <div *ngIf="f.statusPagamento.errors?.required && f.statusPagamento.touched" class="invalid-feedback">
-                StatusPagamento é obrigatório.
-              </div>
+              <label>Valor Diária</label>
+              <input type="text" class="form-control" value="" formControlName="valorDiaria" placeholder="" >
             </div>
             <div class="form-group col-md-4">
-              <label>Tipo de Quarto</label>
+              <label>Status Pagamento</label>
               <input type="text" class="form-control" [ngClass]="cssValidator(f.statusPagamento)"
               formControlName="statusPagamento" placeholder="" >
               <div *ngIf="f.statusPagamento.errors?.required && f.statusPagamento.touched" class="invalid-feedback">

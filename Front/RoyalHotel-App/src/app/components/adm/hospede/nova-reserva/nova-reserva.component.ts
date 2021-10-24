@@ -21,6 +21,7 @@ export class NovaReservaComponent implements OnInit {
   form: FormGroup;
 
   reserva = {} as Reserva;
+  apartamento: any[] = [];
 
   modalRef: BsModalRef;
 

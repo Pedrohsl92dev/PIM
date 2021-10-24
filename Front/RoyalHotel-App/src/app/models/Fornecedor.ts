@@ -1,13 +1,11 @@
-import { Produtos } from './Produtos';
+import { Endereco } from './Endereco';
+import { Produto } from './Produto';
 
 export interface Fornecedor {
   id: number;
   razaoSocial: string;
   cnpf: string;
-  endereco: string;
-  cidade: string;
-  estado: string;
   ie: string;
-  produto: Produtos[];
-  produtoId: number;
+  produto: Produto[];
+  endereco: Endereco;
 }
