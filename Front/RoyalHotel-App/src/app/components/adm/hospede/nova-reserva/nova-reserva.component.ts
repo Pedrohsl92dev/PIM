@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ReservaApartamento } from '@app/models/ReservaApartamento';
+import { Reserva } from '@app/models/Reserva';
 import { BsLocaleService } from 'ngx-bootstrap/datepicker';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { NgxSpinnerService } from 'ngx-spinner';
@@ -20,7 +20,7 @@ export class NovaReservaComponent implements OnInit {
 
   form: FormGroup;
 
-  reserva = {} as ReservaApartamento;
+  reserva = {} as Reserva;
 
   modalRef: BsModalRef;
 

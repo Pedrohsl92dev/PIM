@@ -1,18 +1,18 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Fornecedor } from '@app/models/Fornecedor';
+import { CadastroFuncionario } from '@app/models/CadastroFuncionario';
 import { BsLocaleService } from 'ngx-bootstrap/datepicker';
-import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
+import { BsModalService } from 'ngx-bootstrap/modal';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
-  selector: 'app-fornecedor',
-  templateUrl: './fornecedor.component.html',
-  styleUrls: ['./fornecedor.component.scss']
+  selector: 'app-cadastro-funcionarios',
+  templateUrl: './cadastro-funcionarios.component.html',
+  styleUrls: ['./cadastro-funcionarios.component.scss']
 })
-export class FornecedorComponent implements OnInit {
+export class CadastroFuncionariosComponent implements OnInit {
 
   @Input() titulo: string;
   @Input() iconClass = 'fa fa-user';
@@ -20,18 +20,7 @@ export class FornecedorComponent implements OnInit {
 
   form: FormGroup;
 
-  fornecedor = {} as Fornecedor;
-
-  modalRef: BsModalRef;
-
-  get bsConfig(): any {
-    return {
-      adaptivePosition: true,
-      dateInputFormat: 'DD/MM/YYYY hh:mm a',
-      containerClass: 'theme-default',
-      showWeekNumbers: false,
-    };
-  }
+  funcionario = {} as CadastroFuncionario;
 
   get f(): any {
     return this.form.controls;
@@ -45,39 +34,40 @@ export class FornecedorComponent implements OnInit {
     private toastr: ToastrService,
     private modalService: BsModalService,
     private router: Router,
-  ) {
-    this.localeService.use('pt-br');
-  }
+  ) { }
 
   ngOnInit(): void {
-    this.validation();
   }
 
-  public validation(): void {
+  public validacao(): void {
     this.form = this.fb.group({
-      razaoSocial: ['', Validators.required],
-      cnpj: ['', Validators.required],
+      nome: ['', Validators.required],
+      cpf: ['', Validators.required],
       endereco: ['', Validators.required],
       cidade: ['', Validators.required],
       estado: ['', Validators.required],
-      ie: ['', Validators.required],
+      telefone: ['', Validators.required],
+      celular: ['', Validators.required],
+      email: ['', Validators.required],
+      cargo: ['', Validators.required],
+      categoria: ['', Validators.required],
     });
   }
 
-  public cadastrarFornecedor(): void {
-    this.fornecedor = {...this.form.value};
+  public navegar(): void {
+    this.router.navigate([`/listar-funcionario`]);
   }
 
-  public resetForm(): void {
-    this.form.reset();
-  }
+  cadastrarFuncionario(): void {
 
-  listar(): void {
-    this.router.navigate([`/listar-fornecedor`]);
   }
 
   public cssValidator(campoForm: FormControl | AbstractControl): any {
     return { 'is-invalid': campoForm.errors && campoForm.touched };
+  }
+
+  public resetForm(): void {
+    this.form.reset();
   }
 
 }

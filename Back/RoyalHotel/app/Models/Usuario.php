@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class CadastroHospede extends Model
+class Usuario extends Model
 {
     use HasFactory;
 
@@ -17,6 +17,6 @@ class CadastroHospede extends Model
         'usuario',
         'senha',
         'confirmeSenha',
-        'categoria'
+        'categoria',
     ];
 }

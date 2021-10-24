@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class CadastroHospedeController extends Controller
+class ProdutoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +13,7 @@ class CadastroHospedeController extends Controller
      */
     public function index()
     {
-        return \App\Models\CadastroHospede::all();
+        return \App\Models\Produto::all();
     }
 
     /**
@@ -34,7 +34,7 @@ class CadastroHospedeController extends Controller
      */
     public function store(Request $request)
     {
-        return \App\Models\CadastroHospede::create($request->all());
+        return \App\Models\Produto::create($request->all());
     }
 
     /**

@@ -9,4 +9,5 @@ export interface Fornecedor {
   estado: string;
   ie: string;
   produto: Produtos[];
+  produtoId: number;
 }

@@ -1,7 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { AbstractControl, FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CadastroApartamento } from '@app/models/CadastroApartamento';
+import { CadastrarApartamentoService } from '@app/services/cadastrarApartamento.service';
 import { BsLocaleService } from 'ngx-bootstrap/datepicker';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { NgxSpinnerService } from 'ngx-spinner';
@@ -42,16 +43,42 @@ export class CadastrarApartamentosComponent implements OnInit {
     private spinner: NgxSpinnerService,
     private toastr: ToastrService,
     private modalService: BsModalService,
+    private cadastrarApartamentoService: CadastrarApartamentoService,
     private router: Router,
   ) {
     this.localeService.use('pt-br');
   }
 
   ngOnInit(): void {
+    this.validacao();
+  }
+
+  public validacao(): void {
+    this.form = this.fb.group({
+      numero: ['', Validators.required],
+      andar: ['', Validators.required],
+      tamanho: ['', Validators.required],
+      categoria: ['', Validators.required],
+      imagem: ['', Validators.required]
+    });
   }
 
   cadastrarApartamento(): void {
-
+    if (this.form.valid) {
+      this.apartamento = { ...this.form.value };
+      this.cadastrarApartamentoService.post(this.apartamento).subscribe(
+        () => {
+          this.toastr.success('Apartamento cadastrado com Sucesso!', ' Sucesso');
+          this.form.reset();
+        },
+        (error: any) => {
+          this.toastr.error('Erro ao efetuar cadastro.', 'Erro!');
+          console.log(error);
+        }
+      );
+    } else {
+      this.toastr.error('Preencha os campos obrigatórios.', 'Erro!');
+    }
   }
 
   listar(): void {

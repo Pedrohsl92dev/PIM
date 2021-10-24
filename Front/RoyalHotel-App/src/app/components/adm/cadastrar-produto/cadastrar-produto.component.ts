@@ -22,6 +22,7 @@ export class CadastrarProdutoComponent implements OnInit {
   form: FormGroup;
 
   produto = {} as Produtos;
+  fornecedor: any[] = [];
 
   modalRef: BsModalRef;
 

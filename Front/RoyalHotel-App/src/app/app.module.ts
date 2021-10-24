@@ -54,6 +54,8 @@ import { PerfilComponent } from './components/user/perfil/perfil.component';
 import { ListarReservasComponent } from './components/adm/listar-reservas/listar-reservas.component';
 import { FecharContaComponent } from './components/adm/fechar-conta/fechar-conta.component';
 import { MensagensFaleConoscoComponent } from './components/adm/mensagens-fale-conosco/mensagens-fale-conosco.component';
+import { CadastroFuncionariosComponent } from './components/adm/cadastro-funcionarios/cadastro-funcionarios.component';
+import { ListaFuncionarioComponent } from './components/adm/lista-funcionario/lista-funcionario.component';
 
 defineLocale('pt-br', ptBrLocale);
 
@@ -94,7 +96,9 @@ defineLocale('pt-br', ptBrLocale);
     PerfilComponent,
     ListarReservasComponent,
     FecharContaComponent,
-    MensagensFaleConoscoComponent
+    MensagensFaleConoscoComponent,
+    CadastroFuncionariosComponent,
+    ListaFuncionarioComponent
   ],
   imports: [
     BrowserModule,

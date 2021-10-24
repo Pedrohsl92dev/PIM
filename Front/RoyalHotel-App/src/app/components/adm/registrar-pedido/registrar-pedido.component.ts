@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { RegistrarPedido } from '@app/models/RegistrarPedido';
+import { Pedido } from '@app/models/Pedido';
 import { BsLocaleService } from 'ngx-bootstrap/datepicker';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { NgxSpinnerService } from 'ngx-spinner';
@@ -20,7 +20,8 @@ export class RegistrarPedidoComponent implements OnInit {
 
   form: FormGroup;
 
-  pedido = {} as RegistrarPedido;
+  pedido = {} as Pedido;
+  hospede: any[] = [];
 
   modalRef: BsModalRef;
 

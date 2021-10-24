@@ -29,6 +29,8 @@ import { PerfilComponent } from './components/user/perfil/perfil.component';
 import { ListarReservasComponent } from './components/adm/listar-reservas/listar-reservas.component';
 import { FecharContaComponent } from './components/adm/fechar-conta/fechar-conta.component';
 import { MensagensFaleConoscoComponent } from './components/adm/mensagens-fale-conosco/mensagens-fale-conosco.component';
+import { CadastroFuncionariosComponent } from './components/adm/cadastro-funcionarios/cadastro-funcionarios.component';
+import { ListaFuncionarioComponent } from './components/adm/lista-funcionario/lista-funcionario.component';
 
 const routes: Routes = [
   {
@@ -39,7 +41,7 @@ const routes: Routes = [
       { path: 'hospede', component: PerfilComponent },
     ]
   },
-  { path: 'listar-hospedes', component: HospedeListaComponent },
+  { path: 'listar-hospede', component: HospedeListaComponent },
   { path: 'cadastro-hospede', component: HospedeDetalheComponent },
   { path: 'listar-pedido', component: ListarPedidoComponent },
   { path: 'registrar-pedido', component: RegistrarPedidoComponent },
@@ -51,6 +53,8 @@ const routes: Routes = [
       { path: 'inicio', component: InicioAdmComponent }
     ]
   },
+  { path: 'cadastrar-funcionario', component: CadastroFuncionariosComponent },
+  { path: 'listar-funcionario', component: ListaFuncionarioComponent },
   { path: 'cadastrar-produto', component: CadastrarProdutoComponent },
   { path: 'mensagens-fale-conosco', component: MensagensFaleConoscoComponent },
   { path: 'listar-produto', component: ListaProdutosComponent },

@@ -8,4 +8,5 @@ export interface Produtos {
   marca: string;
   valor: string;
   fornecedor: Fornecedor[];
+  fornecedorId: number;
 }

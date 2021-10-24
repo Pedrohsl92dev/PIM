@@ -5,14 +5,14 @@ import { NgxSpinnerService } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
-  selector: 'app-listar-pedido',
-  templateUrl: './listar-pedido.component.html',
-  styleUrls: ['./listar-pedido.component.scss']
+  selector: 'app-lista-funcionario',
+  templateUrl: './lista-funcionario.component.html',
+  styleUrls: ['./lista-funcionario.component.scss']
 })
-export class ListarPedidoComponent implements OnInit {
+export class ListaFuncionarioComponent implements OnInit {
 
   @Input() titulo: string;
-  @Input() iconClass = 'fas fa-clipboard-list';
+  @Input() iconClass = 'fa fa-user';
   @Input() subtitulo = 'Desde 2021';
 
   modalRef: BsModalRef;
@@ -27,13 +27,13 @@ export class ListarPedidoComponent implements OnInit {
   ngOnInit(): void {
   }
 
-
-  navegar(): void {
+  public adm(): void {
     this.router.navigate([`/adm`]);
   }
 
   decline(): void {
     this.modalRef.hide();
   }
+
 
 }
