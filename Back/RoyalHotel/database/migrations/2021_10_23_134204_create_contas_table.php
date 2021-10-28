@@ -14,7 +14,9 @@ class CreateContasTable extends Migration
     public function up()
     {
         Schema::create('contas', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
+            $table->string('dataPagamento');
+            $table->string('formaPagamento');
             $table->timestamps();
         });
     }

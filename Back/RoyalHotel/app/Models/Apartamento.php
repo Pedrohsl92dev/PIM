@@ -15,6 +15,12 @@ class Apartamento extends Model
         'andar',
         'tamanho',
         'categoria',
-        'imagem'
+        'imagem',
+        'reserva_id'
     ];
+
+    public function reservas()
+    {
+        return $this->hasMany('App\Models\Reserva');
+    }
 }

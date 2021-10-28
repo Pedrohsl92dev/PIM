@@ -15,11 +15,17 @@ class Reserva extends Model
         'dataSaida',
         'qtdPessoas',
         'statusPagamento',
-        'apartamento_id'
+        'apartamento_id',
+        'conta_id'
     ];
 
     public function hospede()
     {
-        return $this->hasMany('App\Models\Hospede');
+        return $this->hasOne('App\Models\Hospede');
+    }
+
+    public function conta()
+    {
+        return $this->hasOne('App\Models\Conta');
     }
 }

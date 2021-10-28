@@ -20,7 +20,6 @@ class Hospede extends Model
         'endereco_id',
         'reserva_id',
         'pedido_id',
-        'conta_id'
     ];
 
     public function endereco()
@@ -28,19 +27,14 @@ class Hospede extends Model
         return $this->hasOne('App\Models\Endereco');
     }
 
-    public function reserva()
+    public function reservas()
     {
         return $this->hasMany('App\Models\Reserva');
     }
 
-    public function pedido()
+    public function pedidos()
     {
         return $this->hasMany('App\Models\Pedido');
-    }
-
-    public function conta()
-    {
-        return $this->hasOne('App\Models\Conta');
     }
 
 }
