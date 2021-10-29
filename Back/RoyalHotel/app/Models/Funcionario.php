@@ -14,6 +14,7 @@ class Funcionario extends Model
         'nome',
         'cpf',
         'categoria',
+        'usuario',
         'endereco_id'
     ];
 

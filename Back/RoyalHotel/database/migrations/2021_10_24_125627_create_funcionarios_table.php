@@ -18,6 +18,7 @@ class CreateFuncionariosTable extends Migration
             $table->string('nome');
             $table->string('cpf');
             $table->string('categoria');
+            $table->string('usuario');
             $table->string('endereco_id');
             $table->timestamps();
         });
