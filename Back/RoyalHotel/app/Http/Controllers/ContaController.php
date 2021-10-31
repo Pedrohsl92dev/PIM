@@ -13,7 +13,7 @@ class ContaController extends Controller
      */
     public function index()
     {
-        //
+        return \App\Models\Conta::all();
     }
 
     /**
@@ -34,7 +34,7 @@ class ContaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return \App\Models\Conta::create($request->all());
     }
 
     /**

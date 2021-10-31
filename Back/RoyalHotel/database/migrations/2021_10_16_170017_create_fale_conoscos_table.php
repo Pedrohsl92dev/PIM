@@ -14,7 +14,7 @@ class CreateFaleConoscosTable extends Migration
     public function up()
     {
         Schema::create('fale_conoscos', function (Blueprint $table) {
-            $table->increments('id');
+            $table->id();
             $table->string('nome');
             $table->string('email');
             $table->string('assunto');

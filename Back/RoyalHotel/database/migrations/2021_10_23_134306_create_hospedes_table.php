@@ -14,16 +14,12 @@ class CreateHospedesTable extends Migration
     public function up()
     {
         Schema::create('hospedes', function (Blueprint $table) {
-            $table->increments('id');
+            $table->id();
             $table->string('nome');
             $table->string('cpf');
             $table->string('telefone');
             $table->string('celular');
             $table->string('email');
-            $table->string('reserva_id');
-            $table->string('pedido_id');
-            $table->string('conta_id');
-            $table->string('endereco_id');
             $table->timestamps();
         });
     }

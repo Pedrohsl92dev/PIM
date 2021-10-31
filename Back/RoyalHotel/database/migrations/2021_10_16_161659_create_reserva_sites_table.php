@@ -14,7 +14,7 @@ class CreateReservaSitesTable extends Migration
     public function up()
     {
         Schema::create('reserva_sites', function (Blueprint $table) {
-            $table->increments('id');
+            $table->id();
             $table->string('primeiroNome');
             $table->string('sobrenome');
             $table->string('email');

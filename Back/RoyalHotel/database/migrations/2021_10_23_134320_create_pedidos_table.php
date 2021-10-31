@@ -14,12 +14,11 @@ class CreatePedidosTable extends Migration
     public function up()
     {
         Schema::create('pedidos', function (Blueprint $table) {
-            $table->increments('id');
+            $table->id();
             $table->string('nomeProduto');
             $table->string('valor');
             $table->string('qtdProduto');
             $table->string('valorTotal');
-            $table->string('hospede_id');
             $table->timestamps();
         });
     }

@@ -13,7 +13,7 @@ class EnderecoController extends Controller
      */
     public function index()
     {
-        //
+        return \App\Models\Endereco::all();
     }
 
     /**
@@ -34,7 +34,7 @@ class EnderecoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return \App\Models\Endereco::create($request->all());
     }
 
     /**

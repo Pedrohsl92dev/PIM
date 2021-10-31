@@ -13,7 +13,7 @@ class UsuarioController extends Controller
      */
     public function index()
     {
-        //
+        return \App\Models\Usuario::all();
     }
 
     /**
@@ -34,7 +34,7 @@ class UsuarioController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return \App\Models\Usuario::create($request->all());
     }
 
     /**

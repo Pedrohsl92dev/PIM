@@ -14,12 +14,11 @@ class CreateReservasTable extends Migration
     public function up()
     {
         Schema::create('reservas', function (Blueprint $table) {
-            $table->increments('id');
+            $table->id();
             $table->string('dataEntrada');
             $table->string('dataSaida');
             $table->string('qtdPessoas');
             $table->string('statusPagamento');
-            $table->string('hospede_id');
             $table->timestamps();
         });
     }

@@ -14,12 +14,10 @@ class CreateFornecedorsTable extends Migration
     public function up()
     {
         Schema::create('fornecedors', function (Blueprint $table) {
-            $table->increments('id');
+            $table->id();
             $table->string('razaoSocial');
             $table->string('cnpf');
             $table->string('ie');
-            $table->string('produto_id');
-            $table->string('endereco_id');
             $table->timestamps();
         });
     }

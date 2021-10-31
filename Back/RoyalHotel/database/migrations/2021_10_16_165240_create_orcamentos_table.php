@@ -14,7 +14,7 @@ class CreateOrcamentosTable extends Migration
     public function up()
     {
         Schema::create('orcamentos', function (Blueprint $table) {
-            $table->increments('id');
+            $table->id();
             $table->string('nome');
             $table->string('email');
             $table->string('cidade');

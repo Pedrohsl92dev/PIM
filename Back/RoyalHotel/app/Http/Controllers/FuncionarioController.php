@@ -13,7 +13,7 @@ class FuncionarioController extends Controller
      */
     public function index()
     {
-        //
+        return \App\Models\Funcionario::all();
     }
 
     /**
@@ -34,7 +34,7 @@ class FuncionarioController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return \App\Models\Funcionario::create($request->all());
     }
 
     /**

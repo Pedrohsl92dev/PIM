@@ -13,7 +13,7 @@ class ReservaController extends Controller
      */
     public function index()
     {
-        //
+        return \App\Models\Reserva::all();
     }
 
     /**
@@ -23,7 +23,7 @@ class ReservaController extends Controller
      */
     public function create()
     {
-        //
+        return \App\Models\Reserva::create($request->all());
     }
 
     /**

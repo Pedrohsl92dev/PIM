@@ -2,13 +2,18 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ReservaSiteController;
-use App\Http\Controllers\CadastroHospedeController;
+use App\Http\Controllers\HospedeController;
 use App\Http\Controllers\OrcamentoController;
 use App\Http\Controllers\FaleConoscoController;
-use App\Http\Controllers\CadastroApartamentoController;
-use App\Http\Controllers\CadastrarProdutosController;
-use App\Http\Controllers\CadastrarFornecedorController;
-
+use App\Http\Controllers\ApartamentoController;
+use App\Http\Controllers\ProdutoController;
+use App\Http\Controllers\FornecedorController;
+use App\Http\Controllers\ContaController;
+use App\Http\Controllers\EnderecoController;
+use App\Http\Controllers\FuncionarioController;
+use App\Http\Controllers\PedidoController;
+use App\Http\Controllers\ReservaController;
+use App\Http\Controllers\UsuarioController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,3 +37,10 @@ Route::resource('fale-conosco', FaleConoscoController::class);
 Route::resource('apartamento', ApartamentoController::class);
 Route::resource('produto', ProdutoController::class);
 Route::resource('fornecedor', FornecedorController::class);
+Route::resource('conta', ContaController::class);
+Route::resource('endereco', EnderecoController::class);
+Route::resource('funcionario', FuncionarioController::class);
+Route::resource('pedido', PedidoController::class);
+Route::resource('reserva', ReservaController::class);
+Route::resource('cadastro-usuario', UsuarioController::class);
+

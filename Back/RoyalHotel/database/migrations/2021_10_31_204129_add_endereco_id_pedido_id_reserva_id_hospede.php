@@ -17,11 +17,11 @@ class AddEnderecoIdPedidoIdReservaIdHospede extends Migration
             $table->unsignedBigInteger('endereco_id')->after('id');
             $table->foreign('endereco_id')->references('id')->on('enderecos');
 
-            $table->unsignedBigInteger('pedido_id')->after('id');
-            $table->foreign('pedido_id')->references('id')->on('pedidos');
-
             $table->unsignedBigInteger('reserva_id')->after('id');
             $table->foreign('reserva_id')->references('id')->on('reservas');
+
+            $table->unsignedBigInteger('pedido_id')->after('id');
+            $table->foreign('pedido_id')->references('id')->on('pedidos');
 
         });
     }

@@ -14,12 +14,11 @@ class CreateFuncionariosTable extends Migration
     public function up()
     {
         Schema::create('funcionarios', function (Blueprint $table) {
-            $table->increments('id');
+            $table->id();
             $table->string('nome');
             $table->string('cpf');
             $table->string('categoria');
             $table->string('usuario');
-            $table->string('endereco_id');
             $table->timestamps();
         });
     }

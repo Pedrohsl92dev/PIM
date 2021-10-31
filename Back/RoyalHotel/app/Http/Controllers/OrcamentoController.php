@@ -13,7 +13,7 @@ class OrcamentoController extends Controller
      */
     public function index()
     {
-        //
+        return \App\Models\Orcamento::all();
     }
 
     /**
@@ -34,7 +34,7 @@ class OrcamentoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return \App\Models\Orcamento::create($request->all());
     }
 
     /**

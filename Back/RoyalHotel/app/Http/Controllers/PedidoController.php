@@ -13,7 +13,7 @@ class PedidoController extends Controller
      */
     public function index()
     {
-        //
+        return \App\Models\Pedido::all();
     }
 
     /**
@@ -34,7 +34,7 @@ class PedidoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return \App\Models\Pedido::create($request->all());
     }
 
     /**
