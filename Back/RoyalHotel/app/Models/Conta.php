@@ -13,7 +13,8 @@ class Conta extends Model
         'id',
         'valor',
         'dataPagamento',
-        'formaPagamento'
+        'formaPagamento',
+        'statusPagamento',
     ];
 
     public function reserva()

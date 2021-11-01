@@ -56,6 +56,11 @@ import { FecharContaComponent } from './components/adm/fechar-conta/fechar-conta
 import { MensagensFaleConoscoComponent } from './components/adm/mensagens-fale-conosco/mensagens-fale-conosco.component';
 import { CadastroFuncionariosComponent } from './components/adm/cadastro-funcionarios/cadastro-funcionarios.component';
 import { ListaFuncionarioComponent } from './components/adm/lista-funcionario/lista-funcionario.component';
+import { HospedeService } from './services/hospede.service';
+import { ApartamentoService } from './services/apartamento.service';
+import { FornecedorService } from './services/fornecedor.service';
+import { ProdutoService } from './services/produto.service';
+import { NovaReservaService } from './services/novaReserva.service';
 
 defineLocale('pt-br', ptBrLocale);
 
@@ -121,7 +126,13 @@ defineLocale('pt-br', ptBrLocale);
     NgxSpinnerModule,
     NgxCurrencyModule
   ],
-  providers: [],
+  providers: [
+    HospedeService,
+    ApartamentoService,
+    FornecedorService,
+    ProdutoService,
+    NovaReservaService
+  ],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })

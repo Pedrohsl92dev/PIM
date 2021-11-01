@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateEnderecosTable extends Migration
+class CreateCadastroHospedesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,16 @@ class CreateEnderecosTable extends Migration
      */
     public function up()
     {
-        Schema::create('enderecos', function (Blueprint $table) {
+        Schema::create('cadastro_hospedes', function (Blueprint $table) {
             $table->id();
+            $table->string('nome');
+            $table->string('cpf');
+            $table->string('categoria');
+            $table->string('telefone');
+            $table->string('celular');
+            $table->string('email');
             $table->string('cidade');
+            $table->string('estado');
             $table->string('cep');
             $table->string('endereco');
             $table->string('complemento');
@@ -30,6 +37,6 @@ class CreateEnderecosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('enderecos');
+        Schema::dropIfExists('cadastro_hospedes');
     }
 }

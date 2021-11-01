@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class EnderecoController extends Controller
+class CadastroFornecedorController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +13,7 @@ class EnderecoController extends Controller
      */
     public function index()
     {
-        return \App\Models\Endereco::all();
+        return \App\Models\CadastroFornecedor::all();
     }
 
     /**
@@ -34,7 +34,7 @@ class EnderecoController extends Controller
      */
     public function store(Request $request)
     {
-        return \App\Models\Endereco::create($request->all());
+        return \App\Models\CadastroFornecedor::create($request->all());
     }
 
     /**

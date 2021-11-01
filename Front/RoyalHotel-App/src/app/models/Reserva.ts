@@ -5,6 +5,8 @@ export interface Reserva {
   dataSaida: Date;
   qtdPessoas: number;
   statusPagamento: string;
-  hospede: Hospede;
+  valorDiaria: number;
+  valorTotal: number;
+  hospede: string;
   apartamento: string;
 }

@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Hospede extends Model
+class CadastroHospede extends Model
 {
     use HasFactory;
 
@@ -23,15 +23,4 @@ class Hospede extends Model
         'endereco',
         'complemento',
     ];
-
-    public function reservas()
-    {
-        return $this->hasMany('App\Models\Reserva');
-    }
-
-    public function pedidos()
-    {
-        return $this->hasMany('App\Models\Pedido');
-    }
-
 }

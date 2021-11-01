@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateReservasTable extends Migration
+class CreateCadastroApartamentosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,13 @@ class CreateReservasTable extends Migration
      */
     public function up()
     {
-        Schema::create('reservas', function (Blueprint $table) {
+        Schema::create('cadastro_apartamentos', function (Blueprint $table) {
             $table->id();
-            $table->string('dataEntrada');
-            $table->string('dataSaida');
-            $table->string('qtdPessoas');
-            $table->string('statusPagamento');
-            $table->string('valorTotal');
+            $table->string('numero');
+            $table->string('andar');
+            $table->string('tamanho');
+            $table->string('categoria');
+            $table->string('imagem');
             $table->timestamps();
         });
     }
@@ -31,6 +31,6 @@ class CreateReservasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('reservas');
+        Schema::dropIfExists('cadastro_apartamentos');
     }
 }

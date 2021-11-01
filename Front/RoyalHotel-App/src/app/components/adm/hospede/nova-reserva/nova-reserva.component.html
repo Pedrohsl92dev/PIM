@@ -10,7 +10,7 @@
       </div>
       <div class="p-3">
         <button class="btn btn-outline-light" (click)="listar()">
-          Retornar ao Menu
+          Retornar a Lista
         </button>
       </div>
     </div>
@@ -20,16 +20,11 @@
           <div class="form-row">
             <div class="form-group col-md-12">
               <label>Hospede</label>
-              <input type="text" class="form-control" [ngClass]="cssValidator(f.hospede)" formControlName="hospede"
-              placeholder="" >
+              <select type="text" class="form-control" [ngClass]="cssValidator(f.hospede)" formControlName="hospede">
+                <option *ngFor="let hospede of hospedes" [value]="hospede.id">{{hospede.nome}}</option>
+              </select>
               <div *ngIf="f.hospede.errors?.required" class="invalid-feedback">
                 Hospede é obrigatório.
-              </div>
-              <div *ngIf="f.hospede.errors?.minlength" class="invalid-feedback">
-                Hospede deve ter no mínimo 4 caracteres.
-              </div>
-              <div *ngIf="f.hospede.errors?.maxlength" class="invalid-feedback">
-                Hospede deve ter no máximo 50 caracteres.
               </div>
             </div>
           </div>
@@ -37,15 +32,14 @@
             <div class="form-group col-md-4">
               <label>Apartamento:  </label>
               <select [(ngModel)]="apartamento" class="form-control" formControlName="apartamento" [ngClass]="cssValidator(f.apartamento)">
-                <option selected>Selecione um apartamento</option>
-                <option value="Duplo Deluxe">Duplo Deluxe</option>
-                <option value="Individual Deluxe">Individual Deluxe</option>
-                <option value="Suíte de Lua de Mel">Suíte de Lua de Mel</option>
-                <option value="Econômico Duplo">Econômico Duplo</option>
-                <option value="Suite Master">Suite Master</option>
-                <option value="Suíte Núpsia">Suíte Núpsia</option>
-                <option value="Suíte Super Luxo">Suíte Super Luxo</option>
-                <option value="Suíte P.N.E">Suíte P.N.E</option>
+                <option value="Duplo Deluxe" (click)="valorDiaria()">Duplo Deluxe</option>
+                <option value="Individual Deluxe" (click)="valorDiaria()">Individual Deluxe</option>
+                <option value="Suíte de Lua de Mel" (click)="valorDiaria()">Suíte de Lua de Mel</option>
+                <option value="Econômico Duplo" (click)="valorDiaria()">Econômico Duplo</option>
+                <option value="Suite Master" (click)="valorDiaria()">Suite Master</option>
+                <option value="Suíte Núpsia" (click)="valorDiaria()">Suíte Núpsia</option>
+                <option value="Suíte Super Luxo" (click)="valorDiaria()">Suíte Super Luxo</option>
+                <option value="Suíte P.N.E" (click)="valorDiaria()">Suíte P.N.E</option>
               </select>
               <div *ngIf="f.apartamento.errors?.required && f.apartamento.touched" class="invalid-feedback">
                 Apartamento é obrigatório.
@@ -53,7 +47,7 @@
             </div>
             <div class="form-group col-md-4">
               <label>Data Entrada</label>
-              <input type="datetime" class="form-control" [ngClass]="cssValidator(f.dataEntrada)"
+              <input type="datetime" class="form-control" [(ngModel)]="dataEntrada" [ngClass]="cssValidator(f.dataEntrada)"
               bsDatepicker [bsConfig]="bsConfig" formControlName="dataEntrada"
               placeholder="" >
               <div *ngIf="f.dataEntrada.errors?.required && f.dataEntrada.touched" class="invalid-feedback">
@@ -62,7 +56,7 @@
             </div>
             <div class="form-group col-md-4">
               <label>Data Saída</label>
-              <input type="datetime" class="form-control" [ngClass]="cssValidator(f.dataSaida)"
+              <input type="datetime" class="form-control" [(ngModel)]="dataSaida" [ngClass]="cssValidator(f.dataSaida)"
               bsDatepicker [bsConfig]="bsConfig" formControlName="dataSaida"
               placeholder="" >
               <div *ngIf="f.dataSaida.errors?.required && f.dataSaida.touched" class="invalid-feedback">
@@ -73,7 +67,7 @@
           <div class="form-row">
             <div class="form-group col-md-4">
               <label>Quantidade Pessoas</label>
-              <input type="number" class="form-control" [ngClass]="cssValidator(f.qtdPessoas)" formControlName="qtdPessoas"
+              <input type="number" class="form-control" [ngClass]="cssValidator(f.qtdPessoas)" formControlName="qtdPessoas" (click)="calculoValorTotal()"
               placeholder="">
               <div *ngIf="f.qtdPessoas.errors?.required && f.qtdPessoas.touched" class="invalid-feedback">
                 Qtd Pessoas é obrigatório.
@@ -84,15 +78,11 @@
             </div>
             <div class="form-group col-md-4">
               <label>Valor Diária</label>
-              <input type="text" class="form-control" value="" formControlName="valorDiaria" placeholder="" >
+              <input type="text" class="form-control" [value]="diaria" formControlName="valorDiaria" placeholder="" >
             </div>
-            <div class="form-group col-md-4">
-              <label>Status Pagamento</label>
-              <input type="text" class="form-control" [ngClass]="cssValidator(f.statusPagamento)"
-              formControlName="statusPagamento" placeholder="" >
-              <div *ngIf="f.statusPagamento.errors?.required && f.statusPagamento.touched" class="invalid-feedback">
-                StatusPagamento é obrigatório.
-              </div>
+            <div class="form-group col-md-4 valorTotal">
+              <label><b>Valor Total</b></label>
+              <div>{{ valorTotal }}</div>
             </div>
           </div>
         </div>
@@ -101,12 +91,78 @@
             <button class="btn btn-outline-secondary mr-auto border" (click)="resetForm()">
               Cancelar Alteração
             </button>
-            <button class="btn btn-success" [disabled]="!form.valid" >
-              Salvar Hospede
+            <button class="btn btn-danger mr-auto border" (click)="modalPagamento(template)">
+              Efetuar Pagamento
+            </button>
+            <button class="btn btn-success"  (click)="salvarReserva()" >
+              Salvar Reserva
             </button>
           </div>
         </div>
       </form>
+      <ng-template #template>
+        <div class="modal-header">
+          <h4 class="modal-title pull-left">Dados Para Pagamento</h4>
+          <button type="button" class="close btn-close pull-right" aria-label="Close" (click)="modalRef?.hide()">
+            <span aria-hidden="true" class="visually-hidden">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form [formGroup]="form" class="p-1">
+            <div class="form-row">
+              <div class="form-group col-sm-6">
+                <label>Data Pagamento</label>
+                <input type="datetime" class="form-control" [ngClass]="cssValidator(f.dataSaida)"
+                bsDatepicker [bsConfig]="bsConfig" formControlName="dataSaida"
+                placeholder="" >
+                <div *ngIf="f.dataSaida.errors?.required && f.dataSaida.touched" class="invalid-feedback">
+                  Data é obrigatório.
+                </div>
+              </div>
+              <div class="form-group col-sm-6">
+                <label>Forma de Pagamento:</label>
+                <input type="text" class="form-control" formControlName="formaPagamento"
+                  [ngClass]="{'is-invalid': f.formaPagamento.errors && f.formaPagamento.touched}"/>
+                <div class="invalid-feedback">
+                  Forma de Pagamento é obrigatório.
+                </div>
+              </div>
+              <div class="form-group col-md-6">
+                <label>Status Pagamento</label>
+                <select type="text" class="form-control" [ngClass]="cssValidator(f.statusPagamento)"
+                formControlName="statusPagamento" placeholder="" >
+                  <option value="Pago">Pago</option>
+                  <option value="Processando">Processando</option>
+                  <option value="Cancelado">Cancelado</option>
+                  <option value="Aguardando Pagamento">Aguardando Pagamento</option>
+                </select>
+                <div *ngIf="f.statusPagamento.errors?.required && f.statusPagamento.touched" class="invalid-feedback">
+                  Status Pagamento é obrigatório.
+                </div>
+              </div>
+              <div class="form-group col-md-6">
+                <label>Valor:</label>
+                <input type="text" class="form-control" formControlName="valor" placeholder="" [ngClass]="cssValidator(f.valor)">
+                <div *ngIf="f.valor.errors?.required && f.valor.touched" class="invalid-feedback">
+                  Valor é obrigatório.
+                </div>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-6">
+                <button class="btn btn-lg btn-danger btn-block px-5">
+                  Cancelar
+                </button>
+              </div>
+              <div class="form-group col-6">
+                <button class="btn btn-lg btn-success btn-block px-5" (click)="salvarPagamento()">
+                  Registrar Pagamento
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </ng-template>
     </div>
   </div>
 </div>

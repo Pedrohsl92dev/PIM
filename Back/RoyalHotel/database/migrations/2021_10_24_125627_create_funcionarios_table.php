@@ -19,6 +19,11 @@ class CreateFuncionariosTable extends Migration
             $table->string('cpf');
             $table->string('categoria');
             $table->string('usuario');
+            $table->string('cidade');
+            $table->string('estado');
+            $table->string('cep');
+            $table->string('endereco');
+            $table->string('complemento');
             $table->timestamps();
         });
     }

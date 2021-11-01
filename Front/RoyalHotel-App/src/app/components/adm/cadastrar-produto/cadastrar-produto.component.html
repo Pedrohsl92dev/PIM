@@ -64,18 +64,10 @@
             </div>
             <div class="form-group col-md-6">
               <label>Fornecedor:  </label>
-              <select [(ngModel)]="fornecedor" class="form-control" formControlName="fornecedor" [ngClass]="cssValidator(f.fornecedor)">
-                <option selected>Selecione uma catégoria</option>
-                <option value="Duplo Deluxe">Duplo Deluxe</option>
-                <option value="Individual Deluxe">Individual Deluxe</option>
-                <option value="Suíte de Lua de Mel">Suíte de Lua de Mel</option>
-                <option value="Econômico Duplo">Econômico Duplo</option>
-                <option value="Suite Master">Suite Master</option>
-                <option value="Suíte Núpsia">Suíte Núpsia</option>
-                <option value="Suíte Super Luxo">Suíte Super Luxo</option>
-                <option value="Suíte P.N.E">Suíte P.N.E</option>
+              <select class="form-control" formControlName="fornecedor_id" [ngClass]="cssValidator(f.fornecedor_id)">
+                <option *ngFor="let fornecedor of fornecedores" [value]="fornecedor.id">{{fornecedor.razaoSocial}}</option>
               </select>
-              <div *ngIf="f.fornecedor.errors?.required && f.fornecedor.touched" class="invalid-feedback">
+              <div class="invalid-feedback">
                 Fornecedor é obrigatório.
               </div>
             </div>
@@ -86,7 +78,7 @@
             <button class="btn btn-outline-secondary mr-auto border" (click)="resetForm()">
               Cancelar Alteração
             </button>
-            <button class="btn btn-success" [disabled]="!form.valid" >
+            <button class="btn btn-success" (click)="salvarProduto()">
               Salvar Produto
             </button>
           </div>

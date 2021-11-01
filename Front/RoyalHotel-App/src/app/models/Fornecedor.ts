@@ -1,4 +1,3 @@
-import { Endereco } from './Endereco';
 import { Produto } from './Produto';
 
 export interface Fornecedor {
@@ -7,5 +6,9 @@ export interface Fornecedor {
   cnpf: string;
   ie: string;
   produto: Produto[];
-  endereco: Endereco;
+  cidade: string;
+  estado: string;
+  cep: string;
+  endereco: string;
+  complemento: string;
 }

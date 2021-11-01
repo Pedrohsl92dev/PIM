@@ -1,5 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Hospede } from '@app/models/Hospede';
+import { HospedeService } from '@app/services/hospede.service';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
@@ -15,23 +17,35 @@ export class HospedeListaComponent implements OnInit {
   @Input() iconClass = 'fa fa-user';
   @Input() subtitulo = 'Desde 2021';
 
+  hospedes: any[];
+
   modalRef: BsModalRef;
   constructor(
     private modalService: BsModalService,
     private toastr: ToastrService,
     private spinner: NgxSpinnerService,
-    private router: Router
+    private router: Router,
+    private service: HospedeService
   ) { }
 
   ngOnInit(): void {
+    this.listarHospedes();
   }
 
   decline(): void {
     this.modalRef.hide();
   }
 
-  listar(): void {
+  menu(): void {
     this.router.navigate([`/adm`]);
+  }
+
+  listarHospedes(): void {
+    this.service.get().subscribe({
+      next: (resp) => {
+        this.hospedes = resp;
+      }
+    });
   }
 
 }

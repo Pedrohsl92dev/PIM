@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Hospede } from '@app/models/Hospede';
+import { HospedeService } from '@app/services/hospede.service';
 import { BsLocaleService } from 'ngx-bootstrap/datepicker';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { NgxSpinnerService } from 'ngx-spinner';
@@ -45,6 +46,7 @@ export class HospedeDetalheComponent implements OnInit {
     private toastr: ToastrService,
     private modalService: BsModalService,
     private router: Router,
+    private service: HospedeService
   ) {
     this.localeService.use('pt-br');
   }
@@ -57,13 +59,35 @@ export class HospedeDetalheComponent implements OnInit {
     this.form = this.fb.group({
       nome: ['', Validators.required],
       cpf: ['', Validators.required],
-      endereco: ['', Validators.required],
-      cidade: ['', Validators.required],
-      estado: ['', Validators.required],
       telefone: [''],
       celular: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
+      endereco: ['', Validators.required],
+      cidade: ['', Validators.required],
+      estado: ['', Validators.required],
+      cep: ['', Validators.required],
+      complemento: [''],
     });
+  }
+
+  salvarHospede(): void {
+    if (this.form.valid) {
+      this.hospede = { ...this.form.value };
+      this.hospede.categoria = 2;
+      this.service.post(this.hospede).subscribe(
+        () => {
+          this.toastr.success('Hospede cadastrado com Sucesso!', ' Sucesso');
+          this.form.reset();
+          this.router.navigate([`/adm`]);
+        },
+        (error: any) => {
+          this.toastr.error('Erro ao efetuar cadastro.', 'Erro!');
+          console.log(error);
+        }
+      );
+    } else {
+      this.toastr.error('Preencha os campos obrigatórios.', 'Erro!');
+    }
   }
 
   public resetForm(): void {

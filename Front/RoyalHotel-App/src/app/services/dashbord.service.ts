@@ -10,7 +10,7 @@ import { take } from 'rxjs/operators';
 })
 export class DashbordService {
 
-  baseURL = environment.apiURL + 'reservar-agora';
+  baseURL = environment.apiURL + 'reserve-agora';
 
   constructor(private http: HttpClient) { }
 

@@ -72,7 +72,7 @@
             </div>
             <div class="form-group col-md-6">
               <label>Complemento:  </label>
-              <input type="text" class="form-control" formControlName="cidade"
+              <input type="text" class="form-control" formControlName="complemento"
               placeholder="" >
             </div>
           </div>
@@ -91,7 +91,7 @@
             </div>
             <div class="form-group col-md-4">
               <label for="">Email:</label>
-              <input class="form-control" type="text" formControlName="email"
+              <input class="form-control" type="text" formControlName="email" [ngClass]="cssValidator(f.email)"
                 [ngClass]="{'is-invalid': f.email.errors && f.email.touched}" placeholder="" />
               <div *ngIf="f.email.errors?.required && f.email.touched" class="invalid-feedback">
                 e-mail é obrigatório.
@@ -107,7 +107,7 @@
             <button class="btn btn-outline-secondary mr-auto border" (click)="resetForm()">
               Cancelar Alteração
             </button>
-            <button class="btn btn-success" [disabled]="!form.valid" >
+            <button class="btn btn-success" (click)="salvarHospede()">
               Salvar Hospede
             </button>
           </div>

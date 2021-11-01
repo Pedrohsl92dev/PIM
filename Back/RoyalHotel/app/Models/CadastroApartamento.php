@@ -5,20 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Funcionario extends Model
+class CadastroApartamento extends Model
 {
     use HasFactory;
 
     protected $fillable = [
         'id',
-        'nome',
-        'cpf',
+        'numero',
+        'andar',
+        'tamanho',
         'categoria',
-        'usuario',
-        'cidade',
-        'estado',
-        'cep',
-        'endereco',
-        'complemento',
+        'imagem',
     ];
 }

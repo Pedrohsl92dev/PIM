@@ -14,18 +14,15 @@ class Fornecedor extends Model
         'razaoSocial',
         'cnpf',
         'ie',
-        'endereco_id',
-        'produto_id'
+        'cidade',
+        'estado',
+        'cep',
+        'endereco',
+        'complemento',
     ];
 
     public function produto()
     {
         return $this->hasMany('App\Models\Produto');
-    }
-
-
-    public function endereco()
-    {
-        return $this->hasOne('App\Models\Endereco');
     }
 }

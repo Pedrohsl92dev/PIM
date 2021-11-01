@@ -3,6 +3,7 @@ import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from
 import { ActivatedRoute, Router } from '@angular/router';
 import { Fornecedor } from '@app/models/Fornecedor';
 import { Produto } from '@app/models/Produto';
+import { ProdutoService } from '@app/services/produto.service';
 import { BsLocaleService } from 'ngx-bootstrap/datepicker';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { NgxSpinnerService } from 'ngx-spinner';
@@ -22,7 +23,7 @@ export class CadastrarProdutoComponent implements OnInit {
   form: FormGroup;
 
   produto = {} as Produto;
-  fornecedor: any[] = [];
+  fornecedores: any[] = [];
 
   modalRef: BsModalRef;
 
@@ -47,12 +48,14 @@ export class CadastrarProdutoComponent implements OnInit {
     private toastr: ToastrService,
     private modalService: BsModalService,
     private router: Router,
+    private service: ProdutoService
   ) {
     this.localeService.use('pt-br');
   }
 
   ngOnInit(): void {
     this.validation();
+    this.buscarFornecedor();
   }
 
   public validation(): void {
@@ -62,7 +65,7 @@ export class CadastrarProdutoComponent implements OnInit {
       dataValidade: ['', Validators.required],
       marca: ['', Validators.required],
       valor: ['', Validators.required],
-      fornecedor: this.fb.array([]),
+      fornecedor_id: ['', Validators.required],
     });
   }
 
@@ -70,21 +73,36 @@ export class CadastrarProdutoComponent implements OnInit {
     this.router.navigate([`/listar-produto`]);
   }
 
-  public cadastrarFornecedor(fornecedor: Fornecedor): void {
-    this.form = this.fb.group({
-      id: [fornecedor.id],
-      razaoSocial: ['', Validators.required],
-      cnpf: ['', Validators.required],
-      endereco: ['', Validators.required],
-      cidade: ['', Validators.required],
-      estado: ['', Validators.required],
-      ie: ['', Validators.required],
-    });
-  }
-
   public resetForm(): void {
     this.router.navigate([`adm`]);
     this.form.reset();
+  }
+
+  public buscarFornecedor(): void {
+    this.service.get().subscribe(
+      (resp) => {
+        this.fornecedores = resp;
+        console.log('Aqui =>', this.fornecedores);
+      }
+    );
+  }
+
+  public salvarProduto(): void {
+    if (this.form.valid) {
+      this.produto = {...this.form.value};
+      this.service.post(this.produto).subscribe(
+      () => {
+          this.toastr.success('Produto cadastrado com Sucesso!', ' Sucesso');
+          this.form.reset();
+        },
+        (error: any) => {
+          this.toastr.error('Erro ao efetuar cadastro.', 'Erro!');
+          console.log(error);
+        }
+      );
+    } else {
+      this.toastr.error('Preencha os campos obrigatórios.', 'Erro!');
+    }
   }
 
   public cssValidator(campoForm: FormControl | AbstractControl): any {

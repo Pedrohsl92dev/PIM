@@ -1,8 +1,14 @@
-import { Endereco } from './Endereco';
-
-export interface Fornecedor {
+export interface Funcionario {
   nome: string;
   cpf: string;
-  categoria: string;
-  endereco: Endereco;
+  telefone: string;
+  celular: string;
+  email: string;
+  cargo: string;
+  categoria: number;
+  cidade: string;
+  estado: string;
+  cep: string;
+  endereco: string;
+  complemento: string;
 }

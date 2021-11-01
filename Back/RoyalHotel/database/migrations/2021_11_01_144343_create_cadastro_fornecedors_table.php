@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateHospedesTable extends Migration
+class CreateCadastroFornecedorsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,11 @@ class CreateHospedesTable extends Migration
      */
     public function up()
     {
-        Schema::create('hospedes', function (Blueprint $table) {
+        Schema::create('cadastro_fornecedors', function (Blueprint $table) {
             $table->id();
-            $table->string('nome');
-            $table->string('cpf');
-            $table->string('telefone');
-            $table->string('celular');
-            $table->string('email');
+            $table->string('razaoSocial');
+            $table->string('cnpj');
+            $table->string('ie');
             $table->string('cidade');
             $table->string('estado');
             $table->string('cep');
@@ -36,6 +34,6 @@ class CreateHospedesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('hospedes');
+        Schema::dropIfExists('cadastro_fornecedors');
     }
 }

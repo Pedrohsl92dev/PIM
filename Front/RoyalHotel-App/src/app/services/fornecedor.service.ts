@@ -1,21 +1,21 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { CadastroApartamento } from '@app/models/CadastroApartamento';
+import { Fornecedor } from '@app/models/Fornecedor';
 import { environment } from '@environments/environment';
 
 import { Observable } from 'rxjs';
 import { take } from 'rxjs/operators';
 
 @Injectable()
-export class ApartamentoService {
+export class FornecedorService {
 
-  baseURL = environment.apiURL + 'cadastro-apartamento';
+  baseURL = environment.apiURL + 'cadastro-fornecedor';
 
   constructor(private http: HttpClient) {}
 
-  public saveApartamento(apartamento: CadastroApartamento): Observable<CadastroApartamento> {
+  public post(fornecedor: Fornecedor): Observable<Fornecedor> {
     return this.http
-      .post<CadastroApartamento>(this.baseURL, apartamento)
+      .post<Fornecedor>(this.baseURL, fornecedor)
       .pipe(take(1));
   }
 }

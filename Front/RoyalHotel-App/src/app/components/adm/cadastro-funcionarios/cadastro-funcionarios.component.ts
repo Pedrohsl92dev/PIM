@@ -1,7 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { CadastroFuncionario } from '@app/models/CadastroFuncionario';
 import { BsLocaleService } from 'ngx-bootstrap/datepicker';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { NgxSpinnerService } from 'ngx-spinner';
@@ -19,8 +18,6 @@ export class CadastroFuncionariosComponent implements OnInit {
   @Input() subtitulo = 'Desde 2021';
 
   form: FormGroup;
-
-  funcionario = {} as CadastroFuncionario;
 
   get f(): any {
     return this.form.controls;

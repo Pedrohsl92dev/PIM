@@ -1,6 +1,6 @@
 export interface CadastroApartamento {
-  numero: number;
-  andar: number;
+  numero: string;
+  andar: string;
   tamanho: string;
   categoria: string;
   imagem: string;

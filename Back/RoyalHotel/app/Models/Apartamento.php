@@ -16,7 +16,6 @@ class Apartamento extends Model
         'tamanho',
         'categoria',
         'imagem',
-        'reserva_id'
     ];
 
     public function reservas()

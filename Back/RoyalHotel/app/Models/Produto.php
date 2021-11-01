@@ -16,7 +16,6 @@ class Produto extends Model
         'dataValidade',
         'marca',
         'valor',
-        'fornecedor_id'
     ];
 
     public function fornecedor()

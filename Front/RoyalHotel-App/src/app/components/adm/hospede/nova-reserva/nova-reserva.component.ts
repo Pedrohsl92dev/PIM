@@ -1,7 +1,8 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, TemplateRef } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Reserva } from '@app/models/Reserva';
+import { NovaReservaService } from '@app/services/novaReserva.service';
 import { BsLocaleService } from 'ngx-bootstrap/datepicker';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { NgxSpinnerService } from 'ngx-spinner';
@@ -20,8 +21,16 @@ export class NovaReservaComponent implements OnInit {
 
   form: FormGroup;
 
+  dataSaida: string;
+  dataEntrada: string;
+  valorTotal: any;
+  valorTotalSalvar: number;
+
   reserva = {} as Reserva;
   apartamento: any[] = [];
+  hospedes: any[] = [];
+
+  diaria: number;
 
   modalRef: BsModalRef;
 
@@ -46,12 +55,14 @@ export class NovaReservaComponent implements OnInit {
     private toastr: ToastrService,
     private modalService: BsModalService,
     private router: Router,
+    private service: NovaReservaService
   ) {
     this.localeService.use('pt-br');
   }
 
   ngOnInit(): void {
     this.validation();
+    this.listarHospedes();
   }
 
   public validation(): void {
@@ -60,19 +71,97 @@ export class NovaReservaComponent implements OnInit {
       apartamento: ['', Validators.required],
       dataEntrada: ['', Validators.required],
       dataSaida: ['', Validators.required],
+      valorDiaria: ['', Validators.required],
       qtdPessoas: ['', [Validators.required, Validators.max(100)]],
       statusPagamento: ['', Validators.required],
-      tipoQuarto: ['', Validators.required],
+      dataPagamento:  ['', Validators.required],
+      formaPagamento:  ['', Validators.required],
+      valor:  ['', Validators.required],
     });
   }
 
+  salvarReserva(): void {
+    this.reserva.hospede = this.form.value.hospede;
+    this.reserva.apartamento = this.form.value.apartamento;
+    this.reserva.dataEntrada = this.form.value.dataEntrada.toISOString().split('T')[0];
+    this.reserva.dataSaida = this.form.value.dataSaida.toISOString().split('T')[0];
+    this.reserva.valorDiaria = this.diaria;
+    this.reserva.qtdPessoas = this.form.value.qtdPessoas;
+    this.reserva.statusPagamento = this.form.value.statusPagamento;
+    this.reserva.valorTotal = this.valorTotalSalvar;
+    console.log(this.reserva);
+  }
+
+  salvarPagamento(): void {
+
+  }
+
   listar(): void {
-    this.router.navigate([`/adm`]);
+    this.router.navigate([`/listar-hospede`]);
   }
 
   public resetForm(): void {
     this.router.navigate([`/adm`]);
     this.form.reset();
+  }
+
+  listarHospedes(): void {
+    this.service.get().subscribe({
+      next: (resp) => {
+        this.hospedes = resp;
+      }
+    });
+  }
+
+  calculoValorTotal(): void {
+    if (this.dataEntrada !== undefined && this.dataSaida !== undefined) {
+      const dataChegada = this.form.value.dataEntrada;
+      const dataSaida = this.form.value.dataSaida;
+      const diferenca = Math.abs(dataChegada.getTime() - dataSaida.getTime());
+      const dias = Math.ceil(diferenca / (1000 * 60 * 60 * 24));
+      this.valorTotal = dias * this.diaria + ',00 Reais';
+      this.valorTotalSalvar =  dias * this.diaria;
+      console.log(this.valorTotal);
+    }
+  }
+
+  modalPagamento(template: TemplateRef<any>): void {
+    this.modalRef = this.modalService.show(
+      template,
+      Object.assign({}, { class: 'gray modal-lg' })
+    );
+  }
+
+  valorDiaria(): void {
+    switch (this.form.value.apartamento) {
+      case 'Duplo Deluxe':
+        this.diaria = 250.00;
+        break;
+      case 'Individual Deluxe':
+        this.diaria = 250.00;
+        break;
+      case 'Suíte de Lua de Mel':
+        this.diaria = 250.00;
+        break;
+      case 'Econômico Duplo':
+        this.diaria = 250.00;
+        break;
+      case 'Suite Master':
+        this.diaria = 250.00;
+        break;
+      case 'Suíte Núpsia':
+        this.diaria = 250.00;
+        break;
+      case 'Suíte Super Luxo':
+        this.diaria = 250.00;
+        break;
+      case 'Suíte P.N.E':
+        this.diaria = 250.00;
+        break;
+      default:
+        this.diaria = 250.00;
+        break;
+    }
   }
 
   public cssValidator(campoForm: FormControl | AbstractControl): any {
