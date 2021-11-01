@@ -8,5 +8,6 @@ export interface Reserva {
   valorDiaria: number;
   valorTotal: number;
   hospede: string;
+  categoria: string;
   apartamento: string;
 }

@@ -18,7 +18,7 @@
       <form [formGroup]="form">
         <div class="p-3">
           <div class="form-row">
-            <div class="form-group col-md-12">
+            <div class="form-group col-md-6">
               <label>Hospede</label>
               <select type="text" class="form-control" [ngClass]="cssValidator(f.hospede)" formControlName="hospede">
                 <option *ngFor="let hospede of hospedes" [value]="hospede.id">{{hospede.nome}}</option>
@@ -27,11 +27,20 @@
                 Hospede é obrigatório.
               </div>
             </div>
+            <div class="form-group col-md-6">
+              <label>Apartamento: </label>
+              <select type="text" class="form-control" [ngClass]="cssValidator(f.apartamento)" formControlName="apartamento">
+                <option *ngFor="let apartamento of apartamento" [value]="apartamento.id">{{apartamento.numero}}</option>
+              </select>
+              <div *ngIf="f.apartamento.errors?.required" class="invalid-feedback">
+                Apartamento é obrigatório.
+              </div>
+            </div>
           </div>
           <div class="form-row">
             <div class="form-group col-md-4">
-              <label>Apartamento:  </label>
-              <select [(ngModel)]="apartamento" class="form-control" formControlName="apartamento" [ngClass]="cssValidator(f.apartamento)">
+              <label>Categoria Apartamento:  </label>
+              <select class="form-control" formControlName="categoria" [ngClass]="cssValidator(f.categoria)">
                 <option value="Duplo Deluxe" (click)="valorDiaria()">Duplo Deluxe</option>
                 <option value="Individual Deluxe" (click)="valorDiaria()">Individual Deluxe</option>
                 <option value="Suíte de Lua de Mel" (click)="valorDiaria()">Suíte de Lua de Mel</option>
@@ -41,8 +50,8 @@
                 <option value="Suíte Super Luxo" (click)="valorDiaria()">Suíte Super Luxo</option>
                 <option value="Suíte P.N.E" (click)="valorDiaria()">Suíte P.N.E</option>
               </select>
-              <div *ngIf="f.apartamento.errors?.required && f.apartamento.touched" class="invalid-feedback">
-                Apartamento é obrigatório.
+              <div *ngIf="f.categoria.errors?.required && f.categoria.touched" class="invalid-feedback">
+                Categoria de Apartamento é obrigatório.
               </div>
             </div>
             <div class="form-group col-md-4">
@@ -112,10 +121,10 @@
             <div class="form-row">
               <div class="form-group col-sm-6">
                 <label>Data Pagamento</label>
-                <input type="datetime" class="form-control" [ngClass]="cssValidator(f.dataSaida)"
-                bsDatepicker [bsConfig]="bsConfig" formControlName="dataSaida"
+                <input type="datetime" class="form-control" [ngClass]="cssValidator(f.dataPagamento)"
+                bsDatepicker [bsConfig]="bsConfig" formControlName="dataPagamento"
                 placeholder="" >
-                <div *ngIf="f.dataSaida.errors?.required && f.dataSaida.touched" class="invalid-feedback">
+                <div *ngIf="f.dataPagamento.errors?.required && f.dataPagamento.touched" class="invalid-feedback">
                   Data é obrigatório.
                 </div>
               </div>

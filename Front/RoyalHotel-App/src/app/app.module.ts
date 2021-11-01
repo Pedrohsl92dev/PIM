@@ -61,6 +61,8 @@ import { ApartamentoService } from './services/apartamento.service';
 import { FornecedorService } from './services/fornecedor.service';
 import { ProdutoService } from './services/produto.service';
 import { NovaReservaService } from './services/novaReserva.service';
+import { MensagensOrcamentoComponent } from './components/adm/mensagens-orcamento/mensagens-orcamento.component';
+import { ListarReservasSiteComponent } from './components/adm/listar-reservas-site/listar-reservas-site.component';
 
 defineLocale('pt-br', ptBrLocale);
 
@@ -103,7 +105,9 @@ defineLocale('pt-br', ptBrLocale);
     FecharContaComponent,
     MensagensFaleConoscoComponent,
     CadastroFuncionariosComponent,
-    ListaFuncionarioComponent
+    ListaFuncionarioComponent,
+    MensagensOrcamentoComponent,
+    ListarReservasSiteComponent
   ],
   imports: [
     BrowserModule,

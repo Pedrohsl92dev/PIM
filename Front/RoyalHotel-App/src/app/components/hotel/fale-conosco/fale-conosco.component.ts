@@ -14,6 +14,7 @@ export class FaleConoscoComponent implements OnInit {
 
   form: FormGroup;
   faleConosco = {} as FaleConosco;
+  mensagensUsuario: any;
 
   get f(): any {
     return this.form.controls;

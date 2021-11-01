@@ -31,6 +31,8 @@ import { FecharContaComponent } from './components/adm/fechar-conta/fechar-conta
 import { MensagensFaleConoscoComponent } from './components/adm/mensagens-fale-conosco/mensagens-fale-conosco.component';
 import { CadastroFuncionariosComponent } from './components/adm/cadastro-funcionarios/cadastro-funcionarios.component';
 import { ListaFuncionarioComponent } from './components/adm/lista-funcionario/lista-funcionario.component';
+import { MensagensOrcamentoComponent } from './components/adm/mensagens-orcamento/mensagens-orcamento.component';
+import { ListarReservasSiteComponent } from './components/adm/listar-reservas-site/listar-reservas-site.component';
 
 const routes: Routes = [
   {
@@ -57,11 +59,13 @@ const routes: Routes = [
   { path: 'listar-funcionario', component: ListaFuncionarioComponent },
   { path: 'cadastrar-produto', component: CadastrarProdutoComponent },
   { path: 'mensagens-fale-conosco', component: MensagensFaleConoscoComponent },
+  { path: 'mensagens-orcamento', component: MensagensOrcamentoComponent },
   { path: 'listar-produto', component: ListaProdutosComponent },
   { path: 'cadastrar-fornecedor', component: FornecedorComponent },
   { path: 'listar-fornecedor', component: ListaFornecedoresComponent },
   { path: 'cadastrar-apartamento', component: CadastrarApartamentosComponent },
   { path: 'listar-apartamento', component: ListarApartamentoComponent },
+  { path: 'reserva-site', component: ListarReservasSiteComponent },
   {
     path: 'hotel', component: HotelComponent,
     children: [

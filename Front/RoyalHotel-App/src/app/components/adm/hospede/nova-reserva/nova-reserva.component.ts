@@ -2,6 +2,7 @@ import { Component, Input, OnInit, TemplateRef } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Reserva } from '@app/models/Reserva';
+import { ApartamentoService } from '@app/services/apartamento.service';
 import { NovaReservaService } from '@app/services/novaReserva.service';
 import { BsLocaleService } from 'ngx-bootstrap/datepicker';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
@@ -55,7 +56,8 @@ export class NovaReservaComponent implements OnInit {
     private toastr: ToastrService,
     private modalService: BsModalService,
     private router: Router,
-    private service: NovaReservaService
+    private service: NovaReservaService,
+    private serviceApartamento: ApartamentoService
   ) {
     this.localeService.use('pt-br');
   }
@@ -68,6 +70,7 @@ export class NovaReservaComponent implements OnInit {
   public validation(): void {
     this.form = this.fb.group({
       hospede: ['', Validators.required],
+      categoria: ['', Validators.required],
       apartamento: ['', Validators.required],
       dataEntrada: ['', Validators.required],
       dataSaida: ['', Validators.required],
@@ -81,15 +84,29 @@ export class NovaReservaComponent implements OnInit {
   }
 
   salvarReserva(): void {
-    this.reserva.hospede = this.form.value.hospede;
-    this.reserva.apartamento = this.form.value.apartamento;
-    this.reserva.dataEntrada = this.form.value.dataEntrada.toISOString().split('T')[0];
-    this.reserva.dataSaida = this.form.value.dataSaida.toISOString().split('T')[0];
-    this.reserva.valorDiaria = this.diaria;
-    this.reserva.qtdPessoas = this.form.value.qtdPessoas;
-    this.reserva.statusPagamento = this.form.value.statusPagamento;
-    this.reserva.valorTotal = this.valorTotalSalvar;
-    console.log(this.reserva);
+    if (!this.form.valid) {
+      this.reserva.hospede = this.form.value.hospede;
+      this.reserva.apartamento = this.form.value.apartamento;
+      this.reserva.dataEntrada = this.form.value.dataEntrada.toISOString().split('T')[0];
+      this.reserva.dataSaida = this.form.value.dataSaida.toISOString().split('T')[0];
+      this.reserva.valorDiaria = this.diaria;
+      this.reserva.qtdPessoas = this.form.value.qtdPessoas;
+      this.reserva.statusPagamento = this.form.value.statusPagamento;
+      this.reserva.valorTotal = this.valorTotalSalvar;
+      this.service.postReserva(this.reserva).subscribe(
+        () => {
+          this.toastr.success('Reserva efetuada com Sucesso!', ' Sucesso');
+          this.form.reset();
+          // this.router.navigate([`/adm`]);
+        },
+        (error: any) => {
+          this.toastr.error('Erro ao efetuar cadastro.', 'Erro!');
+          console.log(error);
+        }
+      );
+    } else {
+      this.toastr.error('Preencha os campos obrigatórios.', 'Erro!');
+    }
   }
 
   salvarPagamento(): void {
@@ -109,6 +126,15 @@ export class NovaReservaComponent implements OnInit {
     this.service.get().subscribe({
       next: (resp) => {
         this.hospedes = resp;
+        this.listarApartamentos();
+      }
+    });
+  }
+
+  listarApartamentos(): void {
+    this.serviceApartamento.getApartamento().subscribe({
+      next: (resp) => {
+        this.apartamento = resp;
       }
     });
   }
@@ -121,7 +147,6 @@ export class NovaReservaComponent implements OnInit {
       const dias = Math.ceil(diferenca / (1000 * 60 * 60 * 24));
       this.valorTotal = dias * this.diaria + ',00 Reais';
       this.valorTotalSalvar =  dias * this.diaria;
-      console.log(this.valorTotal);
     }
   }
 
@@ -141,10 +166,10 @@ export class NovaReservaComponent implements OnInit {
         this.diaria = 250.00;
         break;
       case 'Suíte de Lua de Mel':
-        this.diaria = 250.00;
+        this.diaria = 750.00;
         break;
       case 'Econômico Duplo':
-        this.diaria = 250.00;
+        this.diaria = 200.00;
         break;
       case 'Suite Master':
         this.diaria = 250.00;

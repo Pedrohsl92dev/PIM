@@ -17,6 +17,7 @@ class CreateHospedesTable extends Migration
             $table->id();
             $table->string('nome');
             $table->string('cpf');
+            $table->string('categoria');
             $table->string('telefone');
             $table->string('celular');
             $table->string('email');

@@ -1,4 +1,6 @@
 import { Component, OnInit, TemplateRef } from '@angular/core';
+import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { HospedeService } from '@app/services/hospede.service';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 
 @Component({
@@ -48,11 +50,46 @@ export class InicioAdmComponent implements OnInit {
   class18 = 'btn btn-success btn-lg';
 
   apartamentos: any[] = [];
+  hospedes: any[] = [];
+  hospede: any;
+  form: FormGroup;
 
-  constructor(private modalService: BsModalService) { }
+  get f(): any {
+    return this.form.controls;
+  }
+
+  get bsConfig(): any {
+    return {
+      adaptivePosition: true,
+      dateInputFormat: 'DD/MM/YYYY hh:mm a',
+      containerClass: 'theme-default',
+      showWeekNumbers: false,
+    };
+  }
+
+  constructor(
+    private modalService: BsModalService,
+    private service: HospedeService,
+    private fb: FormBuilder,
+  ) { }
 
   ngOnInit(): void {
+    this.validation();
+    this.listarHospedes();
+  }
 
+  public validation(): void {
+    this.form = this.fb.group({
+      hospede: [''],
+      statusPagamento: ['', Validators.required],
+      dataPagamento:  ['', Validators.required],
+      formaPagamento:  ['', Validators.required],
+      valor:  ['', Validators.required],
+    });
+  }
+
+  public cssValidator(campoForm: FormControl | AbstractControl): any {
+    return { 'is-invalid': campoForm.errors && campoForm.touched };
   }
 
   modalCadastro(template: TemplateRef<any>): void {
@@ -62,12 +99,32 @@ export class InicioAdmComponent implements OnInit {
     );
   }
 
+  modalFecharConta(template2: TemplateRef<any>): void {
+    this.modalRef = this.modalService.show(
+      template2,
+      Object.assign({}, { class: 'gray modal-lg' })
+    );
+  }
+
+  reservarApartamento(): void {
+    this.hospede = this.form.value.hospede;
+    this.modalRef.hide();
+  }
+
+  listarHospedes(): void {
+    this.service.get().subscribe({
+      next: (resp) => {
+        this.hospedes = resp;
+      }
+    });
+  }
+
   reservar(): void {
     this.status = 'Ocupado';
     this.class = 'btn btn-danger btn-lg';
   }
 
-  desocupar(): void {
+  fecharConta(): void {
     this.status = 'Livre';
     this.class = 'btn btn-success btn-lg';
   }

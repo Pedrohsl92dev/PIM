@@ -19,6 +19,7 @@ class CreateReservasTable extends Migration
             $table->string('dataSaida');
             $table->string('qtdPessoas');
             $table->string('statusPagamento');
+            $table->string('categoria');
             $table->string('valorTotal');
             $table->timestamps();
         });

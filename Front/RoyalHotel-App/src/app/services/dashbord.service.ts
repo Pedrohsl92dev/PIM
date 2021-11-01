@@ -16,8 +16,14 @@ export class DashbordService {
 
   public post(reserva: ReservaDashboard): Observable<ReservaDashboard> {
     return this.http
-      .post<ReservaDashboard>(this.baseURL, reserva)
-      .pipe(take(1));
+    .post<ReservaDashboard>(this.baseURL, reserva)
+    .pipe(take(1));
+  }
+
+  public get(): Observable<ReservaDashboard[]> {
+    return this.http
+    .get<ReservaDashboard[]>(this.baseURL)
+    .pipe(take(1));
   }
 
 }

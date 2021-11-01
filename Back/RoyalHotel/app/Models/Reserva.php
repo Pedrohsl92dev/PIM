@@ -14,7 +14,8 @@ class Reserva extends Model
         'dataEntrada',
         'dataSaida',
         'qtdPessoas',
-        'valorTotal'
+        'valorTotal',
+        'categoria'
     ];
 
     public function hospede()

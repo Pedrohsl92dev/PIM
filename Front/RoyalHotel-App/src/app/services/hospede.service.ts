@@ -7,9 +7,7 @@ import { environment } from '@environments/environment';
 
 @Injectable()
 export class HospedeService {
-  baseURL = environment.apiURL + 'cadastro-hospede';
-
-  baseURLEndereco = environment.apiURL + 'endereco';
+  baseURL = environment.apiURL + 'hospede';
 
   constructor(private http: HttpClient) { }
 
@@ -19,8 +17,8 @@ export class HospedeService {
 
   public post(hospede: Hospede): Observable<Hospede> {
     return this.http
-      .post<Hospede>(this.baseURL, hospede)
-      .pipe(take(1));
+    .post<Hospede>(this.baseURL, hospede)
+    .pipe(take(1));
   }
 
   public get(): Observable<Hospede[]> {

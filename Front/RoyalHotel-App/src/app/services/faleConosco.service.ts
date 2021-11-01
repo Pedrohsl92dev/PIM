@@ -19,4 +19,10 @@ export class FaleConoscoService {
       .post<FaleConosco>(this.baseURL, faleConosco)
       .pipe(take(1));
   }
+
+  public get(): Observable<FaleConosco[]> {
+    return this.http
+      .get<FaleConosco[]>(this.baseURL)
+      .pipe(take(1));
+  }
 }

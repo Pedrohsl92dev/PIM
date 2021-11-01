@@ -20,4 +20,10 @@ export class RegistrarUsuarioService {
       .pipe(take(1));
   }
 
+  public get(): Observable<CadastroUsuario> {
+    return this.http
+      .get<CadastroUsuario>(this.baseURL)
+      .pipe(take(1));
+  }
+
 }

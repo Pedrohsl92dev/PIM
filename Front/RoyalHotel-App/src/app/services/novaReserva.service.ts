@@ -9,7 +9,9 @@ import { Conta } from '@app/models/Conta';
 
 @Injectable()
 export class NovaReservaService {
-  baseURL = environment.apiURL + 'cadastro-hospede';
+  baseURL = environment.apiURL + 'hospede';
+
+  baseURLReserva = environment.apiURL + 'reserva';
 
   baseURLConta = environment.apiURL + 'conta';
 
@@ -24,6 +26,12 @@ export class NovaReservaService {
   public getReservas(): Observable<Reserva[]> {
     return this.http
     .get<Reserva[]>(this.baseURLConta)
+    .pipe(take(1));
+  }
+
+  public postReserva(reserva: Reserva): Observable<Reserva> {
+    return this.http
+    .post<Reserva>(this.baseURLReserva, reserva)
     .pipe(take(1));
   }
 

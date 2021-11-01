@@ -17,7 +17,7 @@ export class HospedeListaComponent implements OnInit {
   @Input() iconClass = 'fa fa-user';
   @Input() subtitulo = 'Desde 2021';
 
-  hospedes: any[];
+  hospedes: any[] = [];
 
   modalRef: BsModalRef;
   constructor(

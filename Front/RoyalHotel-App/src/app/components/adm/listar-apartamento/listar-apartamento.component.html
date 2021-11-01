@@ -23,7 +23,7 @@
           <input
           type="text"
           class="form-control"
-          placeholder="Filtrar por nome"
+          placeholder="Filtrar por número"
           >
         </div>
       </div>
@@ -34,12 +34,10 @@
         </a>
       </div>
       </div>
-    <!-- <h3>Filtro: {{filtroLista}}</h3> -->
     <table class="table table-striped table-hover">
       <thead class="thead-dark">
         <tr>
           <th>#</th>
-          <th class="d-none d-md-table-cell">Imagem</th>
           <th>Numero</th>
           <th class="d-none d-md-table-cell">Andar</th>
           <th>Tamanho</th>
@@ -47,14 +45,13 @@
           <th>Opções</th>
         </tr>
      </thead>
-    <tbody>
-      <tr style="cursor: pointer;">
-        <td></td>
-        <td class="d-none d-md-table-cell"></td>
-        <td class="d-none d-md-table-cell"></td>
-        <td class="d-none d-md-table-cell"></td>
-        <td class="d-none d-md-table-cell"></td>
-        <td class="d-none d-md-table-cell"></td>
+    <tbody *ngIf="apartamentos && apartamentos.length">
+      <tr  *ngFor="let ap of apartamentos" style="cursor: pointer;">
+        <td>{{ap.id}}</td>
+        <td class="d-none d-md-table-cell">{{ap.numero}}</td>
+        <td class="d-none d-md-table-cell">{{ap.andar}}</td>
+        <td class="d-none d-md-table-cell">{{ap.tamanho}}</td>
+        <td class="d-none d-md-table-cell">{{ap.categoria}}</td>
         <td>
           <div class="btn-group">
             <button class="btn btn-sm btn-success" tooltip="Editar" style="margin-right: 5px;">
@@ -67,7 +64,7 @@
         </td>
       </tr>
     </tbody>
-    <tfoot>
+    <tfoot *ngIf="!apartamentos.length">
       <tr>
         <td colspan="8" class="text-center">
           <h4>Nenhum apartamento encontrado!</h4>

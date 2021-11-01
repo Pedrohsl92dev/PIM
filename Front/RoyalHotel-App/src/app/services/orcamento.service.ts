@@ -20,4 +20,10 @@ export class OrcamentoService {
       .pipe(take(1));
   }
 
+  public get(): Observable<Orcamento[]> {
+    return this.http
+      .get<Orcamento[]>(this.baseURL)
+      .pipe(take(1));
+  }
+
 }

@@ -3,12 +3,12 @@
     <div class="d-flex align-items-center mr-auto">
       <i id="i" class="{{iconClass}} mr-3"></i>
       <div class="lh-100">
-        <h2 class="mb-0">Hospedes</h2>
+        <h2 class="mb-0">Reservas</h2>
         <small>{{subtitulo}}</small>
       </div>
     </div>
     <div class="p-3">
-      <button class="btn btn-outline-light" (click)="menu()">
+      <button class="btn btn-outline-light" (click)="listar()">
         Retornar ao Menu
       </button>
     </div>
@@ -23,7 +23,7 @@
           <input
           type="text"
           class="form-control"
-          placeholder="Filtrar por Nome ou CPF"
+          placeholder="Filtrar por Tema e Local"
           >
         </div>
       </div>
@@ -40,20 +40,22 @@
           <th>#</th>
           <th>Nome</th>
           <th class="d-none d-md-table-cell">CPF</th>
-          <th class="d-none d-md-table-cell">Telefone</th>
-          <th class="d-none d-md-table-cell" >Celular</th>
+          <th>Celular</th>
+          <th class="d-none d-md-table-cell" >Data Entrada</th>
+          <th class="d-none d-md-table-cell" >Data Saída</th>
           <th class="d-none d-md-table-cell" >Email</th>
           <th>Opções</th>
         </tr>
      </thead>
-    <tbody *ngIf="hospedes && hospedes.length">
-      <tr *ngFor="let hospede of hospedes" style="cursor: pointer;">
-        <td>{{hospede.id}}</td>
-        <td>{{hospede.nome}}</td>
-        <td class="d-none d-md-table-cell">{{hospede.cpf}}</td>
-        <td>{{hospede.telefone}}</td>
-        <td class="d-none d-md-table-cell">{{hospede.celular}}</td>
-        <td class="d-none d-md-table-cell">{{hospede.email}}</td>
+    <tbody *ngIf="reservaSite && reservaSite.length">
+      <tr  *ngFor="let reserva of reservaSite" style="cursor: pointer;">
+        <td>{{reserva.id}}</td>
+        <td>{{reserva.primeiroNome}}</td>
+        <td class="d-none d-md-table-cell">{{reserva.cpf}}</td>
+        <td>{{reserva.celular}}</td>
+        <td class="d-none d-md-table-cell">{{reserva.dataEntrada}}</td>
+        <td>{{reserva.dataSaida}}</td>
+        <td class="d-none d-md-table-cell">{{reserva.email}}</td>
         <td>
           <div class="btn-group">
             <button class="btn btn-sm btn-success" tooltip="Editar" style="margin-right: 5px;">
@@ -62,17 +64,14 @@
             <button class="btn btn-sm btn-danger" tooltip="Excluir" style="margin-right: 5px;">
               <i class="fa fa-trash"></i>
             </button>
-            <button tooltip="Fechar Conta" class="btn btn-sm btn-warning">
-              <i class="fas fa-money-bill-alt"></i>
-            </button>
           </div>
         </td>
       </tr>
     </tbody>
-    <tfoot *ngIf="!hospedes.length">
+    <tfoot *ngIf="!reservaSite.length">
       <tr>
         <td colspan="12" class="text-center">
-          <h4>Nenhum hospede encontrado!</h4>
+          <h4>Nenhuma reserva encontrada!</h4>
         </td>
       </tr>
     </tfoot>
@@ -86,5 +85,3 @@
     </div>
   </ng-template>
 </div>
-
-

@@ -1,13 +1,14 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FaleConoscoService } from '@app/services/faleConosco.service';
+import { OrcamentoService } from '@app/services/orcamento.service';
 
 @Component({
-  selector: 'app-mensagens-fale-conosco',
-  templateUrl: './mensagens-fale-conosco.component.html',
-  styleUrls: ['./mensagens-fale-conosco.component.scss']
+  selector: 'app-mensagens-orcamento',
+  templateUrl: './mensagens-orcamento.component.html',
+  styleUrls: ['./mensagens-orcamento.component.scss']
 })
-export class MensagensFaleConoscoComponent implements OnInit {
+export class MensagensOrcamentoComponent implements OnInit {
 
   @Input() titulo: string;
   @Input() iconClass = 'fas fa-envelope-open-text icons';
@@ -17,7 +18,7 @@ export class MensagensFaleConoscoComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private faleConoscoService: FaleConoscoService,
+    private orcamentoService: OrcamentoService
   ) { }
 
   ngOnInit(): void {
@@ -25,7 +26,7 @@ export class MensagensFaleConoscoComponent implements OnInit {
   }
 
   public mensagens(): void {
-    this.faleConoscoService.get().subscribe({
+    this.orcamentoService.get().subscribe({
       next: (resp) => {
         this.mensagensUsuario = resp;
       }

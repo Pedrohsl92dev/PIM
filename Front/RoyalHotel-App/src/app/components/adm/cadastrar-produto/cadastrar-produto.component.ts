@@ -82,7 +82,6 @@ export class CadastrarProdutoComponent implements OnInit {
     this.service.get().subscribe(
       (resp) => {
         this.fornecedores = resp;
-        console.log('Aqui =>', this.fornecedores);
       }
     );
   }
