@@ -26,4 +26,10 @@ export class DashbordService {
     .pipe(take(1));
   }
 
+  public delete(id: number): Observable<any> {
+    return this.http
+    .delete<any>(`${this.baseURL}/delete/${id}`)
+    .pipe(take(1));
+  }
+
 }

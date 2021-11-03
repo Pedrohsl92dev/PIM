@@ -39,6 +39,7 @@ export class RegistrationComponent implements OnInit {
     this.form = this.fb.group({
       primeiroNome: ['', Validators.required],
       sobrenome: ['', Validators.required],
+      cpf: ['', Validators.required],
       email: ['',
         [Validators.required, Validators.email]
       ],
@@ -55,6 +56,7 @@ export class RegistrationComponent implements OnInit {
       this.usuario.categoria = 2;
       this.usuario.primeiroNome = this.form.value.primeiroNome;
       this.usuario.sobrenome = this.form.value.sobrenome;
+      this.usuario.cpf = this.form.value.cpf;
       this.usuario.email = this.form.value.email;
       this.usuario.usuario = this.form.value.usuario;
       this.usuario.senha = this.form.value.senha;

@@ -79,6 +79,6 @@ class ReservaSiteController extends Controller
      */
     public function destroy($id)
     {
-        //
+        return \App\Models\ReservaSite::destroy($id);
     }
 }

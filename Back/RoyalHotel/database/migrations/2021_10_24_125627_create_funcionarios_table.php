@@ -17,13 +17,18 @@ class CreateFuncionariosTable extends Migration
             $table->id();
             $table->string('nome');
             $table->string('cpf');
-            $table->string('categoria');
-            $table->string('usuario');
+            $table->string('endereco');
             $table->string('cidade');
             $table->string('estado');
             $table->string('cep');
-            $table->string('endereco');
             $table->string('complemento');
+            $table->string('categoria');
+            $table->string('telefone');
+            $table->string('celular');
+            $table->string('email');
+            $table->string('cargo');
+            $table->string('usuario');
+            $table->string('senha');
             $table->timestamps();
         });
     }

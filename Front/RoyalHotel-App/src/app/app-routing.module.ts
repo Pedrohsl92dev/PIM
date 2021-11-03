@@ -27,12 +27,12 @@ import { CadastrarApartamentosComponent } from './components/adm/cadastrar-apart
 import { ListarApartamentoComponent } from './components/adm/listar-apartamento/listar-apartamento.component';
 import { PerfilComponent } from './components/user/perfil/perfil.component';
 import { ListarReservasComponent } from './components/adm/listar-reservas/listar-reservas.component';
-import { FecharContaComponent } from './components/adm/fechar-conta/fechar-conta.component';
 import { MensagensFaleConoscoComponent } from './components/adm/mensagens-fale-conosco/mensagens-fale-conosco.component';
 import { CadastroFuncionariosComponent } from './components/adm/cadastro-funcionarios/cadastro-funcionarios.component';
 import { ListaFuncionarioComponent } from './components/adm/lista-funcionario/lista-funcionario.component';
 import { MensagensOrcamentoComponent } from './components/adm/mensagens-orcamento/mensagens-orcamento.component';
 import { ListarReservasSiteComponent } from './components/adm/listar-reservas-site/listar-reservas-site.component';
+import { AuthGuard } from './components/auth/auth.guard';
 
 const routes: Routes = [
   {
@@ -40,31 +40,30 @@ const routes: Routes = [
     children: [
       { path: 'login', component: LoginComponent },
       { path: 'registration', component: RegistrationComponent },
-      { path: 'hospede', component: PerfilComponent },
+      { path: 'hospede/:id', component: PerfilComponent, canActivate: [AuthGuard] },
     ]
   },
-  { path: 'listar-hospede', component: HospedeListaComponent },
-  { path: 'cadastro-hospede', component: HospedeDetalheComponent },
-  { path: 'listar-pedido', component: ListarPedidoComponent },
-  { path: 'registrar-pedido', component: RegistrarPedidoComponent },
-  { path: 'nova-reserva', component: NovaReservaComponent },
-  { path: 'reservas', component: ListarReservasComponent },
-  { path: 'fechar-conta', component: FecharContaComponent },
-  { path: 'adm', component: DashboardAdmComponent,
+  { path: 'listar-hospede', component: HospedeListaComponent, canActivate: [AuthGuard] },
+  { path: 'cadastro-hospede', component: HospedeDetalheComponent, canActivate: [AuthGuard] },
+  { path: 'listar-pedido', component: ListarPedidoComponent, canActivate: [AuthGuard] },
+  { path: 'registrar-pedido', component: RegistrarPedidoComponent, canActivate: [AuthGuard] },
+  { path: 'nova-reserva', component: NovaReservaComponent, canActivate: [AuthGuard] },
+  { path: 'reservas', component: ListarReservasComponent, canActivate: [AuthGuard] },
+  { path: 'adm', component: DashboardAdmComponent, canActivate: [AuthGuard],
     children: [
       { path: 'inicio', component: InicioAdmComponent }
     ]
   },
-  { path: 'cadastrar-funcionario', component: CadastroFuncionariosComponent },
-  { path: 'listar-funcionario', component: ListaFuncionarioComponent },
-  { path: 'cadastrar-produto', component: CadastrarProdutoComponent },
-  { path: 'mensagens-fale-conosco', component: MensagensFaleConoscoComponent },
-  { path: 'mensagens-orcamento', component: MensagensOrcamentoComponent },
-  { path: 'listar-produto', component: ListaProdutosComponent },
-  { path: 'cadastrar-fornecedor', component: FornecedorComponent },
-  { path: 'listar-fornecedor', component: ListaFornecedoresComponent },
-  { path: 'cadastrar-apartamento', component: CadastrarApartamentosComponent },
-  { path: 'listar-apartamento', component: ListarApartamentoComponent },
+  { path: 'cadastrar-funcionario', component: CadastroFuncionariosComponent, canActivate: [AuthGuard] },
+  { path: 'listar-funcionario', component: ListaFuncionarioComponent, canActivate: [AuthGuard] },
+  { path: 'cadastrar-produto', component: CadastrarProdutoComponent, canActivate: [AuthGuard] },
+  { path: 'mensagens-fale-conosco', component: MensagensFaleConoscoComponent, canActivate: [AuthGuard] },
+  { path: 'mensagens-orcamento', component: MensagensOrcamentoComponent, canActivate: [AuthGuard] },
+  { path: 'listar-produto', component: ListaProdutosComponent, canActivate: [AuthGuard] },
+  { path: 'cadastrar-fornecedor', component: FornecedorComponent, canActivate: [AuthGuard] },
+  { path: 'listar-fornecedor', component: ListaFornecedoresComponent, canActivate: [AuthGuard] },
+  { path: 'cadastrar-apartamento', component: CadastrarApartamentosComponent, canActivate: [AuthGuard] },
+  { path: 'listar-apartamento', component: ListarApartamentoComponent, canActivate: [AuthGuard] },
   { path: 'reserva-site', component: ListarReservasSiteComponent },
   {
     path: 'hotel', component: HotelComponent,

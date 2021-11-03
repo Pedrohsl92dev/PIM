@@ -1,6 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Funcionario } from '@app/models/Funcionario';
+import { FuncionarioService } from '@app/services/funcionario.service';
 import { BsLocaleService } from 'ngx-bootstrap/datepicker';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { NgxSpinnerService } from 'ngx-spinner';
@@ -18,6 +20,7 @@ export class CadastroFuncionariosComponent implements OnInit {
   @Input() subtitulo = 'Desde 2021';
 
   form: FormGroup;
+  funcionario = {} as Funcionario;
 
   get f(): any {
     return this.form.controls;
@@ -31,9 +34,11 @@ export class CadastroFuncionariosComponent implements OnInit {
     private toastr: ToastrService,
     private modalService: BsModalService,
     private router: Router,
+    private service: FuncionarioService
   ) { }
 
   ngOnInit(): void {
+    this.validacao();
   }
 
   public validacao(): void {
@@ -43,11 +48,14 @@ export class CadastroFuncionariosComponent implements OnInit {
       endereco: ['', Validators.required],
       cidade: ['', Validators.required],
       estado: ['', Validators.required],
-      telefone: ['', Validators.required],
+      cep: ['', Validators.required],
+      complemento: ['', Validators.required],
+      telefone: [''],
       celular: ['', Validators.required],
       email: ['', Validators.required],
       cargo: ['', Validators.required],
-      categoria: ['', Validators.required],
+      usuario: ['', Validators.required],
+      senha: ['', Validators.required],
     });
   }
 
@@ -56,7 +64,24 @@ export class CadastroFuncionariosComponent implements OnInit {
   }
 
   cadastrarFuncionario(): void {
-
+    if (this.form.valid) {
+      this.funcionario = { ...this.form.value };
+      this.funcionario.categoria = 1;
+      console.log(this.funcionario);
+      this.service.saveFuncionario(this.funcionario).subscribe(
+        () => {
+          this.toastr.success('Funcionário cadastrado com Sucesso!', ' Sucesso');
+          this.form.reset();
+          this.router.navigate([`/adm`]);
+        },
+        (error: any) => {
+          this.toastr.error('Erro ao efetuar cadastro.', 'Erro!');
+          console.log(error);
+        }
+      );
+    } else {
+      this.toastr.error('Preencha os campos obrigatórios.', 'Erro!');
+    }
   }
 
   public cssValidator(campoForm: FormControl | AbstractControl): any {

@@ -13,6 +13,7 @@ class Usuario extends Model
         'id',
         'primeiroNome',
         'sobrenome',
+        'cpf',
         'email',
         'usuario',
         'senha',

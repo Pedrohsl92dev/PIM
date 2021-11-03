@@ -11,4 +11,6 @@ export interface Funcionario {
   cep: string;
   endereco: string;
   complemento: string;
+  usuario: string;
+  senha: string;
 }

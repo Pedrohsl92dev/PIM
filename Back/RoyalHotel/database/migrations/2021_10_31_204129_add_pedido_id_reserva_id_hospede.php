@@ -19,7 +19,6 @@ class AddPedidoIdReservaIdHospede extends Migration
 
             $table->unsignedBigInteger('pedido_id')->after('id');
             $table->foreign('pedido_id')->references('id')->on('pedidos');
-
         });
     }
 

@@ -63,6 +63,7 @@ import { ProdutoService } from './services/produto.service';
 import { NovaReservaService } from './services/novaReserva.service';
 import { MensagensOrcamentoComponent } from './components/adm/mensagens-orcamento/mensagens-orcamento.component';
 import { ListarReservasSiteComponent } from './components/adm/listar-reservas-site/listar-reservas-site.component';
+import { FuncionarioService } from './services/funcionario.service';
 
 defineLocale('pt-br', ptBrLocale);
 
@@ -135,7 +136,8 @@ defineLocale('pt-br', ptBrLocale);
     ApartamentoService,
     FornecedorService,
     ProdutoService,
-    NovaReservaService
+    NovaReservaService,
+    FuncionarioService
   ],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

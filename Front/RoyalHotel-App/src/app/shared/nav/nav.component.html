@@ -43,20 +43,24 @@
           </li>
         </ul>
       </ul>
-      <ul class="navbar-nav">
+      <ul *ngIf="loggerIn()" class="navbar-nav">
         <li class="nav-item dropdown" dropdown>
           <a dropdownToggle class="nav-link dropdown-toggle" style="cursor: pointer;" id="navbarDropdownMenuLink" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">
-            Login
+            Usuário
           </a>
           <div *dropdownMenu class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
             <a class="dropdown-item" routerLink="user/login">
               Login
             </a>
             <div role="separator" class="divider"></div>
-            <!-- <a class="dropdown-item" routerLink="user/registration">
+            <a class="dropdown-item" routerLink="user/registration">
               Registrar
-            </a> -->
+            </a>
+            <div role="separator" class="divider"></div>
+            <a class="dropdown-item" (click)="sair()">
+              Sair
+            </a>
           </div>
         </li>
       </ul>

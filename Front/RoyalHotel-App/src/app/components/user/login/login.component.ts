@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { FuncionarioService } from '@app/services/funcionario.service';
 import { RegistrarUsuarioService } from '@app/services/registrarUsuario.service';
 import { ToastrService } from 'ngx-toastr';
 
@@ -12,14 +14,20 @@ export class LoginComponent implements OnInit {
   usuario: any;
   userName: any;
   password: any;
+  id: number;
+  usuarioFuncionario: any;
+  localStorage: any;
 
   constructor(
     private service: RegistrarUsuarioService,
+    private serviceFuncionario: FuncionarioService,
     private toastr: ToastrService,
+    private router: Router,
   ) { }
 
   ngOnInit(): void {
     this.buscarUsuario();
+    this.buscarUsuarioFuncionario();
   }
 
   public buscarUsuario(): void {
@@ -30,14 +38,36 @@ export class LoginComponent implements OnInit {
     });
   }
 
+  public buscarUsuarioFuncionario(): void {
+    this.serviceFuncionario.getFuncionario().subscribe({
+      next: (resp) => {
+        this.usuarioFuncionario = resp;
+      }
+    });
+  }
+
   entrar(userName: any, password: any): void {
     this.usuario.forEach((el: any) => {
       if (el.usuario === userName && el.senha === password) {
+        this.id = el.id;
+        this.localStorage = el.categoria;
+        localStorage.setItem('categoria', el.categoria);
         this.toastr.success('Bem vindo!', ' Sucesso');
-      } else {
-        this.toastr.error('Usuário ou senha inválidos.', 'Erro!');
       }
     });
+    this.usuarioFuncionario.forEach((el: any) => {
+      if (el.usuario === userName && el.senha === password) {
+        this.id = el.id;
+        this.localStorage = el.categoria;
+        localStorage.setItem('categoria', el.categoria);
+        this.toastr.success('Bem vindo!', ' Sucesso');
+      }
+    });
+    if (this.localStorage === '1') {
+      this.router.navigate([`/adm`]);
+    } else {
+      this.router.navigate([`/user/hospede`, this.id]);
+    }
   }
 
 }

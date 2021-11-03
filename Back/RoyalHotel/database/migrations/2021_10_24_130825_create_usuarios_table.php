@@ -17,6 +17,7 @@ class CreateUsuariosTable extends Migration
             $table->id();
             $table->string('primeiroNome');
             $table->string('sobrenome');
+            $table->string('cpf')->unique();
             $table->string('usuario')->unique();
             $table->string('senha');
             $table->string('confirmeSenha');
