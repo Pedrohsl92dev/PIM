@@ -15,6 +15,7 @@ class Pedido extends Model
         'valor',
         'qtdProduto',
         'valorTotal',
+        'hospede_id'
     ];
 
     public function hospede()

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddHospedeIdApartamentoIdContaIdReserva extends Migration
+class AddIdHospedePedidos extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,7 @@ class AddHospedeIdApartamentoIdContaIdReserva extends Migration
      */
     public function up()
     {
-        Schema::table('reservas', function (Blueprint $table) {
-            $table->unsignedBigInteger('apartamento_id')->after('id');
-            $table->foreign('apartamento_id')->references('id')->on('apartamentos');
-
+        Schema::table('pedidos', function (Blueprint $table) {
             $table->unsignedBigInteger('hospede_id')->after('id');
             $table->foreign('hospede_id')->references('id')->on('hospedes');
         });
@@ -29,10 +26,7 @@ class AddHospedeIdApartamentoIdContaIdReserva extends Migration
      */
     public function down()
     {
-        Schema::table('reservas', function (Blueprint $table) {
-            $table->dropForeign(['apartamento_id']);
-            $table->dropColumn('apartamento_id');
-
+        Schema::table('pedidos', function (Blueprint $table) {
             $table->dropForeign(['hospede_id']);
             $table->dropColumn('hospede_id');
         });

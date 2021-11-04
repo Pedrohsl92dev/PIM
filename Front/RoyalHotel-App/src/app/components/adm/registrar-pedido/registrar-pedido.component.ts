@@ -2,6 +2,8 @@ import { Component, Input, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Pedido } from '@app/models/Pedido';
+import { HospedeService } from '@app/services/hospede.service';
+import { PedidoService } from '@app/services/pedido.service';
 import { BsLocaleService } from 'ngx-bootstrap/datepicker';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { NgxSpinnerService } from 'ngx-spinner';
@@ -21,9 +23,11 @@ export class RegistrarPedidoComponent implements OnInit {
   form: FormGroup;
 
   pedido = {} as Pedido;
-  hospede: any[] = [];
+  hospedes: any[] = [];
 
   modalRef: BsModalRef;
+  valorTotal: any;
+  valorTotalRequisicao: any;
 
   get bsConfig(): any {
     return {
@@ -45,6 +49,8 @@ export class RegistrarPedidoComponent implements OnInit {
     private spinner: NgxSpinnerService,
     private toastr: ToastrService,
     private modalService: BsModalService,
+    private serviceHospede: HospedeService,
+    private servicePedido: PedidoService,
     private router: Router,
   ) {
     this.localeService.use('pt-br');
@@ -52,6 +58,7 @@ export class RegistrarPedidoComponent implements OnInit {
 
   ngOnInit(): void {
     this.validation();
+    this.listarHospedes();
   }
 
   public validation(): void {
@@ -60,12 +67,48 @@ export class RegistrarPedidoComponent implements OnInit {
       valor: ['', Validators.required],
       qtdProduto: ['', Validators.required],
       valorTotal: ['', Validators.required],
-      hospede: ['', Validators.required],
+      hospede_id: ['', Validators.required],
     });
   }
 
-  public registrarPedido(): void {
+  listarHospedes(): void {
+    this.serviceHospede.get().subscribe({
+      next: (resp) => {
+        this.hospedes = resp;
+      }
+    });
+  }
 
+  obterValorTotal(): void {
+    const qtdProduto = this.form.value.qtdProduto;
+    const valor = this.form.value.valor;
+    this.valorTotalRequisicao =  (qtdProduto * valor);
+    this.valorTotal = (qtdProduto * valor) + ',00 Reais';
+  }
+
+  public registrarPedido(): void {
+    if (!this.form.valid) {
+      // this.pedido = {... this.form.value };
+      this.pedido.nomeProduto = this.form.value.nomeProduto;
+      this.pedido.valor = this.form.value.valor;
+      this.pedido.qtdProduto = this.form.value.qtdProduto;
+      this.pedido.valorTotal = this.valorTotalRequisicao.toString();
+      this.pedido.hospede_id = this.form.value.hospede_id;
+      console.log(this.pedido);
+      this.servicePedido.post(this.pedido).subscribe(
+        () => {
+          this.toastr.success('Pedido efetuado com Sucesso!', ' Sucesso');
+          this.form.reset();
+          // this.router.navigate([`/adm`]);
+        },
+        (error: any) => {
+          this.toastr.error('Erro ao efetuar cadastro.', 'Erro!');
+          console.log(error);
+        }
+      );
+    } else {
+      this.toastr.error('Preencha os campos obrigatórios.', 'Erro!');
+    }
   }
 
   navegar(): void {
