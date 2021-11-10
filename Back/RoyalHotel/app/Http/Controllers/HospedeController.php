@@ -45,7 +45,7 @@ class HospedeController extends Controller
      */
     public function show($id)
     {
-        //
+        return \App\Models\Hospede::findOrFail($id);
     }
 
     /**
@@ -56,7 +56,7 @@ class HospedeController extends Controller
      */
     public function edit($id)
     {
-        //
+       //
     }
 
     /**
@@ -68,7 +68,9 @@ class HospedeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $hospede = \App\Models\Hospede::findOrFail($id);
+        $hospede->update($request->all());
+
     }
 
     /**
@@ -79,6 +81,6 @@ class HospedeController extends Controller
      */
     public function destroy($id)
     {
-        //
+       return \App\Models\Hospede::destroy($id);
     }
 }

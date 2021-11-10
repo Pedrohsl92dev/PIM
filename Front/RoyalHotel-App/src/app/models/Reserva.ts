@@ -7,7 +7,8 @@ export interface Reserva {
   statusPagamento: string;
   valorDiaria: number;
   valorTotal: number;
-  hospede: string;
+  hospede_id: string;
   categoria: string;
-  apartamento: string;
+  apartamento_id: string;
+  conta_id: string;
 }

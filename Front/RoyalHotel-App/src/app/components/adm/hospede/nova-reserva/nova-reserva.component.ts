@@ -85,8 +85,8 @@ export class NovaReservaComponent implements OnInit {
 
   salvarReserva(): void {
     if (!this.form.valid) {
-      this.reserva.hospede = this.form.value.hospede;
-      this.reserva.apartamento = this.form.value.apartamento;
+      this.reserva.hospede_id = this.form.value.hospede;
+      this.reserva.apartamento_id = this.form.value.apartamento;
       this.reserva.dataEntrada = this.form.value.dataEntrada.toISOString().split('T')[0];
       this.reserva.dataSaida = this.form.value.dataSaida.toISOString().split('T')[0];
       this.reserva.valorDiaria = this.diaria;
@@ -109,10 +109,6 @@ export class NovaReservaComponent implements OnInit {
     }
   }
 
-  salvarPagamento(): void {
-
-  }
-
   listar(): void {
     this.router.navigate([`/listar-hospede`]);
   }
@@ -122,7 +118,7 @@ export class NovaReservaComponent implements OnInit {
     this.form.reset();
   }
 
-  listarHospedes(): void {
+  public listarHospedes(): void {
     this.service.get().subscribe({
       next: (resp) => {
         this.hospedes = resp;
@@ -131,7 +127,7 @@ export class NovaReservaComponent implements OnInit {
     });
   }
 
-  listarApartamentos(): void {
+  public listarApartamentos(): void {
     this.serviceApartamento.getApartamento().subscribe({
       next: (resp) => {
         this.apartamento = resp;
@@ -139,7 +135,7 @@ export class NovaReservaComponent implements OnInit {
     });
   }
 
-  calculoValorTotal(): void {
+  public calculoValorTotal(): void {
     if (this.dataEntrada !== undefined && this.dataSaida !== undefined) {
       const dataChegada = this.form.value.dataEntrada;
       const dataSaida = this.form.value.dataSaida;
@@ -150,7 +146,7 @@ export class NovaReservaComponent implements OnInit {
     }
   }
 
-  modalPagamento(template: TemplateRef<any>): void {
+  public modalPagamento(template: TemplateRef<any>): void {
     this.modalRef = this.modalService.show(
       template,
       Object.assign({}, { class: 'gray modal-lg' })

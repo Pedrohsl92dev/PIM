@@ -26,10 +26,20 @@ use App\Http\Controllers\UsuarioController;
 */
 
 Route::resource('reserve-agora', ReservaSiteController::class);
+
 Route::resource('hospede', HospedeController::class);
+Route::get('hospede/{id}', [HospedeController::class, 'destroy'])->name('hospede_delete');
+Route::get('hospede/{id}', [HospedeController::class, 'show'])->name('hospede_show');
+Route::put('hospede/edit/{id}', [HospedeController::class, 'update'])->name('hospede_update');
+
 Route::resource('orcamento', OrcamentoController::class);
 Route::resource('fale-conosco', FaleConoscoController::class);
+
 Route::resource('apartamento', ApartamentoController::class);
+Route::get('apartamento/{id}', [AospedeController::class, 'destroy'])->name('apartamento_delete');
+Route::put('apartamento/edit/{id}', [ApartamentoController::class, 'update'])->name('apartamento_update');
+
+
 Route::resource('produto', ProdutoController::class);
 Route::resource('fornecedor', FornecedorController::class);
 Route::resource('conta', ContaController::class);

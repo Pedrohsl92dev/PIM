@@ -16,20 +16,20 @@ import { DashboardAdmComponent } from './components/adm/dashboardAdm/dashboardAd
 import { NovaReservaComponent } from './components/adm/hospede/nova-reserva/nova-reserva.component';
 import { HospedeDetalheComponent } from './components/adm/hospede/hospede-detalhe/hospede-detalhe.component';
 import { CadastrarProdutoComponent } from './components/adm/cadastrar-produto/cadastrar-produto.component';
-import { ListaFornecedoresComponent } from './components/adm/lista-fornecedores/lista-fornecedores.component';
-import { ListaProdutosComponent } from './components/adm/lista-produtos/lista-produtos.component';
+import { ListaFornecedoresComponent } from './components/adm/cadastrar-fornecedor/lista-fornecedores/lista-fornecedores.component';
+import { ListaProdutosComponent } from './components/adm/cadastrar-produto/lista-produtos/lista-produtos.component';
 import { FornecedorComponent } from './components/adm/cadastrar-fornecedor/fornecedor.component';
 import { RegistrarPedidoComponent } from './components/adm/registrar-pedido/registrar-pedido.component';
-import { ListarPedidoComponent } from './components/adm/listar-pedido/listar-pedido.component';
+import { ListarPedidoComponent } from './components/adm/registrar-pedido/listar-pedido/listar-pedido.component';
 import { InicioAdmComponent } from './components/adm/inicio-adm/inicio-adm.component';
 import { HospedeListaComponent } from './components/adm/hospede/hospede-lista/hospede-lista.component';
 import { CadastrarApartamentosComponent } from './components/adm/cadastrar-apartamentos/cadastrar-apartamentos.component';
-import { ListarApartamentoComponent } from './components/adm/listar-apartamento/listar-apartamento.component';
+import { ListarApartamentoComponent } from './components/adm/cadastrar-apartamentos/listar-apartamento/listar-apartamento.component';
 import { PerfilComponent } from './components/user/perfil/perfil.component';
-import { ListarReservasComponent } from './components/adm/listar-reservas/listar-reservas.component';
+import { ListarReservasComponent } from './components/adm/hospede/nova-reserva/listar-reservas/listar-reservas.component';
 import { MensagensFaleConoscoComponent } from './components/adm/mensagens-fale-conosco/mensagens-fale-conosco.component';
 import { CadastroFuncionariosComponent } from './components/adm/cadastro-funcionarios/cadastro-funcionarios.component';
-import { ListaFuncionarioComponent } from './components/adm/lista-funcionario/lista-funcionario.component';
+import { ListaFuncionarioComponent } from './components/adm/cadastro-funcionarios/lista-funcionario/lista-funcionario.component';
 import { MensagensOrcamentoComponent } from './components/adm/mensagens-orcamento/mensagens-orcamento.component';
 import { ListarReservasSiteComponent } from './components/adm/listar-reservas-site/listar-reservas-site.component';
 import { AuthGuard } from './components/auth/auth.guard';
@@ -40,10 +40,11 @@ const routes: Routes = [
     children: [
       { path: 'login', component: LoginComponent },
       { path: 'registration', component: RegistrationComponent },
-      { path: 'hospede/:id', component: PerfilComponent, canActivate: [AuthGuard] },
+      { path: 'hospede/:id', component: PerfilComponent },
     ]
   },
   { path: 'listar-hospede', component: HospedeListaComponent, canActivate: [AuthGuard] },
+  { path: 'cadastro-hospede/:id', component: HospedeDetalheComponent, canActivate: [AuthGuard] },
   { path: 'cadastro-hospede', component: HospedeDetalheComponent, canActivate: [AuthGuard] },
   { path: 'listar-pedido', component: ListarPedidoComponent, canActivate: [AuthGuard] },
   { path: 'registrar-pedido', component: RegistrarPedidoComponent, canActivate: [AuthGuard] },

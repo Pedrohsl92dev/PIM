@@ -14,8 +14,12 @@ class Reserva extends Model
         'dataEntrada',
         'dataSaida',
         'qtdPessoas',
+        'statusPagamento',
+        'valorDiaria',
         'valorTotal',
-        'categoria'
+        'hospede_id',
+        'categoria',
+        'apartamento_id',
     ];
 
     public function hospede()
@@ -26,10 +30,5 @@ class Reserva extends Model
     public function apartamentos()
     {
         return $this->hasMany('App\Models\Apartamento');
-    }
-
-    public function conta()
-    {
-        return $this->hasOne('App\Models\Conta');
     }
 }

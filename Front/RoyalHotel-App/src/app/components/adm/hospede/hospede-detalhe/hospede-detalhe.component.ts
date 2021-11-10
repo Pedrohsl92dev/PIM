@@ -22,6 +22,9 @@ export class HospedeDetalheComponent implements OnInit {
   form: FormGroup;
 
   hospede = {} as Hospede;
+  hospedeId: number;
+
+  estadoSalvar = 'post';
 
   modalRef: BsModalRef;
 
@@ -53,6 +56,7 @@ export class HospedeDetalheComponent implements OnInit {
 
   ngOnInit(): void {
     this.validation();
+    this.carregarHospede();
   }
 
   public validation(): void {
@@ -72,9 +76,14 @@ export class HospedeDetalheComponent implements OnInit {
 
   salvarHospede(): void {
     if (this.form.valid) {
-      this.hospede = { ...this.form.value };
+      // tslint:disable-next-line:no-unused-expression
+      this.hospede = this.estadoSalvar === 'post' ? { ...this.form.value } : { id: this.hospede.id, ...this.form.value };
       this.hospede.categoria = 2;
-      this.service.post(this.hospede).subscribe(
+      console.log(this.hospedeId);
+      console.log(this.estadoSalvar);
+      console.log(this.hospede);
+
+      this.service[this.estadoSalvar](this.hospede).subscribe(
         () => {
           this.toastr.success('Hospede cadastrado com Sucesso!', ' Sucesso');
           this.form.reset();
@@ -88,6 +97,20 @@ export class HospedeDetalheComponent implements OnInit {
     } else {
       this.toastr.error('Preencha os campos obrigatórios.', 'Erro!');
     }
+  }
+
+  public carregarHospede(): void {
+    this.hospedeId = +this.activatedRouter.snapshot.paramMap.get('id');
+    if (this.hospedeId !== null && this.hospedeId !== 0) {
+      this.estadoSalvar = 'put';
+      this.service.getById(this.hospedeId).subscribe(
+        (hospede: Hospede) => {
+          this.hospede = {...hospede};
+          this.form.patchValue(this.hospede);
+        }
+      );
+    }
+
   }
 
   public resetForm(): void {

@@ -17,7 +17,7 @@ class Conta extends Model
         'statusPagamento',
     ];
 
-    public function reserva()
+    public function hospede()
     {
         return $this->belongsTo('App\Models\Reserva');
     }

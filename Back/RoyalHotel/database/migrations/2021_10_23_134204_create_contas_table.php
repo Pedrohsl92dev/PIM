@@ -16,9 +16,9 @@ class CreateContasTable extends Migration
         Schema::create('contas', function (Blueprint $table) {
             $table->id();
             $table->string('statusPagamento');
-            $table->string('valor');
             $table->string('dataPagamento');
             $table->string('formaPagamento');
+            $table->string('valor');
             $table->timestamps();
         });
     }

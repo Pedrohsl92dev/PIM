@@ -4,5 +4,5 @@ export interface Produto {
   dataValidade: string;
   marca: string;
   valor: string;
-  fornecedor_id: string;
+  fornecedor_id: number;
 }

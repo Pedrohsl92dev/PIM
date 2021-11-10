@@ -12,7 +12,7 @@ class Fornecedor extends Model
     protected $fillable = [
         'id',
         'razaoSocial',
-        'cnpf',
+        'cnpj',
         'ie',
         'cidade',
         'estado',
@@ -20,9 +20,4 @@ class Fornecedor extends Model
         'endereco',
         'complemento',
     ];
-
-    public function produto()
-    {
-        return $this->hasMany('App\Models\Produto');
-    }
 }

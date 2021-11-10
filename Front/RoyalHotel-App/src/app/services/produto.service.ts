@@ -12,19 +12,25 @@ export class ProdutoService {
 
   baseURL = environment.apiURL + 'produto';
 
-  baseURLFonecedor = environment.apiURL + 'cadastro-fornecedor';
+  baseURLFonecedor = environment.apiURL + 'fornecedor';
 
   constructor(private http: HttpClient) {}
 
   public get(): Observable<Fornecedor[]> {
     return this.http
-      .get<Fornecedor[]>(this.baseURLFonecedor)
-      .pipe(take(1));
+    .get<Fornecedor[]>(this.baseURLFonecedor)
+    .pipe(take(1));
   }
 
   public post(produto: Produto): Observable<Produto> {
     return this.http
-      .post<Produto>(this.baseURL, produto)
-      .pipe(take(1));
+    .post<Produto>(this.baseURL, produto)
+    .pipe(take(1));
+  }
+
+  public getProduto(): Observable<Produto[]> {
+    return this.http
+    .get<Produto[]>(this.baseURL)
+    .pipe(take(1));
   }
 }

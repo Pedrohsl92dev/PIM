@@ -48,4 +48,17 @@ export class HospedeListaComponent implements OnInit {
     });
   }
 
+  excluir(id: number): void {
+    this.service.delete(id).subscribe({
+      next: () => {
+        this.listarHospedes();
+      }
+    });
+  }
+
+  editar(id: number): void {
+    this.router.navigate([`/cadastro-hospede`, id]);
+  }
+
+
 }

@@ -24,6 +24,7 @@ export class CadastrarProdutoComponent implements OnInit {
 
   produto = {} as Produto;
   fornecedores: any[] = [];
+  produtos: any[] = [];
 
   modalRef: BsModalRef;
 
@@ -56,6 +57,7 @@ export class CadastrarProdutoComponent implements OnInit {
   ngOnInit(): void {
     this.validation();
     this.buscarFornecedor();
+    this.buscarProduto();
   }
 
   public validation(): void {
@@ -82,6 +84,14 @@ export class CadastrarProdutoComponent implements OnInit {
     this.service.get().subscribe(
       (resp) => {
         this.fornecedores = resp;
+      }
+    );
+  }
+
+  public buscarProduto(): void {
+    this.service.getProduto().subscribe(
+      (resp) => {
+        this.produtos = resp;
       }
     );
   }

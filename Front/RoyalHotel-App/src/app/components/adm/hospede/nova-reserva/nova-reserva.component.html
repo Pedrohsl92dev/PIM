@@ -100,16 +100,13 @@
             <button class="btn btn-outline-secondary mr-auto border" (click)="resetForm()">
               Cancelar Alteração
             </button>
-            <button class="btn btn-danger mr-auto border" (click)="modalPagamento(template)">
-              Efetuar Pagamento
-            </button>
-            <button class="btn btn-success"  (click)="salvarReserva()" >
+            <button class="btn btn-success" (click)="salvarReserva()">
               Salvar Reserva
             </button>
           </div>
         </div>
       </form>
-      <ng-template #template>
+      <!-- <ng-template #template>
         <div class="modal-header">
           <h4 class="modal-title pull-left">Dados Para Pagamento</h4>
           <button type="button" class="close btn-close pull-right" aria-label="Close" (click)="modalRef?.hide()">
@@ -171,7 +168,7 @@
             </div>
           </form>
         </div>
-      </ng-template>
+      </ng-template> -->
     </div>
   </div>
 </div>

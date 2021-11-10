@@ -52,6 +52,7 @@ export class LoginComponent implements OnInit {
         this.id = el.id;
         this.localStorage = el.categoria;
         localStorage.setItem('categoria', el.categoria);
+        localStorage.setItem('id', el.id);
         this.toastr.success('Bem vindo!', ' Sucesso');
       }
     });
@@ -60,6 +61,7 @@ export class LoginComponent implements OnInit {
         this.id = el.id;
         this.localStorage = el.categoria;
         localStorage.setItem('categoria', el.categoria);
+        localStorage.setItem('id', el.id);
         this.toastr.success('Bem vindo!', ' Sucesso');
       }
     });

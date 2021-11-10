@@ -3,7 +3,7 @@
     <div class="d-flex align-items-center mr-auto">
       <i id="i" class="{{iconClass}} mr-3"></i>
       <div class="lh-100">
-        <h2 class="mb-0">Fornecedores</h2>
+        <h2 class="mb-0">Produtos</h2>
         <small>{{subtitulo}}</small>
       </div>
     </div>
@@ -23,37 +23,39 @@
           <input
           type="text"
           class="form-control"
-          placeholder="Filtrar por nome">
+          placeholder="Filtrar por nome"
+          >
         </div>
       </div>
       <div>
-        <a class="d-flex btn btn-outline-primary" routerLink="/cadastrar-fornecedor">
+        <a class="d-flex btn btn-outline-primary" routerLink="/cadastrar-produto">
           <i class="fa fa-plus-circle my-1"></i>
-          <b class="ml-1 d-none d-sm-block">Novo Fornecedor</b>
+          <b class="ml-1 d-none d-sm-block">Novo Produto</b>
         </a>
       </div>
       </div>
-    <!-- <h3>Filtro: {{filtroLista}}</h3> -->
     <table class="table table-striped table-hover">
       <thead class="thead-dark">
         <tr>
           <th>#</th>
-          <th>Razão Social</th>
-          <th class="d-none d-md-table-cell">Endereço</th>
-          <th>Cidade</th>
-          <th class="d-none d-md-table-cell">Estado</th>
-          <th class="d-none d-md-table-cell">IE</th>
+          <th>Nome</th>
+          <th class="d-none d-md-table-cell">Marca</th>
+          <th>Quantidade</th>
+          <th class="d-none d-md-table-cell">Data Validade</th>
+          <th class="d-none d-md-table-cell">Valor</th>
+          <th class="d-none d-md-table-cell">Fornecedor</th>
           <th>Opções</th>
         </tr>
      </thead>
-    <tbody>
-      <tr style="cursor: pointer;">
-        <td></td>
-        <td class="d-none d-md-table-cell"></td>
-        <td></td>
-        <td class="d-none d-md-table-cell"></td>
-        <td class="d-none d-md-table-cell"></td>
-        <td class="d-none d-md-table-cell"></td>
+    <tbody *ngIf="produtos && produtos.length">
+      <tr *ngFor="let produto of produtos" style="cursor: pointer;">
+        <td>{{produto.id}}</td>
+        <td class="d-none d-md-table-cell">{{produto.nome}}</td>
+        <td>{{produto.marca}}</td>
+        <td class="d-none d-md-table-cell">{{produto.quantidade}}</td>
+        <td class="d-none d-md-table-cell">{{produto.dataValidade}}</td>
+        <td class="d-none d-md-table-cell">{{produto.valor}}</td>
+        <td class="d-none d-md-table-cell">{{produto.nomeFornecedor}}</td>
         <td>
           <div class="btn-group">
             <button class="btn btn-sm btn-success" tooltip="Editar" style="margin-right: 5px;">
@@ -66,7 +68,7 @@
         </td>
       </tr>
     </tbody>
-    <tfoot>
+    <tfoot *ngIf="!produtos.length">
       <tr>
         <td colspan="8" class="text-center">
           <h4>Nenhum fornecedor encontrado!</h4>
@@ -83,4 +85,3 @@
     </div>
   </ng-template>
 </div>
-
