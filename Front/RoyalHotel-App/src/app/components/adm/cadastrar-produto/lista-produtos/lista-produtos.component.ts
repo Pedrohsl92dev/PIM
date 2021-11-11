@@ -54,6 +54,18 @@ export class ListaProdutosComponent implements OnInit {
     );
   }
 
+  excluir(id: number): void {
+    this.service.delete(id).subscribe({
+      next: () => {
+        this.buscarProduto();
+      }
+    });
+  }
+
+  editar(id: number): void {
+    this.router.navigate([`/cadastrar-produto`, id]);
+  }
+
   public buscarFornecedor(): void {
     this.service.get().subscribe(
       (resp) => {

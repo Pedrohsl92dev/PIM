@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" style="margin-bottom: 100px;">
   <div class="d-flex p-3 my-3 text-white bg-secondary rounded shadow-sm">
     <div class="d-flex align-items-center mr-auto">
       <i id="i" class="{{iconClass}} mr-3"></i>
@@ -23,8 +23,7 @@
           <input
           type="text"
           class="form-control"
-          placeholder="Filtrar"
-          >
+          placeholder="Filtrar">
         </div>
       </div>
       <div>
@@ -34,27 +33,26 @@
         </a>
       </div>
       </div>
-    <!-- <h3>Filtro: {{filtroLista}}</h3> -->
     <table class="table table-striped table-hover">
       <thead class="thead-dark">
         <tr>
           <th>#</th>
           <th>Nome do Produto</th>
           <th class="d-none d-md-table-cell">Quantidade</th>
-          <th>Valor</th>
           <th class="d-none d-md-table-cell">Hospede</th>
+          <th>Número do Apartamento</th>
           <th class="d-none d-md-table-cell">Valor Total</th>
           <th>Opções</th>
         </tr>
      </thead>
-    <tbody>
-      <tr style="cursor: pointer;">
-        <td></td>
-        <td class="d-none d-md-table-cell"></td>
-        <td></td>
-        <td class="d-none d-md-table-cell"></td>
-        <td class="d-none d-md-table-cell"></td>
-        <td class="d-none d-md-table-cell"></td>
+    <tbody *ngIf="pedidos && pedidos.length">
+      <tr *ngFor="let pedido of pedidos" style="cursor: pointer;">
+        <td>{{pedido.id}}</td>
+        <td class="d-none d-md-table-cell">{{pedido.nomeProduto}}</td>
+        <td>{{pedido.qtdProduto}}</td>
+        <td class="d-none d-md-table-cell">{{ pedido.nomeHospede }}</td>
+        <td class="d-none d-md-table-cell">{{pedido.numeroApartamento}}</td>
+        <td class="d-none d-md-table-cell">{{ pedido.valorTotal | currency : 'BRL' }}</td>
         <td>
           <div class="btn-group">
             <button class="btn btn-sm btn-success" tooltip="Editar" style="margin-right: 5px;">
@@ -68,13 +66,12 @@
             </button>
           </div>
         </td>
-
       </tr>
     </tbody>
-    <tfoot>
+    <tfoot *ngIf="!pedidos.length">
       <tr>
         <td colspan="8" class="text-center">
-          <h4>Nenhum hospede encontrado!</h4>
+          <h4>Nenhum pedido encontrado!</h4>
         </td>
       </tr>
     </tfoot>
@@ -87,5 +84,4 @@
       <button type="button" class="btn btn-primary" (click)="decline()">Não</button>
     </div>
   </ng-template>
-
 </div>

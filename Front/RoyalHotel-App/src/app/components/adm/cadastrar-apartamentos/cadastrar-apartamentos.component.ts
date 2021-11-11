@@ -21,6 +21,9 @@ export class CadastrarApartamentosComponent implements OnInit {
 
   form: FormGroup;
 
+  estadoSalvar = 'post';
+  apartamentoId: number;
+
   apartamento = {} as CadastroApartamento;
 
   get f(): any {
@@ -51,6 +54,7 @@ export class CadastrarApartamentosComponent implements OnInit {
 
   ngOnInit(): void {
     this.validacao();
+    this.carregarApartamento();
   }
 
   public validacao(): void {
@@ -63,13 +67,15 @@ export class CadastrarApartamentosComponent implements OnInit {
     });
   }
 
-  cadastrarApartamento(): void {
+  public cadastrarApartamento(): void {
     if (this.form.valid) {
-      this.apartamento = { ...this.form.value };
-      this.apartamentoService.saveApartamento(this.apartamento).subscribe(
+      // tslint:disable-next-line:no-unused-expression
+      this.apartamento = this.estadoSalvar === 'post' ? { ...this.form.value } : { id: this.apartamento.id, ...this.form.value };
+      this.apartamentoService[this.estadoSalvar](this.apartamento).subscribe(
         () => {
           this.toastr.success('Apartamento cadastrado com Sucesso!', ' Sucesso');
           this.form.reset();
+          this.router.navigate([`/adm`]);
         },
         (error: any) => {
           this.toastr.error('Erro ao efetuar cadastro.', 'Erro!');
@@ -81,7 +87,20 @@ export class CadastrarApartamentosComponent implements OnInit {
     }
   }
 
-  listar(): void {
+  public carregarApartamento(): void {
+    this.apartamentoId = +this.activatedRouter.snapshot.paramMap.get('id');
+    if (this.apartamentoId !== null && this.apartamentoId !== 0) {
+      this.estadoSalvar = 'put';
+      this.apartamentoService.getById(this.apartamentoId).subscribe(
+        (ap: CadastroApartamento) => {
+          this.apartamento = {...ap};
+          this.form.patchValue(this.apartamento);
+        }
+      );
+    }
+  }
+
+  public listar(): void {
     this.router.navigate([`/listar-apartamento`]);
   }
 

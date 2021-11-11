@@ -24,14 +24,14 @@ class Hospede extends Model
         'complemento',
     ];
 
-    public function reservas()
-    {
-        return $this->hasMany('App\Models\Reserva');
-    }
+    // public function reservas()
+    // {
+    //     return $this->hasMany('App\Models\Reserva');
+    // }
 
-    public function pedidos()
-    {
-        return $this->hasMany('App\Models\Pedido');
-    }
+    // public function pedidos()
+    // {
+    //     return $this->hasMany('App\Models\Pedido');
+    // }
 
 }

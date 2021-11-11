@@ -38,22 +38,26 @@
       <thead class="thead-dark">
         <tr>
           <th>#</th>
-          <th>Nome</th>
+          <th>Nome do Hospede</th>
           <th class="d-none d-md-table-cell">CPF</th>
-          <th>Endereço</th>
-          <th class="d-none d-md-table-cell" >Celular</th>
-          <th class="d-none d-md-table-cell" >Email</th>
+          <th>Número do Apartamento</th>
+          <th>Tipo do Apartamento</th>
+          <th class="d-none d-md-table-cell" >Valor Diárias</th>
+          <th class="d-none d-md-table-cell" >Valor Total Diárias</th>
+          <th class="d-none d-md-table-cell" >Status de Pagamento</th>
           <th>Opções</th>
         </tr>
      </thead>
-    <tbody>
-      <tr style="cursor: pointer;">
-        <td></td>
-        <td></td>
-        <td class="d-none d-md-table-cell"></td>
-        <td></td>
-        <td class="d-none d-md-table-cell"></td>
-        <td class="d-none d-md-table-cell"></td>
+    <tbody *ngIf="reservas && reservas.length">
+      <tr *ngFor="let reserva of reservas" style="cursor: pointer;">
+        <td>{{reserva.id}}</td>
+        <td>{{reserva.nomeHospede}}</td>
+        <td class="d-none d-md-table-cell">{{reserva.cpf}}</td>
+        <td>{{reserva.numeroApartamento}}</td>
+        <td class="d-none d-md-table-cell">{{reserva.categoriaApartamento}}</td>
+        <td class="d-none d-md-table-cell">{{reserva.valorDiaria | currency : 'BRL'}}</td>
+        <td>{{reserva.valorTotal | currency : 'BRL'}}</td>
+        <td class="d-none d-md-table-cell">{{reserva.statusPagamento}}</td>
         <td>
           <div class="btn-group">
             <button class="btn btn-sm btn-success" tooltip="Editar" style="margin-right: 5px;">
@@ -66,10 +70,10 @@
         </td>
       </tr>
     </tbody>
-    <tfoot>
+    <tfoot *ngIf="!reservas.length">
       <tr>
         <td colspan="12" class="text-center">
-          <h4>Nenhum hospede encontrado!</h4>
+          <h4>Nenhuma reserva encontrado!</h4>
         </td>
       </tr>
     </tfoot>

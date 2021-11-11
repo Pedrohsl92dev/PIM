@@ -17,11 +17,11 @@ class CreateReservasTable extends Migration
             $table->id();
             $table->string('dataEntrada');
             $table->string('dataSaida');
-            $table->string('qtdPessoas');
+            $table->integer('qtdPessoas');
             $table->string('statusPagamento');
-            $table->string('valorDiaria');
-            $table->string('valorTotal');
-            $table->string('categoria');
+            $table->string('categoriaApartamento');
+            $table->integer('valorDiaria');
+            $table->integer('valorTotal');
             $table->timestamps();
         });
     }

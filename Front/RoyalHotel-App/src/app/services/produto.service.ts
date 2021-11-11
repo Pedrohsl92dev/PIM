@@ -33,4 +33,22 @@ export class ProdutoService {
     .get<Produto[]>(this.baseURL)
     .pipe(take(1));
   }
+
+  public put(produto: Produto): Observable<Produto> {
+    return this.http
+      .put<Produto>(`${this.baseURL}/edit/${produto.id}`, produto)
+      .pipe(take(1));
+  }
+
+  public getById(id: number): Observable<Produto> {
+    return this.http
+      .get<Produto>(`${this.baseURL}/${id}`)
+      .pipe(take(1));
+  }
+
+  public delete(id: number): Observable<Produto> {
+    return this.http
+      .delete<Produto>(`${this.baseURL}/${id}`)
+      .pipe(take(1));
+  }
 }

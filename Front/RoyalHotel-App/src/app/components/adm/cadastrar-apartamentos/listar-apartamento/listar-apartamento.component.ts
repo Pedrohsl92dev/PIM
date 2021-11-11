@@ -32,6 +32,18 @@ export class ListarApartamentoComponent implements OnInit {
     this.listarApartamento();
   }
 
+  excluir(id: number): void {
+    this.service.delete(id).subscribe({
+      next: () => {
+        this.listarApartamento();
+      }
+    });
+  }
+
+  editar(id: number): void {
+    this.router.navigate([`/cadastrar-apartamento`, id]);
+  }
+
   decline(): void {
     this.modalRef.hide();
   }
@@ -41,7 +53,7 @@ export class ListarApartamentoComponent implements OnInit {
   }
 
   listarApartamento(): void {
-    this.service.getApartamento().subscribe({
+    this.service.get().subscribe({
       next: (resp) => {
         this.apartamentos = resp;
       }

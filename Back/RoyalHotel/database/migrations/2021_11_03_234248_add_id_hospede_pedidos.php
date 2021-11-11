@@ -14,8 +14,8 @@ class AddIdHospedePedidos extends Migration
     public function up()
     {
         Schema::table('pedidos', function (Blueprint $table) {
-            $table->unsignedBigInteger('hospede_id')->after('id');
-            $table->foreign('hospede_id')->references('id')->on('hospedes');
+            $table->unsignedBigInteger('apartamento_id')->after('id');
+            $table->foreign('apartamento_id')->references('id')->on('apartamentos');
         });
     }
 
@@ -27,8 +27,8 @@ class AddIdHospedePedidos extends Migration
     public function down()
     {
         Schema::table('pedidos', function (Blueprint $table) {
-            $table->dropForeign(['hospede_id']);
-            $table->dropColumn('hospede_id');
+            $table->dropForeign(['apartamento_id']);
+            $table->dropColumn('apartamento_id');
         });
     }
 }

@@ -36,14 +36,18 @@ Route::resource('orcamento', OrcamentoController::class);
 Route::resource('fale-conosco', FaleConoscoController::class);
 
 Route::resource('apartamento', ApartamentoController::class);
-Route::get('apartamento/{id}', [AospedeController::class, 'destroy'])->name('apartamento_delete');
+Route::get('apartamento/{id}', [ApartamentoController::class, 'destroy'])->name('apartamento_delete');
 Route::put('apartamento/edit/{id}', [ApartamentoController::class, 'update'])->name('apartamento_update');
 
 
 Route::resource('produto', ProdutoController::class);
+Route::get('produto/{id}', [ProdutoController::class, 'destroy'])->name('produto_delete');
+Route::put('produto/edit/{id}', [ProdutoController::class, 'update'])->name('produto_update');
+
+Route::resource('reserva', ReservaController::class);
+
 Route::resource('fornecedor', FornecedorController::class);
 Route::resource('conta', ContaController::class);
 Route::resource('pedido', PedidoController::class);
-Route::resource('reserva', ReservaController::class);
 Route::resource('cadastro-usuario', UsuarioController::class);
 Route::resource('cadastro-funcionario', FuncionarioController::class);

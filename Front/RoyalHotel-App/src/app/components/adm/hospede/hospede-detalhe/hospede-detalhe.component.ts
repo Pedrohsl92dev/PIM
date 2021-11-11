@@ -79,10 +79,6 @@ export class HospedeDetalheComponent implements OnInit {
       // tslint:disable-next-line:no-unused-expression
       this.hospede = this.estadoSalvar === 'post' ? { ...this.form.value } : { id: this.hospede.id, ...this.form.value };
       this.hospede.categoria = 2;
-      console.log(this.hospedeId);
-      console.log(this.estadoSalvar);
-      console.log(this.hospede);
-
       this.service[this.estadoSalvar](this.hospede).subscribe(
         () => {
           this.toastr.success('Hospede cadastrado com Sucesso!', ' Sucesso');

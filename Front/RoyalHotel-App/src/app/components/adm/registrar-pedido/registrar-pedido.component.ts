@@ -21,9 +21,12 @@ export class RegistrarPedidoComponent implements OnInit {
   @Input() subtitulo = 'Desde 2021';
 
   form: FormGroup;
+  produtos: any[] = [];
 
   pedido = {} as Pedido;
   hospedes: any[] = [];
+  apartamentos: any[] = [];
+
 
   modalRef: BsModalRef;
   valorTotal: any;
@@ -59,6 +62,8 @@ export class RegistrarPedidoComponent implements OnInit {
   ngOnInit(): void {
     this.validation();
     this.listarHospedes();
+    this.buscarProdutos();
+    this.buscarApartamento();
   }
 
   public validation(): void {
@@ -67,7 +72,7 @@ export class RegistrarPedidoComponent implements OnInit {
       valor: ['', Validators.required],
       qtdProduto: ['', Validators.required],
       valorTotal: ['', Validators.required],
-      hospede_id: ['', Validators.required],
+      apartamento: ['', Validators.required],
     });
   }
 
@@ -75,6 +80,14 @@ export class RegistrarPedidoComponent implements OnInit {
     this.serviceHospede.get().subscribe({
       next: (resp) => {
         this.hospedes = resp;
+      }
+    });
+  }
+
+  public buscarApartamento(): void {
+    this.servicePedido.getApartamento().subscribe({
+      next: (resp) => {
+        this.apartamentos = resp;
       }
     });
   }
@@ -88,18 +101,17 @@ export class RegistrarPedidoComponent implements OnInit {
 
   public registrarPedido(): void {
     if (!this.form.valid) {
-      // this.pedido = {... this.form.value };
       this.pedido.nomeProduto = this.form.value.nomeProduto;
       this.pedido.valor = this.form.value.valor;
       this.pedido.qtdProduto = this.form.value.qtdProduto;
       this.pedido.valorTotal = this.valorTotalRequisicao.toString();
-      this.pedido.hospede_id = this.form.value.hospede_id;
-      console.log(this.pedido);
+      this.pedido.apartamento_id = this.form.value.apartamento;
       this.servicePedido.post(this.pedido).subscribe(
         () => {
           this.toastr.success('Pedido efetuado com Sucesso!', ' Sucesso');
           this.form.reset();
-          // this.router.navigate([`/adm`]);
+          this.valorTotal = '';
+
         },
         (error: any) => {
           this.toastr.error('Erro ao efetuar cadastro.', 'Erro!');
@@ -109,6 +121,14 @@ export class RegistrarPedidoComponent implements OnInit {
     } else {
       this.toastr.error('Preencha os campos obrigatórios.', 'Erro!');
     }
+  }
+
+  public buscarProdutos(): void {
+    this.servicePedido.getProdutos().subscribe(
+      (resp) => {
+        this.produtos = resp;
+      }
+    );
   }
 
   navegar(): void {

@@ -70,16 +70,12 @@ export class NovaReservaComponent implements OnInit {
   public validation(): void {
     this.form = this.fb.group({
       hospede: ['', Validators.required],
-      categoria: ['', Validators.required],
+      categoriaApartamendo: ['', Validators.required],
       apartamento: ['', Validators.required],
       dataEntrada: ['', Validators.required],
       dataSaida: ['', Validators.required],
       valorDiaria: ['', Validators.required],
       qtdPessoas: ['', [Validators.required, Validators.max(100)]],
-      statusPagamento: ['', Validators.required],
-      dataPagamento:  ['', Validators.required],
-      formaPagamento:  ['', Validators.required],
-      valor:  ['', Validators.required],
     });
   }
 
@@ -87,17 +83,19 @@ export class NovaReservaComponent implements OnInit {
     if (!this.form.valid) {
       this.reserva.hospede_id = this.form.value.hospede;
       this.reserva.apartamento_id = this.form.value.apartamento;
+      this.reserva.categoriaApartamento = this.form.value.categoriaApartamendo;
       this.reserva.dataEntrada = this.form.value.dataEntrada.toISOString().split('T')[0];
       this.reserva.dataSaida = this.form.value.dataSaida.toISOString().split('T')[0];
       this.reserva.valorDiaria = this.diaria;
       this.reserva.qtdPessoas = this.form.value.qtdPessoas;
-      this.reserva.statusPagamento = this.form.value.statusPagamento;
+      this.reserva.statusPagamento = 'A receber';
       this.reserva.valorTotal = this.valorTotalSalvar;
-      this.service.postReserva(this.reserva).subscribe(
+      console.log(this.reserva);
+      this.service.post(this.reserva).subscribe(
         () => {
           this.toastr.success('Reserva efetuada com Sucesso!', ' Sucesso');
           this.form.reset();
-          // this.router.navigate([`/adm`]);
+          this.valorTotal = '';
         },
         (error: any) => {
           this.toastr.error('Erro ao efetuar cadastro.', 'Erro!');
@@ -119,7 +117,7 @@ export class NovaReservaComponent implements OnInit {
   }
 
   public listarHospedes(): void {
-    this.service.get().subscribe({
+    this.service.getHospedes().subscribe({
       next: (resp) => {
         this.hospedes = resp;
         this.listarApartamentos();
@@ -128,7 +126,7 @@ export class NovaReservaComponent implements OnInit {
   }
 
   public listarApartamentos(): void {
-    this.serviceApartamento.getApartamento().subscribe({
+    this.serviceApartamento.get().subscribe({
       next: (resp) => {
         this.apartamento = resp;
       }

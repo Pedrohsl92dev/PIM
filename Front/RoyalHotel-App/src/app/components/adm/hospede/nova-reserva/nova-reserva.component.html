@@ -40,7 +40,7 @@
           <div class="form-row">
             <div class="form-group col-md-4">
               <label>Categoria Apartamento:  </label>
-              <select class="form-control" formControlName="categoria" [ngClass]="cssValidator(f.categoria)">
+              <select class="form-control" formControlName="categoriaApartamendo" [ngClass]="cssValidator(f.categoriaApartamendo)">
                 <option value="Duplo Deluxe" (click)="valorDiaria()">Duplo Deluxe</option>
                 <option value="Individual Deluxe" (click)="valorDiaria()">Individual Deluxe</option>
                 <option value="Suíte de Lua de Mel" (click)="valorDiaria()">Suíte de Lua de Mel</option>
@@ -50,7 +50,7 @@
                 <option value="Suíte Super Luxo" (click)="valorDiaria()">Suíte Super Luxo</option>
                 <option value="Suíte P.N.E" (click)="valorDiaria()">Suíte P.N.E</option>
               </select>
-              <div *ngIf="f.categoria.errors?.required && f.categoria.touched" class="invalid-feedback">
+              <div *ngIf="f.categoriaApartamendo.errors?.required && f.categoriaApartamendo.touched" class="invalid-feedback">
                 Categoria de Apartamento é obrigatório.
               </div>
             </div>

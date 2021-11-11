@@ -45,7 +45,7 @@ class ApartamentoController extends Controller
      */
     public function show($id)
     {
-        //
+        return \App\Models\Apartamento::findOrFail($id);
     }
 
     /**
@@ -68,7 +68,8 @@ class ApartamentoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $apartamento = \App\Models\Apartamento::findOrFail($id);
+        $apartamento->update($request->all());
     }
 
     /**
@@ -79,6 +80,6 @@ class ApartamentoController extends Controller
      */
     public function destroy($id)
     {
-        //
+        return \App\Models\Apartamento::destroy($id);
     }
 }

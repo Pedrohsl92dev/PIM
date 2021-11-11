@@ -19,11 +19,12 @@
         <div class="p-3">
           <div class="form-row">
             <div class="form-group col-md-6">
-              <label>Nome Produto: </label>
-              <input type="text" class="form-control" [ngClass]="cssValidator(f.nomeProduto)" formControlName="nomeProduto"
-              placeholder="" >
-              <div *ngIf="f.nomeProduto.errors?.required" class="invalid-feedback">
-                Nome do Produto é obrigatório.
+              <label>Produto: </label>
+              <select class="form-control" formControlName="nomeProduto" [ngClass]="cssValidator(f.nomeProduto)">
+                <option *ngFor="let produto of produtos" [value]="produto.nome">{{produto.nome}}</option>
+              </select>
+              <div class="invalid-feedback">
+                Produto é obrigatório.
               </div>
             </div>
             <div class="form-group col-md-6">
@@ -45,12 +46,12 @@
               </div>
             </div>
             <div class="form-group col-md-6">
-              <label>Hospede</label>
-              <select type="text" class="form-control" [ngClass]="cssValidator(f.hospede_id)" formControlName="hospede_id" (click)="obterValorTotal()">
-                <option *ngFor="let hospede of hospedes" [value]="hospede.id">{{hospede.nome}}</option>
+              <label>Apartamento: </label>
+              <select type="text" class="form-control" [ngClass]="cssValidator(f.apartamento)" formControlName="apartamento" (click)="obterValorTotal()">
+                <option *ngFor="let apartamento of apartamentos" [value]="apartamento.id"> Número {{ apartamento.numero }}</option>
               </select>
-              <div *ngIf="f.hospede_id.errors?.required" class="invalid-feedback">
-                Hospede é obrigatório.
+              <div *ngIf="f.apartamento.errors?.required" class="invalid-feedback">
+                Apartamento é obrigatório.
               </div>
             </div>
           </div>

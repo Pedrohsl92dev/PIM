@@ -45,7 +45,7 @@ class ProdutoController extends Controller
      */
     public function show($id)
     {
-        //
+        return \App\Models\Produto::findOrFail($id);
     }
 
     /**
@@ -68,7 +68,8 @@ class ProdutoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $produto = \App\Models\Produto::findOrFail($id);
+        $produto->update($request->all());
     }
 
     /**
@@ -79,6 +80,6 @@ class ProdutoController extends Controller
      */
     public function destroy($id)
     {
-        //
+        return \App\Models\Produto::destroy($id);
     }
 }

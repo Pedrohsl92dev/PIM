@@ -15,11 +15,11 @@ class Pedido extends Model
         'valor',
         'qtdProduto',
         'valorTotal',
-        'hospede_id'
+        'apartamento_id'
     ];
 
-    public function hospede()
+    public function apartamento()
     {
-        return $this->hasMany('App\Models\Hospede');
+        return $this->hasMany('App\Models\Apartamento');
     }
 }

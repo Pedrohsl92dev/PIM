@@ -15,11 +15,11 @@ class Reserva extends Model
         'dataSaida',
         'qtdPessoas',
         'statusPagamento',
+        'categoriaApartamento',
         'valorDiaria',
         'valorTotal',
         'hospede_id',
-        'categoria',
-        'apartamento_id',
+        'apartamento_id'
     ];
 
     public function hospede()

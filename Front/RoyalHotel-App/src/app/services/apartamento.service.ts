@@ -13,15 +13,33 @@ export class ApartamentoService {
 
   constructor(private http: HttpClient) {}
 
-  public saveApartamento(apartamento: CadastroApartamento): Observable<CadastroApartamento> {
+  public post(apartamento: CadastroApartamento): Observable<CadastroApartamento> {
     return this.http
     .post<CadastroApartamento>(this.baseURL, apartamento)
     .pipe(take(1));
   }
 
-  public getApartamento(): Observable<CadastroApartamento[]> {
+  public get(): Observable<CadastroApartamento[]> {
     return this.http
     .get<CadastroApartamento[]>(this.baseURL)
     .pipe(take(1));
+  }
+
+  public put(apartamento: CadastroApartamento): Observable<CadastroApartamento> {
+    return this.http
+      .put<CadastroApartamento>(`${this.baseURL}/edit/${apartamento.id}`, apartamento)
+      .pipe(take(1));
+  }
+
+  public getById(id: number): Observable<CadastroApartamento> {
+    return this.http
+      .get<CadastroApartamento>(`${this.baseURL}/${id}`)
+      .pipe(take(1));
+  }
+
+  public delete(id: number): Observable<CadastroApartamento> {
+    return this.http
+      .delete<CadastroApartamento>(`${this.baseURL}/${id}`)
+      .pipe(take(1));
   }
 }

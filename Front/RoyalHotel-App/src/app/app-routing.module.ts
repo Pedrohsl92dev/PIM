@@ -46,10 +46,13 @@ const routes: Routes = [
   { path: 'listar-hospede', component: HospedeListaComponent, canActivate: [AuthGuard] },
   { path: 'cadastro-hospede/:id', component: HospedeDetalheComponent, canActivate: [AuthGuard] },
   { path: 'cadastro-hospede', component: HospedeDetalheComponent, canActivate: [AuthGuard] },
+
   { path: 'listar-pedido', component: ListarPedidoComponent, canActivate: [AuthGuard] },
   { path: 'registrar-pedido', component: RegistrarPedidoComponent, canActivate: [AuthGuard] },
+
   { path: 'nova-reserva', component: NovaReservaComponent, canActivate: [AuthGuard] },
   { path: 'reservas', component: ListarReservasComponent, canActivate: [AuthGuard] },
+
   { path: 'adm', component: DashboardAdmComponent, canActivate: [AuthGuard],
     children: [
       { path: 'inicio', component: InicioAdmComponent }
@@ -57,14 +60,21 @@ const routes: Routes = [
   },
   { path: 'cadastrar-funcionario', component: CadastroFuncionariosComponent, canActivate: [AuthGuard] },
   { path: 'listar-funcionario', component: ListaFuncionarioComponent, canActivate: [AuthGuard] },
+
   { path: 'cadastrar-produto', component: CadastrarProdutoComponent, canActivate: [AuthGuard] },
+  { path: 'cadastrar-produto/:id', component: CadastrarProdutoComponent, canActivate: [AuthGuard] },
+  { path: 'listar-produto', component: ListaProdutosComponent, canActivate: [AuthGuard] },
+
   { path: 'mensagens-fale-conosco', component: MensagensFaleConoscoComponent, canActivate: [AuthGuard] },
   { path: 'mensagens-orcamento', component: MensagensOrcamentoComponent, canActivate: [AuthGuard] },
-  { path: 'listar-produto', component: ListaProdutosComponent, canActivate: [AuthGuard] },
+
   { path: 'cadastrar-fornecedor', component: FornecedorComponent, canActivate: [AuthGuard] },
   { path: 'listar-fornecedor', component: ListaFornecedoresComponent, canActivate: [AuthGuard] },
+
   { path: 'cadastrar-apartamento', component: CadastrarApartamentosComponent, canActivate: [AuthGuard] },
+  { path: 'cadastrar-apartamento/:id', component: CadastrarApartamentosComponent, canActivate: [AuthGuard] },
   { path: 'listar-apartamento', component: ListarApartamentoComponent, canActivate: [AuthGuard] },
+
   { path: 'reserva-site', component: ListarReservasSiteComponent },
   {
     path: 'hotel', component: HotelComponent,

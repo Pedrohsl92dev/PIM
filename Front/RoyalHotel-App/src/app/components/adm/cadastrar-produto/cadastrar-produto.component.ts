@@ -28,6 +28,9 @@ export class CadastrarProdutoComponent implements OnInit {
 
   modalRef: BsModalRef;
 
+  estadoSalvar = 'post';
+  produtoId: number;
+
   get bsConfig(): any {
     return {
       adaptivePosition: true,
@@ -58,6 +61,7 @@ export class CadastrarProdutoComponent implements OnInit {
     this.validation();
     this.buscarFornecedor();
     this.buscarProduto();
+    this.carregarProduto();
   }
 
   public validation(): void {
@@ -96,11 +100,30 @@ export class CadastrarProdutoComponent implements OnInit {
     );
   }
 
-  public salvarProduto(): void {
+  // public salvarProduto(): void {
+  //   if (this.form.valid) {
+  //     this.produto = {...this.form.value};
+  //     this.service.post(this.produto).subscribe(
+  //     () => {
+  //         this.toastr.success('Produto cadastrado com Sucesso!', ' Sucesso');
+  //         this.form.reset();
+  //       },
+  //       (error: any) => {
+  //         this.toastr.error('Erro ao efetuar cadastro.', 'Erro!');
+  //         console.log(error);
+  //       }
+  //     );
+  //   } else {
+  //     this.toastr.error('Preencha os campos obrigatórios.', 'Erro!');
+  //   }
+  // }
+
+  public cadastrarProduto(): void {
     if (this.form.valid) {
-      this.produto = {...this.form.value};
-      this.service.post(this.produto).subscribe(
-      () => {
+      // tslint:disable-next-line:no-unused-expression
+      this.produto = this.estadoSalvar === 'post' ? { ...this.form.value } : { id: this.produto.id, ...this.form.value };
+      this.service[this.estadoSalvar](this.produto).subscribe(
+        () => {
           this.toastr.success('Produto cadastrado com Sucesso!', ' Sucesso');
           this.form.reset();
         },
@@ -111,6 +134,19 @@ export class CadastrarProdutoComponent implements OnInit {
       );
     } else {
       this.toastr.error('Preencha os campos obrigatórios.', 'Erro!');
+    }
+  }
+
+  public carregarProduto(): void {
+    this.produtoId = +this.activatedRouter.snapshot.paramMap.get('id');
+    if (this.produtoId !== null && this.produtoId !== 0) {
+      this.estadoSalvar = 'put';
+      this.service.getById(this.produtoId).subscribe(
+        (produto: Produto) => {
+          this.produto = {...produto};
+          this.form.patchValue(this.produto);
+        }
+      );
     }
   }
 
