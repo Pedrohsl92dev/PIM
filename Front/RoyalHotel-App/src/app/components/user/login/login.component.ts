@@ -39,7 +39,7 @@ export class LoginComponent implements OnInit {
   }
 
   public buscarUsuarioFuncionario(): void {
-    this.serviceFuncionario.getFuncionario().subscribe({
+    this.serviceFuncionario.get().subscribe({
       next: (resp) => {
         this.usuarioFuncionario = resp;
       }

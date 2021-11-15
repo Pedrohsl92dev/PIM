@@ -7,4 +7,5 @@ export interface CadastroUsuario {
   confirmeSenha: string;
   email: string;
   categoria: number;
+  imagem: string;
 }

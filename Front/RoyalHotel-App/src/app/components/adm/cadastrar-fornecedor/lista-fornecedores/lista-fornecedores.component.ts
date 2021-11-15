@@ -39,6 +39,18 @@ export class ListaFornecedoresComponent implements OnInit {
     this.router.navigate([`/adm`]);
   }
 
+  excluir(id: number): void {
+    this.service.delete(id).subscribe({
+      next: () => {
+        this.buscarFornecedores();
+      }
+    });
+  }
+
+  editar(id: number): void {
+    this.router.navigate([`/cadastrar-fornecedor`, id]);
+  }
+
   public buscarFornecedores(): void {
     this.service.get().subscribe({
       next: (resp) => {

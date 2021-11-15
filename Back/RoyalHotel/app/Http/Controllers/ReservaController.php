@@ -79,6 +79,6 @@ class ReservaController extends Controller
      */
     public function destroy($id)
     {
-        //
+        return \App\Models\Reserva::destroy($id);
     }
 }

@@ -1,342 +1,380 @@
 <!doctype html>
 <html lang="pt-br">
 <body>
-
   <section>
     <div class="card rounded shadow-sm p-3">
-      <div class="row">
-        <div class="col">
-          <div class="card text-dark bg-light mb-3" style="max-width: 18rem;">
-            <div class="card-header" style="text-align: center;"><b> Apartamento 101</b></div>
-            <div class="card-body">
-              <h5 class="card-text" style="text-align: center;"><b>Status </b></h5>
-              <div style="text-align: center;">
-                <button type="button" class="{{ class }}">{{ status }}</button>
-              </div> <br>
-              <p class="card-text"><b>Hospede: {{hospede}} </b></p>
-              <button type="button" class="btn btn-primary btn-sm" (click)="reservar()" (click)="modalCadastro(template)" style="margin-right: 20px; margin-left: 10px;">
-                Reservar
-              </button>
-              <button type="button" class="btn btn-secondary btn-sm" (click)="fecharConta()" (click)="modalFecharConta(template2)">Fechar Conta</button>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card text-dark bg-light mb-3" style="max-width: 18rem;">
-            <div class="card-header" style="text-align: center;"><b> Apartamento 102</b></div>
-            <div class="card-body">
-              <h5 class="card-text" style="text-align: center;"><b>Status </b> </h5>
-               <div style="text-align: center;">
-                <button type="button" class="{{ class2 }}">{{ status2 }}</button>
-              </div> <br>
-              <p class="card-text"><b>Hospede: </b></p>
-              <button type="button" class="btn btn-primary btn-sm" (click)="reservar02()" style="margin-right: 20px; margin-left: 10px;">
-                Reservar
-              </button>
-              <button type="button" class="btn btn-secondary btn-sm" (click)="desocupar02()">Desocupar</button>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card text-dark bg-light mb-3" style="max-width: 18rem;">
-            <div class="card-header" style="text-align: center;"><b> Apartamento 103</b></div>
-            <div class="card-body">
-              <h5 class="card-text" style="text-align: center;"><b>Status </b></h5>
-               <div style="text-align: center;">
-                <button type="button" class="{{ class3 }}">{{ status3 }}</button>
-              </div> <br>
-              <p class="card-text"><b>Hospede: </b></p>
-              <button type="button" class="btn btn-primary btn-sm" (click)="reservar03()" style="margin-right: 20px; margin-left: 10px;">
-                Reservar
-              </button>
-              <button type="button" class="btn btn-secondary btn-sm" (click)="desocupar03()">Desocupar</button>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card text-dark bg-light mb-3" style="max-width: 18rem;">
-            <div class="card-header" style="text-align: center;"><b> Apartamento 104</b></div>
-            <div class="card-body">
-              <h5 class="card-text" style="text-align: center;"><b>Status </b></h5>
-              <div style="text-align: center;">
-                <button type="button" class="{{ class4 }}">{{ status4 }}</button>
-              </div> <br>
-              <p class="card-text"><b>Hospede: </b></p>
-              <button type="button" class="btn btn-primary btn-sm" (click)="reservar04()" style="margin-right: 20px; margin-left: 10px;">
-                Reservar
-              </button>
-              <button type="button" class="btn btn-secondary btn-sm" (click)="desocupar04()">Desocupar</button>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card text-dark bg-light mb-3" style="max-width: 18rem;">
-            <div class="card-header" style="text-align: center;"><b> Apartamento 105</b></div>
-            <div class="card-body">
-              <h5 class="card-text" style="text-align: center;"><b>Status </b></h5>
-              <div style="text-align: center;">
-                <button type="button" class="{{ class5 }}">{{ status5 }}</button>
-              </div> <br>
-              <p class="card-text"><b>Hospede: </b></p>
-              <button type="button" class="btn btn-primary btn-sm" (click)="reservar05()" style="margin-right: 20px; margin-left: 10px;">
-                Reservar
-              </button>
-              <button type="button" class="btn btn-secondary btn-sm" (click)="desocupar05()">Desocupar</button>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card text-dark bg-light mb-3" style="max-width: 18rem;">
-            <div class="card-header" style="text-align: center;"><b> Apartamento 106</b></div>
-            <div class="card-body">
-              <h5 class="card-text" style="text-align: center;"><b>Status </b></h5>
-               <div style="text-align: center;">
-                <button type="button" class="{{ class6 }}">{{ status6 }}</button>
-              </div> <br>
-              <p class="card-text"><b>Hospede: </b></p>
-              <button type="button" class="btn btn-primary btn-sm" (click)="reservar06()" style="margin-right: 20px; margin-left: 10px;">
-                Reservar
-              </button>
-              <button type="button" class="btn btn-secondary btn-sm" (click)="desocupar06()">Desocupar</button>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col">
-          <div class="card text-dark bg-light mb-3" style="max-width: 18rem;">
-            <div class="card-header" style="text-align: center;"><b> Apartamento 201</b></div>
-            <div class="card-body">
-              <h5 class="card-text" style="text-align: center;"><b>Status </b></h5>
-              <div style="text-align: center;">
-                <button type="button" class="{{ class7 }}">{{ status7 }}</button>
-              </div> <br>
-              <p class="card-text"><b>Hospede: </b></p>
-              <button type="button" class="btn btn-primary btn-sm" (click)="reservar07()" style="margin-right: 20px; margin-left: 10px;">
-                Reservar
-              </button>
-              <button type="button" class="btn btn-secondary btn-sm" (click)="desocupar07()">Desocupar</button>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card text-dark bg-light mb-3" style="max-width: 18rem;">
-            <div class="card-header" style="text-align: center;"><b> Apartamento 202</b></div>
-            <div class="card-body">
-              <h5 class="card-text" style="text-align: center;"><b>Status </b> </h5>
-               <div style="text-align: center;">
-                <button type="button" class="{{ class8 }}">{{ status8 }}</button>
-              </div> <br>
-              <p class="card-text"><b>Hospede: </b></p>
-              <button type="button" class="btn btn-primary btn-sm" (click)="reservar08()" style="margin-right: 20px; margin-left: 10px;">
-                Reservar
-              </button>
-              <button type="button" class="btn btn-secondary btn-sm" (click)="desocupar08()">Desocupar</button>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card text-dark bg-light mb-3" style="max-width: 18rem;">
-            <div class="card-header" style="text-align: center;"><b> Apartamento 203</b></div>
-            <div class="card-body">
-              <h5 class="card-text" style="text-align: center;"><b>Status </b> </h5>
-               <div style="text-align: center;">
-                <button type="button" class="{{ class9 }}">{{ status9 }}</button>
-              </div> <br>
-              <p class="card-text"><b>Hospede: </b></p>
-              <button type="button" class="btn btn-primary btn-sm" (click)="reservar09()" style="margin-right: 20px; margin-left: 10px;">
-                Reservar
-              </button>
-              <button type="button" class="btn btn-secondary btn-sm" (click)="desocupar09()">Desocupar</button>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card text-dark bg-light mb-3" style="max-width: 18rem;">
-            <div class="card-header" style="text-align: center;"><b> Apartamento 204</b></div>
-            <div class="card-body">
-              <h5 class="card-text" style="text-align: center;"><b>Status </b> </h5>
-               <div style="text-align: center;">
-                <button type="button" class="{{ class10 }}">{{ status10 }}</button>
-              </div> <br>
-              <p class="card-text"><b>Hospede: </b></p>
-              <button type="button" class="btn btn-primary btn-sm" (click)="reservar10()" style="margin-right: 20px; margin-left: 10px;">
-                Reservar
-              </button>
-              <button type="button" class="btn btn-secondary btn-sm" (click)="desocupar10()">Desocupar</button>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card text-dark bg-light mb-3" style="max-width: 18rem;">
-            <div class="card-header" style="text-align: center;"><b> Apartamento 205</b></div>
-            <div class="card-body">
-              <h5 class="card-text" style="text-align: center;"><b>Status </b> </h5>
-              <div style="text-align: center;">
-                <button type="button" class="{{ class11 }}">{{ status11 }}</button>
-              </div> <br>
-              <p class="card-text"><b>Hospede: </b></p>
-              <button type="button" class="btn btn-primary btn-sm" (click)="reservar11()" style="margin-right: 20px; margin-left: 10px;">
-                Reservar
-              </button>
-              <button type="button" class="btn btn-secondary btn-sm" (click)="desocupar11()">Desocupar</button>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card text-dark bg-light mb-3" style="max-width: 18rem;">
-            <div class="card-header" style="text-align: center;"><b> Apartamento 206</b></div>
-            <div class="card-body">
-              <h5 class="card-text" style="text-align: center;"><b>Status </b> </h5>
-               <div style="text-align: center;">
-                <button type="button" class="{{ class12 }}">{{ status12 }}</button>
-              </div> <br>
-              <p class="card-text"><b>Hospede: </b></p>
-              <button type="button" class="btn btn-primary btn-sm" (click)="reservar12()" style="margin-right: 20px; margin-left: 10px;">
-                Reservar
-              </button>
-              <button type="button" class="btn btn-secondary btn-sm" (click)="desocupar12()">Desocupar</button>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col">
-          <div class="card text-dark bg-light mb-3" style="max-width: 18rem;">
-            <div class="card-header" style="text-align: center;" style="text-align: center;"><b> Apartamento 301</b></div>
-            <div class="card-body">
-              <h5 class="card-text" style="text-align: center;"><b>Status </b> </h5>
-               <div style="text-align: center;">
-                <button type="button" class="{{ class13 }}">{{ status13 }}</button>
-              </div> <br>
-              <p class="card-text"><b>Hospede: </b></p>
-              <button type="button" class="btn btn-primary btn-sm" (click)="reservar13()" style="margin-right: 20px; margin-left: 10px;">
-                Reservar
-              </button>
-              <button type="button" class="btn btn-secondary btn-sm" (click)="desocupar13()">Desocupar</button>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card text-dark bg-light mb-3" style="max-width: 18rem;">
-            <div class="card-header" style="text-align: center;"><b> Apartamento 302</b></div>
-            <div class="card-body">
-              <h5 class="card-text" style="text-align: center;"><b>Status </b> </h5>
-               <div style="text-align: center;">
-                <button type="button" class="{{ class14 }}">{{ status14 }}</button>
-              </div> <br>
-              <p class="card-text"><b>Hospede: </b></p>
-              <button type="button" class="btn btn-primary btn-sm" (click)="reservar14()" style="margin-right: 20px; margin-left: 10px;">
-                Reservar
-              </button>
-              <button type="button" class="btn btn-secondary btn-sm" (click)="desocupar14()">Desocupar</button>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card text-dark bg-light mb-3" style="max-width: 18rem;">
-            <div class="card-header" style="text-align: center;"><b> Apartamento 303</b></div>
-            <div class="card-body">
-              <h5 class="card-text" style="text-align: center;"><b>Status </b> </h5>
-               <div style="text-align: center;">
-                <button type="button" class="{{ class15 }}">{{ status15 }}</button>
-              </div> <br>
-              <p class="card-text"><b>Hospede: </b></p>
-              <button type="button" class="btn btn-primary btn-sm" (click)="reservar15()" style="margin-right: 20px; margin-left: 10px;">
-                Reservar
-              </button>
-              <button type="button" class="btn btn-secondary btn-sm" (click)="desocupar15()">Desocupar</button>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card text-dark bg-light mb-3" style="max-width: 18rem;">
-            <div class="card-header" style="text-align: center;"><b> Apartamento 304</b></div>
-            <div class="card-body">
-              <h5 class="card-text" style="text-align: center;"><b>Status </b></h5>
-               <div style="text-align: center;">
-                <button type="button" class="{{ class16 }}">{{ status16 }}</button>
-              </div> <br>
-              <p class="card-text"><b>Hospede: </b></p>
-              <button type="button" class="btn btn-primary btn-sm" (click)="reservar16()" style="margin-right: 20px; margin-left: 10px;">
-                Reservar
-              </button>
-              <button type="button" class="btn btn-secondary btn-sm" (click)="desocupar16()">Desocupar</button>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card text-dark bg-light mb-3" style="max-width: 18rem;">
-            <div class="card-header" style="text-align: center;"><b> Apartamento 305</b></div>
-            <div class="card-body">
-              <h5 class="card-text" style="text-align: center;"><b>Status </b> </h5>
-               <div style="text-align: center;">
-                <button type="button" class="{{ class17 }}">{{ status17 }}</button>
-              </div> <br>
-              <p class="card-text"><b>Hospede: </b></p>
-              <button type="button" class="btn btn-primary btn-sm" (click)="reservar17()" style="margin-right: 20px; margin-left: 10px;">
-                Reservar
-              </button>
-              <button type="button" class="btn btn-secondary btn-sm" (click)="desocupar17()">Desocupar</button>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card text-dark bg-light mb-3" style="max-width: 18rem;">
-            <div class="card-header" style="text-align: center;"><b> Apartamento 306</b></div>
-            <div class="card-body">
-              <h5 class="card-text" style="text-align: center;"><b>Status </b></h5>
-               <div style="text-align: center;">
-                <button type="button" class="{{ class18 }}">{{ status18 }}</button>
-              </div> <br>
-              <p class="card-text"><b>Hospede: </b></p>
-              <button type="button" class="btn btn-primary btn-sm" (click)="reservar18()" style="margin-right: 20px; margin-left: 10px;">
-                Reservar
-              </button>
-              <button type="button" class="btn btn-secondary btn-sm" (click)="desocupar18()">Desocupar</button>
-            </div>
-          </div>
-        </div>
-      </div>
-      <ng-template #template>
-        <div class="modal-header">
-          <h4 class="modal-title pull-left">Dados Para Pagamento</h4>
-          <button type="button" class="close btn-close pull-right" aria-label="Close" (click)="modalRef?.hide()">
-            <span aria-hidden="true" class="visually-hidden">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <form [formGroup]="form">
-            <div class="form-group col-md-12">
-              <label>Hospede</label>
-              <select type="text" class="form-control" formControlName="hospede">
-                <option *ngFor="let hospede of hospedes" [value]="hospede.nome">{{ hospede.nome }}</option>
-              </select>
-            </div>
-            <div class="form-row">
-              <div class="form-group col-6">
-                <button class="btn btn-lg btn-danger btn-block px-5">
-                  Cancelar
-                </button>
+        <div class="table-responsive">
+          <table class="table">
+            <div class="row">
+              <div class="col">
+                <div class="card text-dark bg-light mb-3" style="max-width: 18rem;">
+                  <div class="card-header" style="text-align: center;"><b> Apartamento {{ apartamento101 }}</b></div>
+                  <div class="card-body">
+                    <h5 class="card-text" style="text-align: center;"><b>Status </b></h5>
+                    <div style="text-align: center;">
+                      <button type="button" class="{{ class1 }}">{{ status1 }}</button>
+                    </div> <br>
+                    <p class="card-text">Hospede: {{ hospede101 }} </p>
+                    <div style="text-align: center;">
+                      <button type="button" class="btn btn-secondary"
+                        (click)="modalFecharConta(template); desocupar(apartamento101)">Fechar Conta
+                      </button>
+                    </div>
+                  </div>
+                </div>
               </div>
-              <div class="form-group col-6">
-                <button class="btn btn-lg btn-success btn-block px-5" (click)="reservarApartamento()">
-                  Reservar
-                </button>
+              <div class="col">
+                <div class="card text-dark bg-light mb-3" style="max-width: 18rem;">
+                  <div class="card-header" style="text-align: center;"><b> Apartamento {{ apartamento102 }}</b></div>
+                  <div class="card-body">
+                    <h5 class="card-text" style="text-align: center;"><b>Status </b></h5>
+                    <div style="text-align: center;">
+                      <button type="button" class="{{ class2 }}">{{ status2 }}</button>
+                    </div> <br>
+                    <p class="card-text">Hospede: {{hospede102}} </p>
+                    <div style="text-align: center;">
+                      <button type="button" class="btn btn-secondary" (click)="modalFecharConta(template); desocupar(apartamento102)">Fechar Conta
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col">
+                <div class="card text-dark bg-light mb-3" style="max-width: 18rem;">
+                  <div class="card-header" style="text-align: center;"><b> Apartamento {{ apartamento103 }}</b></div>
+                  <div class="card-body">
+                    <h5 class="card-text" style="text-align: center;"><b>Status </b></h5>
+                    <div style="text-align: center;">
+                      <button type="button" class="{{ class3 }}">{{ status3 }}</button>
+                    </div> <br>
+                    <p class="card-text">Hospede: {{hospede103}} </p>
+                    <div style="text-align: center;">
+                      <button type="button" class="btn btn-secondary"
+                       (click)="modalFecharConta(template); desocupar(apartamento103)">Fechar Conta
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col">
+                <div class="card text-dark bg-light mb-3" style="max-width: 18rem;">
+                  <div class="card-header" style="text-align: center;"><b> Apartamento {{ apartamento104 }}</b></div>
+                  <div class="card-body">
+                    <h5 class="card-text" style="text-align: center;"><b>Status </b></h5>
+                    <div style="text-align: center;">
+                      <button type="button" class="{{ class4 }}">{{ status4 }}</button>
+                    </div> <br>
+                    <p class="card-text">Hospede: {{hospede104}} </p>
+                    <div style="text-align: center;">
+                      <button type="button" class="btn btn-secondary"
+                       (click)="modalFecharConta(template); desocupar(apartamento104)">Fechar Conta
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col">
+                <div class="card text-dark bg-light mb-3" style="max-width: 18rem;">
+                  <div class="card-header" style="text-align: center;"><b> Apartamento {{ apartamento105 }}</b></div>
+                  <div class="card-body">
+                    <h5 class="card-text" style="text-align: center;"><b>Status </b></h5>
+                    <div style="text-align: center;">
+                      <button type="button" class="{{ class5 }}">{{ status5 }}</button>
+                    </div> <br>
+                    <p class="card-text">Hospede: {{hospede105}}  </p>
+                    <div style="text-align: center;">
+                      <button type="button" class="btn btn-secondary"
+                       (click)="modalFecharConta(template); desocupar(apartamento105)">Fechar Conta
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col">
+                <div class="card text-dark bg-light mb-3" style="max-width: 18rem;">
+                  <div class="card-header" style="text-align: center;"><b> Apartamento {{ apartamento106 }}</b></div>
+                  <div class="card-body">
+                    <h5 class="card-text" style="text-align: center;"><b>Status </b></h5>
+                    <div style="text-align: center;">
+                      <button type="button" class="{{ class6 }}">{{ status6 }}</button>
+                    </div> <br>
+                    <p class="card-text">Hospede: {{hospede106}} </p>
+                    <div style="text-align: center;">
+                      <button type="button" class="btn btn-secondary"
+                        (click)="modalFecharConta(template); desocupar(apartamento106)">Fechar Conta
+                      </button>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
-          </form>
+            <div class="row">
+              <div class="col">
+                <div class="card text-dark bg-light mb-3" style="max-width: 18rem;">
+                  <div class="card-header" style="text-align: center;"><b> Apartamento {{ apartamento201 }}</b></div>
+                  <div class="card-body">
+                    <h5 class="card-text" style="text-align: center;"><b>Status </b></h5>
+                    <div style="text-align: center;">
+                      <button type="button" class="{{ class7 }}">{{ status7 }}</button>
+                    </div> <br>
+                    <p class="card-text">Hospede: </p>
+                    <div style="text-align: center;">
+                      <button type="button" class="btn btn-secondary"
+                       (click)="modalFecharConta(template); desocupar(apartamento201)">Fechar Conta
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col">
+                <div class="card text-dark bg-light mb-3" style="max-width: 18rem;">
+                  <div class="card-header" style="text-align: center;"><b> Apartamento {{ apartamento202 }}</b></div>
+                  <div class="card-body">
+                    <h5 class="card-text" style="text-align: center;"><b>Status </b></h5>
+                    <div style="text-align: center;">
+                      <button type="button" class="{{ class8 }}">{{ status8 }}</button>
+                    </div> <br>
+                    <p class="card-text">Hospede: </p>
+                    <div style="text-align: center;">
+                      <button type="button" class="btn btn-secondary"
+                        (click)="modalFecharConta(template); desocupar(apartamento202)">Fechar Conta
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col">
+                <div class="card text-dark bg-light mb-3" style="max-width: 18rem;">
+                  <div class="card-header" style="text-align: center;"><b> Apartamento {{ apartamento203 }}</b></div>
+                  <div class="card-body">
+                    <h5 class="card-text" style="text-align: center;"><b>Status </b></h5>
+                    <div style="text-align: center;">
+                      <button type="button" class="{{ class9 }}">{{ status9 }}</button>
+                    </div> <br>
+                    <p class="card-text">Hospede: </p>
+                    <div style="text-align: center;">
+                      <button type="button" class="btn btn-secondary"
+                         (click)="modalFecharConta(template); desocupar(apartamento203)">Fechar Conta
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col">
+                <div class="card text-dark bg-light mb-3" style="max-width: 18rem;">
+                  <div class="card-header" style="text-align: center;"><b> Apartamento {{ apartamento204 }}</b></div>
+                  <div class="card-body">
+                    <h5 class="card-text" style="text-align: center;"><b>Status </b></h5>
+                    <div style="text-align: center;">
+                      <button type="button" class="{{ class10 }}">{{ status10 }}</button>
+                    </div> <br>
+                    <p class="card-text">Hospede: </p>
+                    <div style="text-align: center;">
+                      <button type="button" class="btn btn-secondary"
+                         (click)="modalFecharConta(template); desocupar(apartamento204)">Fechar Conta
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col">
+                <div class="card text-dark bg-light mb-3" style="max-width: 18rem;">
+                  <div class="card-header" style="text-align: center;"><b> Apartamento {{ apartamento205 }}</b></div>
+                  <div class="card-body">
+                    <h5 class="card-text" style="text-align: center;"><b>Status </b></h5>
+                    <div style="text-align: center;">
+                      <button type="button" class="{{ class11 }}">{{ status11 }}</button>
+                    </div> <br>
+                    <p class="card-text">Hospede:  </p>
+                    <div style="text-align: center;">
+                      <button type="button" class="btn btn-secondary"
+                         (click)="modalFecharConta(template); desocupar(apartamento205)">Fechar Conta
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col">
+                <div class="card text-dark bg-light mb-3" style="max-width: 18rem;">
+                  <div class="card-header" style="text-align: center;"><b> Apartamento {{ apartamento206 }}</b></div>
+                  <div class="card-body">
+                    <h5 class="card-text" style="text-align: center;"><b>Status </b></h5>
+                    <div style="text-align: center;">
+                      <button type="button" class="{{ class12 }}">{{ status12 }}</button>
+                    </div> <br>
+                    <p class="card-text">Hospede: </p>
+                    <div style="text-align: center;">
+                      <button type="button" class="btn btn-secondary"
+                        (click)="modalFecharConta(template); desocupar(apartamento206)">Fechar Conta
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <div class="card text-dark bg-light mb-3" style="max-width: 18rem;">
+                  <div class="card-header" style="text-align: center;"><b> Apartamento {{ apartamento301 }}</b></div>
+                  <div class="card-body">
+                    <h5 class="card-text" style="text-align: center;"><b>Status </b></h5>
+                    <div style="text-align: center;">
+                      <button type="button" class="{{ class13 }}">{{ status13 }}</button>
+                    </div> <br>
+                    <p class="card-text">Hospede: </p>
+                    <div style="text-align: center;">
+                      <button type="button" class="btn btn-secondary"
+                       (click)="modalFecharConta(template); desocupar(apartamento301)">Fechar Conta
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col">
+                <div class="card text-dark bg-light mb-3" style="max-width: 18rem;">
+                  <div class="card-header" style="text-align: center;"><b> Apartamento {{ apartamento302 }}</b></div>
+                  <div class="card-body">
+                    <h5 class="card-text" style="text-align: center;"><b>Status </b></h5>
+                    <div style="text-align: center;">
+                      <button type="button" class="{{ class14 }}">{{ status14 }}</button>
+                    </div> <br>
+                    <p class="card-text">Hospede: </p>
+                    <div style="text-align: center;">
+                      <button type="button" class="btn btn-secondary"
+                        (click)="modalFecharConta(template); desocupar(apartamento302)">Fechar Conta
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col">
+                <div class="card text-dark bg-light mb-3" style="max-width: 18rem;">
+                  <div class="card-header" style="text-align: center;"><b> Apartamento {{ apartamento303 }}</b></div>
+                  <div class="card-body">
+                    <h5 class="card-text" style="text-align: center;"><b>Status </b></h5>
+                    <div style="text-align: center;">
+                      <button type="button" class="{{ class15 }}">{{ status15 }}</button>
+                    </div> <br>
+                    <p class="card-text">Hospede: </p>
+                    <div style="text-align: center;">
+                      <button type="button" class="btn btn-secondary"
+                        (click)="modalFecharConta(template); desocupar(apartamento303)">Fechar Conta
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col">
+                <div class="card text-dark bg-light mb-3" style="max-width: 18rem;">
+                  <div class="card-header" style="text-align: center;"><b> Apartamento {{ apartamento304 }}</b></div>
+                  <div class="card-body">
+                    <h5 class="card-text" style="text-align: center;"><b>Status </b></h5>
+                    <div style="text-align: center;">
+                      <button type="button" class="{{ class16 }}">{{ status16 }}</button>
+                    </div> <br>
+                    <p class="card-text">Hospede: </p>
+                    <div style="text-align: center;">
+                      <button type="button" class="btn btn-secondary"
+                        (click)="modalFecharConta(template); desocupar(apartamento304)">Fechar Conta
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col">
+                <div class="card text-dark bg-light mb-3" style="max-width: 18rem;">
+                  <div class="card-header" style="text-align: center;"><b> Apartamento {{ apartamento305 }}</b></div>
+                  <div class="card-body">
+                    <h5 class="card-text" style="text-align: center;"><b>Status </b></h5>
+                    <div style="text-align: center;">
+                      <button type="button" class="{{ class17 }}">{{ status17 }}</button>
+                    </div> <br>
+                    <p class="card-text">Hospede:  </p>
+                    <div style="text-align: center;">
+                      <button type="button" class="btn btn-secondary"
+                        (click)="modalFecharConta(template); desocupar(apartamento305)">Fechar Conta
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col">
+                <div class="card text-dark bg-light mb-3" style="max-width: 18rem;">
+                  <div class="card-header" style="text-align: center;"><b> Apartamento {{ apartamento306 }}</b></div>
+                  <div class="card-body">
+                    <h5 class="card-text" style="text-align: center;"><b>Status </b></h5>
+                    <div style="text-align: center;">
+                      <button type="button" class="{{ class18 }}">{{ status18 }}</button>
+                    </div> <br>
+                    <p class="card-text">Hospede: </p>
+                    <div style="text-align: center;">
+                      <button type="button" class="btn btn-secondary"
+                        (click)="modalFecharConta(template); desocupar(apartamento306)">Fechar Conta
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </table>
         </div>
-      </ng-template>
-      <ng-template #template2>
-        <div class="modal-header">
-          <h4 class="modal-title pull-left">Dados Para Pagamento</h4>
-          <button type="button" class="close btn-close pull-right" aria-label="Close" (click)="modalRef?.hide()">
-            <span aria-hidden="true" class="visually-hidden">&times;</span>
-          </button>
         </div>
-        <div class="modal-body">
-          <form [formGroup]="form" class="p-1">
+        <ng-template #template>
+          <div class="modal-header">
+            <h4 class="modal-title pull-left">Fechar Conta</h4>
+            <button type="button" class="close btn-close pull-right" aria-label="Close" (click)="modalRef?.hide()">
+              <span aria-hidden="true" class="visually-hidden">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <h3>Pedidos</h3>
+            <table class="table table-striped table-hover">
+              <thead class="thead-dark">
+                <tr>
+                  <th>#</th>
+                  <th>Produto</th>
+                  <th class="d-none d-md-table-cell">Quantidade</th>
+                  <th class="d-none d-md-table-cell">Data da Compra</th>
+                  <th class="d-none d-md-table-cell">Valor Total</th>
+                </tr>
+             </thead>
+              <tbody *ngIf="fecharContaPedido && fecharContaPedido.length">
+                <tr *ngFor="let produto of fecharContaPedido" style="cursor: pointer;">
+                  <td>{{produto.id}}</td>
+                  <td>{{produto.produto}}</td>
+                  <td class="d-none d-md-table-cell">{{produto.qtdProduto}}</td>
+                  <td>{{produto.dataCompra | date : 'dd/MM/yyyy'}}</td>
+                  <td class="d-none d-md-table-cell">{{produto.valor | currency : 'BRL'}}</td>
+                </tr>
+              </tbody>
+           </table>
+           <h3>Reserva</h3>
+           <table class="table table-striped table-hover">
+             <thead class="thead-dark">
+               <tr>
+                 <th>#</th>
+                 <th>Apartamento</th>
+                 <th class="d-none d-md-table-cell">Categoria Apartamento</th>
+                 <th class="d-none d-md-table-cell">Data Entrada</th>
+                 <th class="d-none d-md-table-cell">Data Saída</th>
+                 <th class="d-none d-md-table-cell">Valor Diária</th>
+                 <th class="d-none d-md-table-cell">Valor Total</th>
+               </tr>
+            </thead>
+             <tbody *ngIf="fecharContaReserva && fecharContaReserva.length">
+               <tr *ngFor="let reserva of fecharContaReserva" style="cursor: pointer;">
+                 <td>{{reserva.id}}</td>
+                 <td>{{reserva.apartamento}}</td>
+                 <td class="d-none d-md-table-cell">{{reserva.categoriaApartamento}}</td>
+                 <td>{{reserva.dataEntrada | date : 'dd/MM/yyyy'}}</td>
+                 <td class="d-none d-md-table-cell">{{reserva.dataSaida | date : 'dd/MM/yyyy'}}</td>
+                 <td>{{reserva.valorDiaria | currency : 'BRL' }}</td>
+                 <td class="d-none d-md-table-cell">{{reserva.valorTotal | currency : 'BRL'}}</td>
+               </tr>
+             </tbody>
+          </table>
+          <h3><b>Valor Total Reserva:</b> <b style="position: absolute; right: 30px;">{{ valorTotalFechamentoReserva | currency : 'BRL'}}</b></h3>
+          <form [formGroup]="form" class="p-1" style="margin-top: 30px;">
             <div class="form-row">
               <div class="form-group col-sm-6">
                 <label>Data Pagamento</label>
@@ -349,23 +387,19 @@
               </div>
               <div class="form-group col-sm-6">
                 <label>Forma de Pagamento:</label>
-                <input type="text" class="form-control" formControlName="formaPagamento"
-                  [ngClass]="{'is-invalid': f.formaPagamento.errors && f.formaPagamento.touched}"/>
+                <input type="text" class="form-control" formControlName="formaDePagamento"
+                  [ngClass]="{'is-invalid': f.formaDePagamento.errors && f.formaDePagamento.touched}"/>
                 <div class="invalid-feedback">
                   Forma de Pagamento é obrigatório.
                 </div>
               </div>
               <div class="form-group col-md-6">
-                <label>Status Pagamento</label>
-                <select type="text" class="form-control" [ngClass]="cssValidator(f.statusPagamento)"
-                formControlName="statusPagamento" placeholder="" >
-                  <option value="Pago">Pago</option>
-                  <option value="Processando">Processando</option>
-                  <option value="Cancelado">Cancelado</option>
-                  <option value="Aguardando Pagamento">Aguardando Pagamento</option>
+                <label>Hospede:</label>
+                <select type="text" class="form-control" [ngClass]="cssValidator(f.hospede_id)" formControlName="hospede_id" placeholder="" >
+                  <option *ngFor="let hospede of nomeHospedeReserva" [value]="hospede.id"> {{ hospede.nome }}</option>
                 </select>
-                <div *ngIf="f.statusPagamento.errors?.required && f.statusPagamento.touched" class="invalid-feedback">
-                  Status Pagamento é obrigatório.
+                <div *ngIf="f.hospede_id.errors?.required && f.hospede_id.touched" class="invalid-feedback">
+                  Reserva é obrigatório.
                 </div>
               </div>
               <div class="form-group col-md-6">
@@ -378,20 +412,19 @@
             </div>
             <div class="form-row">
               <div class="form-group col-6">
-                <button class="btn btn-lg btn-danger btn-block px-5">
+                <button class="btn btn-lg btn-danger btn-block px-5" (click)="modalRef?.hide()">
                   Cancelar
                 </button>
               </div>
               <div class="form-group col-6">
-                <button class="btn btn-lg btn-success btn-block px-5">
+                <button class="btn btn-lg btn-success btn-block px-5" (click)="fecharConta()">
                   Registrar Pagamento
                 </button>
               </div>
             </div>
           </form>
-        </div>
-      </ng-template>
-    </div>
-  </section>
+          </div>
+        </ng-template>
+    </section>
 </body>
 </html>

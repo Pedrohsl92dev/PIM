@@ -39,8 +39,20 @@ export class ListaFuncionarioComponent implements OnInit {
     this.modalRef.hide();
   }
 
+  excluir(id: number): void {
+    this.service.delete(id).subscribe({
+      next: () => {
+        this.buscarFuncionario();
+      }
+    });
+  }
+
+  editar(id: number): void {
+    this.router.navigate([`/cadastrar-funcionario`, id]);
+  }
+
   buscarFuncionario(): void {
-    this.service.getFuncionario().subscribe({
+    this.service.get().subscribe({
       next: (resp) => {
         this.funcionarios = resp;
       }

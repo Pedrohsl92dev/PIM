@@ -18,6 +18,7 @@ class Usuario extends Model
         'usuario',
         'senha',
         'confirmeSenha',
+        'imagem',
         'categoria',
     ];
 }

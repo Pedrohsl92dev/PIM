@@ -83,7 +83,6 @@ export class HospedeDetalheComponent implements OnInit {
         () => {
           this.toastr.success('Hospede cadastrado com Sucesso!', ' Sucesso');
           this.form.reset();
-          this.router.navigate([`/adm`]);
         },
         (error: any) => {
           this.toastr.error('Erro ao efetuar cadastro.', 'Erro!');
@@ -106,7 +105,6 @@ export class HospedeDetalheComponent implements OnInit {
         }
       );
     }
-
   }
 
   public resetForm(): void {

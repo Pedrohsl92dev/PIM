@@ -33,6 +33,14 @@ export class MensagensOrcamentoComponent implements OnInit {
     });
   }
 
+  excluir(id: number): void {
+    this.orcamentoService.delete(id).subscribe({
+      next: () => {
+        this.mensagens();
+      }
+    });
+  }
+
   listar(): void {
     this.router.navigate([`/adm`]);
   }

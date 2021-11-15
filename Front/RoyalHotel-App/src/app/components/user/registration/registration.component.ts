@@ -61,6 +61,7 @@ export class RegistrationComponent implements OnInit {
       this.usuario.usuario = this.form.value.usuario;
       this.usuario.senha = this.form.value.senha;
       this.usuario.confirmeSenha = this.form.value.confirmeSenha;
+      this.usuario.imagem = 'teste';
       this.usuarioService.post(this.usuario).subscribe(
         () => {
           this.toastr.success('Cadastro realizado com Sucesso!', ' Sucesso');

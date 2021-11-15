@@ -79,6 +79,10 @@ export class CadastrarProdutoComponent implements OnInit {
     this.router.navigate([`/listar-produto`]);
   }
 
+  public cadastroFornecedor(): void {
+    this.router.navigate([`/cadastrar-fornecedor`]);
+  }
+
   public resetForm(): void {
     this.router.navigate([`adm`]);
     this.form.reset();
@@ -99,24 +103,6 @@ export class CadastrarProdutoComponent implements OnInit {
       }
     );
   }
-
-  // public salvarProduto(): void {
-  //   if (this.form.valid) {
-  //     this.produto = {...this.form.value};
-  //     this.service.post(this.produto).subscribe(
-  //     () => {
-  //         this.toastr.success('Produto cadastrado com Sucesso!', ' Sucesso');
-  //         this.form.reset();
-  //       },
-  //       (error: any) => {
-  //         this.toastr.error('Erro ao efetuar cadastro.', 'Erro!');
-  //         console.log(error);
-  //       }
-  //     );
-  //   } else {
-  //     this.toastr.error('Preencha os campos obrigatórios.', 'Erro!');
-  //   }
-  // }
 
   public cadastrarProduto(): void {
     if (this.form.valid) {

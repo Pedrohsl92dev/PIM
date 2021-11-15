@@ -6,10 +6,9 @@
         <div class="card mb-3">
           <div class="card-header"></div>
           <div class="d-flex align-self-center pt-3">
-            <a href="#aboutModal" data-toggle="modal" data-target="#myModal">
+            <a data-toggle="modal" data-target="#myModal">
               <img
-              src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRbezqZpEuwGSvitKy3wrwnth5kysKdRqBW54cAszm_wiutku3R"
-              name="aboutme" width="120" height="120" class="rounded-circle">
+              src={{img}} name="aboutme" width="120" height="120" class="rounded-circle">
             </a>
           </div>
           <div class="card-body">
@@ -63,8 +62,8 @@
                   <td>{{reserva.id}}</td>
                   <td class="d-none d-md-table-cell">{{reserva.primeiroNome}}</td>
                   <td>{{reserva.cpf}}</td>
-                  <td class="d-none d-md-table-cell">{{reserva.dataEntrada}}</td>
-                  <td class="d-none d-md-table-cell">{{reserva.dataSaida}}</td>
+                  <td class="d-none d-md-table-cell">{{reserva.dataEntrada  | date : 'dd/MM/yyyy'}}</td>
+                  <td class="d-none d-md-table-cell">{{reserva.dataSaida  | date : 'dd/MM/yyyy'}}</td>
                   <td>
                     <div class="btn-group">
                       <button class="btn btn-sm btn-danger" tooltip="Excluir" (click)="deletarReserva(reserva.id)" style="margin-right: 5px;">
@@ -118,15 +117,15 @@
         </div> -->
       </div>
     </div>
-    <div class="card-footer">
-      <!-- <div class="d-flex">
+    <!-- <div class="card-footer">
+      <div class="d-flex">
         <button (click)="resetForm($event)" class="btn btn-outline-secondary mr-auto border">
           Cancelar Alteração
         </button>
         <button class="btn btn-success">
           Salvar Alteração
         </button>
-      </div> -->
-    </div>
+      </div>
+    </div> -->
   </form>
 </div>

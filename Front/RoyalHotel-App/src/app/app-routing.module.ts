@@ -49,6 +49,7 @@ const routes: Routes = [
 
   { path: 'listar-pedido', component: ListarPedidoComponent, canActivate: [AuthGuard] },
   { path: 'registrar-pedido', component: RegistrarPedidoComponent, canActivate: [AuthGuard] },
+  { path: 'registrar-pedido/:id', component: RegistrarPedidoComponent, canActivate: [AuthGuard] },
 
   { path: 'nova-reserva', component: NovaReservaComponent, canActivate: [AuthGuard] },
   { path: 'reservas', component: ListarReservasComponent, canActivate: [AuthGuard] },
@@ -59,6 +60,7 @@ const routes: Routes = [
     ]
   },
   { path: 'cadastrar-funcionario', component: CadastroFuncionariosComponent, canActivate: [AuthGuard] },
+  { path: 'cadastrar-funcionario/:id', component: CadastroFuncionariosComponent, canActivate: [AuthGuard] },
   { path: 'listar-funcionario', component: ListaFuncionarioComponent, canActivate: [AuthGuard] },
 
   { path: 'cadastrar-produto', component: CadastrarProdutoComponent, canActivate: [AuthGuard] },
@@ -69,6 +71,7 @@ const routes: Routes = [
   { path: 'mensagens-orcamento', component: MensagensOrcamentoComponent, canActivate: [AuthGuard] },
 
   { path: 'cadastrar-fornecedor', component: FornecedorComponent, canActivate: [AuthGuard] },
+  { path: 'cadastrar-fornecedor/:id', component: FornecedorComponent, canActivate: [AuthGuard] },
   { path: 'listar-fornecedor', component: ListaFornecedoresComponent, canActivate: [AuthGuard] },
 
   { path: 'cadastrar-apartamento', component: CadastrarApartamentosComponent, canActivate: [AuthGuard] },

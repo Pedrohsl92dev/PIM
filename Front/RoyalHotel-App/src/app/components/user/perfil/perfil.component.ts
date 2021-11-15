@@ -28,6 +28,7 @@ export class PerfilComponent implements OnInit {
   reservaUsuario: any[] = [];
   sobrenome: string;
   nome: string;
+  img = 'https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRbezqZpEuwGSvitKy3wrwnth5kysKdRqBW54cAszm_wiutku3R';
 
   constructor(
     private fb: FormBuilder,
@@ -96,7 +97,6 @@ export class PerfilComponent implements OnInit {
             this.cpfLogado = el.cpf;
           }
         });
-        console.log(this.usuario);
         this.buscarReserva();
       }
     });
@@ -120,6 +120,11 @@ export class PerfilComponent implements OnInit {
   listar(): void {
     this.router.navigate([`/adm`]);
   }
+
+  validarImagem(): void {
+
+  }
+
 
 
   public resetForm(event: any): void {

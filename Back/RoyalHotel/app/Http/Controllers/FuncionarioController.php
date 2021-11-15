@@ -45,7 +45,7 @@ class FuncionarioController extends Controller
      */
     public function show($id)
     {
-        //
+        return \App\Models\Funcionario::findOrFail($id);
     }
 
     /**
@@ -68,7 +68,8 @@ class FuncionarioController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $funcionario = \App\Models\Funcionario::findOrFail($id);
+        $funcionario->update($request->all());
     }
 
     /**
@@ -79,6 +80,6 @@ class FuncionarioController extends Controller
      */
     public function destroy($id)
     {
-        //
+        return \App\Models\Funcionario::destroy($id);
     }
 }

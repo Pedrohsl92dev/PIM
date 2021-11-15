@@ -13,6 +13,7 @@ use App\Http\Controllers\FuncionarioController;
 use App\Http\Controllers\PedidoController;
 use App\Http\Controllers\ReservaController;
 use App\Http\Controllers\UsuarioController;
+use App\Http\Controllers\FecharContaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,6 +34,8 @@ Route::get('hospede/{id}', [HospedeController::class, 'show'])->name('hospede_sh
 Route::put('hospede/edit/{id}', [HospedeController::class, 'update'])->name('hospede_update');
 
 Route::resource('orcamento', OrcamentoController::class);
+Route::get('orcamento/{id}', [OrcamentoController::class, 'destroy'])->name('orcamento_delete');
+
 Route::resource('fale-conosco', FaleConoscoController::class);
 
 Route::resource('apartamento', ApartamentoController::class);
@@ -44,10 +47,24 @@ Route::resource('produto', ProdutoController::class);
 Route::get('produto/{id}', [ProdutoController::class, 'destroy'])->name('produto_delete');
 Route::put('produto/edit/{id}', [ProdutoController::class, 'update'])->name('produto_update');
 
+Route::resource('pedido', PedidoController::class);
+Route::get('pedido/{id}', [PedidoController::class, 'destroy'])->name('pedido_delete');
+Route::put('pedido/edit/{id}', [PedidoController::class, 'update'])->name('pedido_update');
+
 Route::resource('reserva', ReservaController::class);
+Route::get('reserva/{id}', [ReservaController::class, 'destroy'])->name('reserva_delete');
+
+Route::resource('conta', ContaController::class);
+Route::get('conta/{id}', [ContaController::class, 'destroy'])->name('conta_delete');
+
+Route::resource('fecharConta', FecharContaController::class);
 
 Route::resource('fornecedor', FornecedorController::class);
-Route::resource('conta', ContaController::class);
-Route::resource('pedido', PedidoController::class);
+Route::get('fornecedor/{id}', [FornecedorController::class, 'destroy'])->name('fornecedor_delete');
+Route::put('fornecedor/edit/{id}', [FornecedorController::class, 'update'])->name('fornecedor_update');
+
 Route::resource('cadastro-usuario', UsuarioController::class);
+
 Route::resource('cadastro-funcionario', FuncionarioController::class);
+Route::get('cadastro-funcionario/{id}', [FuncionarioController::class, 'destroy'])->name('cadastro-funcionario_delete');
+Route::put('cadastro-funcionario/edit/{id}', [FuncionarioController::class, 'update'])->name('cadastro-funcionario_update');

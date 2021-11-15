@@ -21,8 +21,9 @@ class CreateUsuariosTable extends Migration
             $table->string('usuario')->unique();
             $table->string('senha');
             $table->string('confirmeSenha');
-            $table->string('email')->unique();
+            $table->string('email');
             $table->string('categoria');
+            $table->string('imagem');
             $table->timestamps();
         });
     }

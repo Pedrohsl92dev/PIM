@@ -27,6 +27,8 @@ export class RegistrarPedidoComponent implements OnInit {
   hospedes: any[] = [];
   apartamentos: any[] = [];
 
+  estadoSalvar = 'post';
+  pedidoId: number;
 
   modalRef: BsModalRef;
   valorTotal: any;
@@ -64,6 +66,7 @@ export class RegistrarPedidoComponent implements OnInit {
     this.listarHospedes();
     this.buscarProdutos();
     this.buscarApartamento();
+    this.carregarPedido();
   }
 
   public validation(): void {
@@ -71,7 +74,6 @@ export class RegistrarPedidoComponent implements OnInit {
       nomeProduto: ['', Validators.required],
       valor: ['', Validators.required],
       qtdProduto: ['', Validators.required],
-      valorTotal: ['', Validators.required],
       apartamento: ['', Validators.required],
     });
   }
@@ -96,19 +98,29 @@ export class RegistrarPedidoComponent implements OnInit {
     const qtdProduto = this.form.value.qtdProduto;
     const valor = this.form.value.valor;
     this.valorTotalRequisicao =  (qtdProduto * valor);
-    this.valorTotal = (qtdProduto * valor) + ',00 Reais';
+    this.valorTotal = (qtdProduto * valor);
   }
 
-  public registrarPedido(): void {
-    if (!this.form.valid) {
+  public validarPedido(): void {
+    if (this.form.valid) {
       this.pedido.nomeProduto = this.form.value.nomeProduto;
       this.pedido.valor = this.form.value.valor;
       this.pedido.qtdProduto = this.form.value.qtdProduto;
       this.pedido.valorTotal = this.valorTotalRequisicao.toString();
       this.pedido.apartamento_id = this.form.value.apartamento;
-      this.servicePedido.post(this.pedido).subscribe(
+      this.registrarPedido();
+    } else {
+      this.toastr.error('Preencha os campos obrigatórios.', 'Erro!');
+    }
+  }
+
+  public registrarPedido(): void {
+    if (this.form.valid) {
+      // tslint:disable-next-line:no-unused-expression
+      this.pedido = this.estadoSalvar === 'post' ? { ...this.pedido } : { id: this.pedido.id, ...this.pedido };
+      this.servicePedido[this.estadoSalvar](this.pedido).subscribe(
         () => {
-          this.toastr.success('Pedido efetuado com Sucesso!', ' Sucesso');
+          this.toastr.success('Pedido cadastrado com Sucesso!', ' Sucesso');
           this.form.reset();
           this.valorTotal = '';
 
@@ -120,6 +132,19 @@ export class RegistrarPedidoComponent implements OnInit {
       );
     } else {
       this.toastr.error('Preencha os campos obrigatórios.', 'Erro!');
+    }
+  }
+
+  public carregarPedido(): void {
+    this.pedidoId = +this.activatedRouter.snapshot.paramMap.get('id');
+    if (this.pedidoId !== null && this.pedidoId !== 0) {
+      this.estadoSalvar = 'put';
+      this.servicePedido.getById(this.pedidoId).subscribe(
+        (pedido: Pedido) => {
+          this.pedido = {...pedido};
+          this.form.patchValue(this.pedido);
+        }
+      );
     }
   }
 

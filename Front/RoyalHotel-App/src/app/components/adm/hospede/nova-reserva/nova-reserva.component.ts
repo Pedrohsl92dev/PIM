@@ -33,6 +33,8 @@ export class NovaReservaComponent implements OnInit {
 
   diaria: number;
 
+  reservasRegistradas: any;
+
   modalRef: BsModalRef;
 
   get bsConfig(): any {
@@ -90,7 +92,6 @@ export class NovaReservaComponent implements OnInit {
       this.reserva.qtdPessoas = this.form.value.qtdPessoas;
       this.reserva.statusPagamento = 'A receber';
       this.reserva.valorTotal = this.valorTotalSalvar;
-      console.log(this.reserva);
       this.service.post(this.reserva).subscribe(
         () => {
           this.toastr.success('Reserva efetuada com Sucesso!', ' Sucesso');
@@ -105,6 +106,26 @@ export class NovaReservaComponent implements OnInit {
     } else {
       this.toastr.error('Preencha os campos obrigatórios.', 'Erro!');
     }
+  }
+
+  public validarReserva(): void {
+    this.reservasRegistradas = [];
+    this.service.getReservas().subscribe({
+      next: (resp) => {
+        this.reservasRegistradas = resp;
+        if (this.reservasRegistradas.length === 0) {
+          this.salvarReserva();
+        }
+        this.reservasRegistradas.forEach((el: any) => {
+          if (el.apartamento_id.toString() === this.form.value.apartamento) {
+            this.toastr.error('Erro Apartamento Ocupado.', 'Erro!');
+          } else {
+            this.salvarReserva();
+          }
+        });
+        console.log(this.reservasRegistradas);
+      }
+    });
   }
 
   listar(): void {

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateContasTable extends Migration
+class CreateFecharContasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,11 @@ class CreateContasTable extends Migration
      */
     public function up()
     {
-        Schema::create('contas', function (Blueprint $table) {
+        Schema::create('fechar_contas', function (Blueprint $table) {
             $table->id();
             $table->string('valor');
-            $table->string('produto');
-            $table->integer('qtdProduto');
-            $table->string('dataCompra');
+            $table->string('dataPagamento');
+            $table->string('formaDePagamento');
             $table->timestamps();
         });
     }
@@ -30,6 +29,6 @@ class CreateContasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('contas');
+        Schema::dropIfExists('fechar_contas');
     }
 }

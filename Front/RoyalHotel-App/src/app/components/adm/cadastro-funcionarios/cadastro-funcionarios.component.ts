@@ -22,6 +22,10 @@ export class CadastroFuncionariosComponent implements OnInit {
   form: FormGroup;
   funcionario = {} as Funcionario;
 
+  funcionarioId: number;
+
+  estadoSalvar = 'post';
+
   get f(): any {
     return this.form.controls;
   }
@@ -39,6 +43,7 @@ export class CadastroFuncionariosComponent implements OnInit {
 
   ngOnInit(): void {
     this.validacao();
+    this.carregarFuncionario();
   }
 
   public validacao(): void {
@@ -65,14 +70,13 @@ export class CadastroFuncionariosComponent implements OnInit {
 
   cadastrarFuncionario(): void {
     if (this.form.valid) {
-      this.funcionario = { ...this.form.value };
+      // tslint:disable-next-line:no-unused-expression
+      this.funcionario = this.estadoSalvar === 'post' ? { ...this.form.value } : { id: this.funcionario.id, ...this.form.value };
       this.funcionario.categoria = 1;
-      console.log(this.funcionario);
-      this.service.saveFuncionario(this.funcionario).subscribe(
+      this.service[this.estadoSalvar](this.funcionario).subscribe(
         () => {
           this.toastr.success('Funcionário cadastrado com Sucesso!', ' Sucesso');
           this.form.reset();
-          this.router.navigate([`/adm`]);
         },
         (error: any) => {
           this.toastr.error('Erro ao efetuar cadastro.', 'Erro!');
@@ -81,6 +85,19 @@ export class CadastroFuncionariosComponent implements OnInit {
       );
     } else {
       this.toastr.error('Preencha os campos obrigatórios.', 'Erro!');
+    }
+  }
+
+  public carregarFuncionario(): void {
+    this.funcionarioId = +this.activatedRouter.snapshot.paramMap.get('id');
+    if (this.funcionarioId !== null && this.funcionarioId !== 0) {
+      this.estadoSalvar = 'put';
+      this.service.getById(this.funcionarioId).subscribe(
+        (funcionario: Funcionario) => {
+          this.funcionario = {...funcionario};
+          this.form.patchValue(this.funcionario);
+        }
+      );
     }
   }
 

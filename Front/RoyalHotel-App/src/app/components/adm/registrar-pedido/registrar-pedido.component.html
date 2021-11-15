@@ -58,7 +58,7 @@
           <div class="form-row">
             <div class="form-group col-md-12 valorTotal">
               <label><b>Valor Total</b></label>
-              <div>{{ valorTotal }}</div>
+              <div>{{ valorTotal | currency : 'BRL' }}</div>
             </div>
           </div>
         </div>
@@ -67,7 +67,7 @@
             <button class="btn btn-outline-secondary mr-auto border" (click)="resetForm()">
               Cancelar
             </button>
-            <button class="btn btn-success" (click)="registrarPedido()" >
+            <button class="btn btn-success" (click)="validarPedido()">
               Salvar Pedido
             </button>
           </div>

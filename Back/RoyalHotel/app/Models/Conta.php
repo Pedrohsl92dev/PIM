@@ -12,13 +12,14 @@ class Conta extends Model
     protected $fillable = [
         'id',
         'valor',
-        'dataPagamento',
-        'formaPagamento',
-        'statusPagamento',
+        'produto',
+        'qtdProduto',
+        'dataCompra',
+        'apartamento_id'
     ];
 
-    public function hospede()
+    public function apartamento()
     {
-        return $this->belongsTo('App\Models\Reserva');
+        return $this->hasOne('App\Models\Apartamento');
     }
 }

@@ -75,7 +75,6 @@ export class CadastrarApartamentosComponent implements OnInit {
         () => {
           this.toastr.success('Apartamento cadastrado com Sucesso!', ' Sucesso');
           this.form.reset();
-          this.router.navigate([`/adm`]);
         },
         (error: any) => {
           this.toastr.error('Erro ao efetuar cadastro.', 'Erro!');

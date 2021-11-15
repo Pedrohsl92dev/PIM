@@ -14,8 +14,8 @@ class AddIdReservaConta extends Migration
     public function up()
     {
         Schema::table('contas', function (Blueprint $table) {
-            $table->unsignedBigInteger('reserva_id')->after('id');
-            $table->foreign('reserva_id')->references('id')->on('reservas');
+            $table->unsignedBigInteger('apartamento_id')->after('id');
+            $table->foreign('apartamento_id')->references('id')->on('apartamentos');
         });
     }
 
@@ -27,8 +27,8 @@ class AddIdReservaConta extends Migration
     public function down()
     {
         Schema::table('contas', function (Blueprint $table) {
-            $table->dropForeign(['reserva_id']);
-            $table->dropColumn('reserva_id');
+            $table->dropForeign(['apartamento_id']);
+            $table->dropColumn('apartamento_id');
         });
     }
 }

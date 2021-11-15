@@ -45,7 +45,7 @@ class PedidoController extends Controller
      */
     public function show($id)
     {
-        //
+        return \App\Models\Pedido::findOrFail($id);
     }
 
     /**
@@ -68,7 +68,8 @@ class PedidoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $pedido = \App\Models\Pedido::findOrFail($id);
+        $pedido->update($request->all());
     }
 
     /**
@@ -79,6 +80,6 @@ class PedidoController extends Controller
      */
     public function destroy($id)
     {
-        //
+        return \App\Models\Pedido::destroy($id);
     }
 }

@@ -51,10 +51,10 @@
         <td class="d-none d-md-table-cell">{{fornecedor.ie}}</td>
         <td>
           <div class="btn-group">
-            <button class="btn btn-sm btn-success" tooltip="Editar" style="margin-right: 5px;">
+            <button class="btn btn-sm btn-success" tooltip="Editar" (click)="editar(fornecedor.id)" style="margin-right: 5px;">
               <i class="fa fa-edit"></i>
             </button>
-            <button class="btn btn-sm btn-danger" tooltip="Excluir" style="margin-right: 5px;">
+            <button class="btn btn-sm btn-danger" tooltip="Excluir" (click)="excluir(fornecedor.id)" style="margin-right: 5px;">
               <i class="fa fa-trash"></i>
             </button>
           </div>

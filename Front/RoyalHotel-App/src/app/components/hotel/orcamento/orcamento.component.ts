@@ -55,7 +55,7 @@ export class OrcamentoComponent implements OnInit {
       qtdAdultos: ['', Validators.required],
       qtdCriancas: ['', Validators.required],
       qtdApartamentos: ['', Validators.required],
-      observacao: ['', Validators.required],
+      observacao: [''],
       email: ['', [Validators.required, Validators.email]]
     });
   }

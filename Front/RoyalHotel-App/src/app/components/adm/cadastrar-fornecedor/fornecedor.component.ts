@@ -23,6 +23,9 @@ export class FornecedorComponent implements OnInit {
 
   fornecedor = {} as Fornecedor;
 
+  estadoSalvar = 'post';
+  fornecedorId: number;
+
   modalRef: BsModalRef;
 
   get bsConfig(): any {
@@ -53,6 +56,7 @@ export class FornecedorComponent implements OnInit {
 
   ngOnInit(): void {
     this.validation();
+    this.carregarFornecedor();
   }
 
   public validation(): void {
@@ -68,11 +72,12 @@ export class FornecedorComponent implements OnInit {
     });
   }
 
-  public cadastrarFornecedor(): void {
+  cadastrarFornecedor(): void {
     if (this.form.valid) {
-      this.fornecedor = {...this.form.value};
-      this.service.post(this.fornecedor).subscribe(
-      () => {
+      // tslint:disable-next-line:no-unused-expression
+      this.fornecedor = this.estadoSalvar === 'post' ? { ...this.form.value } : { id: this.fornecedor.id, ...this.form.value };
+      this.service[this.estadoSalvar](this.fornecedor).subscribe(
+        () => {
           this.toastr.success('Fornecedor cadastrado com Sucesso!', ' Sucesso');
           this.form.reset();
         },
@@ -85,6 +90,21 @@ export class FornecedorComponent implements OnInit {
       this.toastr.error('Preencha os campos obrigatórios.', 'Erro!');
     }
   }
+
+  public carregarFornecedor(): void {
+    this.fornecedorId = +this.activatedRouter.snapshot.paramMap.get('id');
+    if (this.fornecedorId !== null && this.fornecedorId !== 0) {
+      this.estadoSalvar = 'put';
+      this.service.getById(this.fornecedorId).subscribe(
+        (fornecedor: Fornecedor) => {
+          this.fornecedor = {...fornecedor};
+          this.form.patchValue(this.fornecedor);
+        }
+      );
+    }
+
+  }
+
 
   public resetForm(): void {
     this.form.reset();

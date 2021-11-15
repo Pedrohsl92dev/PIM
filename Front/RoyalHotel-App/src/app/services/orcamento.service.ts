@@ -26,4 +26,10 @@ export class OrcamentoService {
       .pipe(take(1));
   }
 
+  public delete(id: number): Observable<Orcamento> {
+    return this.http
+      .delete<Orcamento>(`${this.baseURL}/${id}`)
+      .pipe(take(1));
+  }
+
 }

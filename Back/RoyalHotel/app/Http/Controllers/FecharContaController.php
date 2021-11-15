@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class ContaController extends Controller
+class FecharContaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +13,7 @@ class ContaController extends Controller
      */
     public function index()
     {
-        return \App\Models\Conta::all();
+        return \App\Models\FecharConta::all();
     }
 
     /**
@@ -34,7 +34,7 @@ class ContaController extends Controller
      */
     public function store(Request $request)
     {
-        return \App\Models\Conta::create($request->all());
+        return \App\Models\FecharConta::create($request->all());
     }
 
     /**
@@ -79,6 +79,6 @@ class ContaController extends Controller
      */
     public function destroy($id)
     {
-        return \App\Models\Conta::destroy($id);
+        //
     }
 }

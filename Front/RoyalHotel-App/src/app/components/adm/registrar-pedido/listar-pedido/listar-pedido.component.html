@@ -55,13 +55,13 @@
         <td class="d-none d-md-table-cell">{{ pedido.valorTotal | currency : 'BRL' }}</td>
         <td>
           <div class="btn-group">
-            <button class="btn btn-sm btn-success" tooltip="Editar" style="margin-right: 5px;">
+            <button class="btn btn-sm btn-success" tooltip="Editar" (click)="editar(pedido.id)" style="margin-right: 5px;">
               <i class="fa fa-edit"></i>
             </button>
-            <button class="btn btn-sm btn-danger" tooltip="Excluir" style="margin-right: 5px;">
+            <button class="btn btn-sm btn-danger" tooltip="Excluir" (click)="excluir(pedido.id)" style="margin-right: 5px;">
               <i class="fa fa-trash"></i>
             </button>
-            <button tooltip="Fechar Conta" class="btn btn-sm btn-warning">
+            <button tooltip="Registrar Pedido" (click)="modalRegistrarPedido(template2, pedido)" class="btn btn-sm btn-warning">
               <i class="fas fa-money-bill-alt"></i>
             </button>
           </div>
@@ -77,6 +77,71 @@
     </tfoot>
   </table>
   </div>
+  <ng-template #template2>
+    <div class="modal-header">
+      <h4 class="modal-title pull-left">Registrar Pedido</h4>
+      <button type="button" class="close btn-close pull-right" aria-label="Close" (click)="modalRef?.hide()">
+        <span aria-hidden="true" class="visually-hidden">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <form [formGroup]="form" class="p-1">
+        <div class="form-row">
+          <div class="form-group col-sm-6">
+            <label>Data Compra:</label>
+            <input type="datetime" class="form-control" [ngClass]="cssValidator(f.dataCompra)"
+            bsDatepicker [bsConfig]="bsConfig" formControlName="dataCompra"
+            placeholder="" >
+            <div *ngIf="f.dataCompra.errors?.required && f.dataCompra.touched" class="invalid-feedback">
+              Data é obrigatório.
+            </div>
+          </div>
+          <div class="form-group col-sm-6">
+            <label>Produto:</label>
+            <input type="text" class="form-control" formControlName="nomeProduto"
+              [ngClass]="{'is-invalid': f.nomeProduto.errors && f.nomeProduto.touched}"/>
+            <div class="invalid-feedback">
+              Produto é obrigatório.
+            </div>
+          </div>
+          <div class="form-group col-sm-6">
+            <label>Quantidade:</label>
+            <input type="text" class="form-control" formControlName="qtdProduto"
+              [ngClass]="{'is-invalid': f.qtdProduto.errors && f.qtdProduto.touched}"/>
+            <div class="invalid-feedback">
+              Forma de Pagamento é obrigatório.
+            </div>
+          </div>
+          <div class="form-group col-md-6">
+            <label>Valor:</label>
+            <input type="text" class="form-control" formControlName="valorTotal" placeholder="" [ngClass]="cssValidator(f.valorTotal)">
+            <div *ngIf="f.valorTotal.errors?.required && f.valorTotal.touched" class="invalid-feedback">
+              Valor é obrigatório.
+            </div>
+          </div>
+          <div class="form-group col-md-6">
+            <label>Apartamento:</label>
+            <input type="text" class="form-control" formControlName="numeroApartamento" placeholder="" [ngClass]="cssValidator(f.numeroApartamento)">
+            <div *ngIf="f.numeroApartamento.errors?.required && f.numeroApartamento.touched" class="invalid-feedback">
+              Apartamento é obrigatório.
+            </div>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-6">
+            <button class="btn btn-lg btn-danger btn-block px-5" (click)="modalRef?.hide()">
+              Cancelar
+            </button>
+          </div>
+          <div class="form-group col-6">
+            <button class="btn btn-lg btn-success btn-block px-5" (click)="registrarConta()">
+              Registrar
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </ng-template>
   <ng-template #template>
     <div class="modal-body text-center">
       <p>Tem certeza que deseja fechar a conta?</p>

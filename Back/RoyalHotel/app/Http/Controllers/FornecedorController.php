@@ -45,7 +45,7 @@ class FornecedorController extends Controller
      */
     public function show($id)
     {
-        //
+        return \App\Models\Fornecedor::findOrFail($id);
     }
 
     /**
@@ -68,7 +68,8 @@ class FornecedorController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $fornecedor = \App\Models\Fornecedor::findOrFail($id);
+        $fornecedor->update($request->all());
     }
 
     /**
@@ -79,6 +80,6 @@ class FornecedorController extends Controller
      */
     public function destroy($id)
     {
-        //
+        return \App\Models\Fornecedor::destroy($id);
     }
 }

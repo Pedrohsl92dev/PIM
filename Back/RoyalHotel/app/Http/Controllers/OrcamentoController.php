@@ -79,6 +79,6 @@ class OrcamentoController extends Controller
      */
     public function destroy($id)
     {
-        //
+        return \App\Models\Orcamento::destroy($id);
     }
 }
