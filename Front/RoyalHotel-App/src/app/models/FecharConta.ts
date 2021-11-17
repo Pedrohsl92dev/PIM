@@ -4,5 +4,4 @@ export interface FecharConta {
   formaDePagamento: number;
   dataPagamento: Date;
   hospede_id: string;
-
 }

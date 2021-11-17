@@ -25,4 +25,10 @@ export class FaleConoscoService {
       .get<FaleConosco[]>(this.baseURL)
       .pipe(take(1));
   }
+
+  public delete(id: number): Observable<FaleConosco> {
+    return this.http
+      .delete<FaleConosco>(`${this.baseURL}/${id}`)
+      .pipe(take(1));
+  }
 }

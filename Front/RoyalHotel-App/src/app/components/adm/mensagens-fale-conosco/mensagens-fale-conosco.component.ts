@@ -1,6 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FaleConoscoService } from '@app/services/faleConosco.service';
+import { BsModalRef } from 'ngx-bootstrap/modal';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-mensagens-fale-conosco',
@@ -15,9 +17,12 @@ export class MensagensFaleConoscoComponent implements OnInit {
 
   mensagensUsuario: any[] = [];
 
+  modalRef: BsModalRef;
+
   constructor(
     private router: Router,
     private faleConoscoService: FaleConoscoService,
+    private toastr: ToastrService,
   ) { }
 
   ngOnInit(): void {
@@ -36,7 +41,15 @@ export class MensagensFaleConoscoComponent implements OnInit {
     this.router.navigate([`/adm`]);
   }
 
-  decline(): void {
+  excluir(id: number): void {
+    this.faleConoscoService.delete(id).subscribe({
+      next: (resp) => {
+        this.toastr.success('Mensagem deletada!', ' Sucesso');
+      }
+    });
+  }
 
+  decline(): void {
+    this.modalRef.hide();
   }
 }

@@ -79,6 +79,6 @@ class FaleConoscoController extends Controller
      */
     public function destroy($id)
     {
-        //
+        return \App\Models\FaleConosco::destroy($id);
     }
 }

@@ -37,6 +37,7 @@ Route::resource('orcamento', OrcamentoController::class);
 Route::get('orcamento/{id}', [OrcamentoController::class, 'destroy'])->name('orcamento_delete');
 
 Route::resource('fale-conosco', FaleConoscoController::class);
+Route::get('fale-conosco/{id}', [FaleConoscoController::class, 'destroy'])->name('fale-conosco_delete');
 
 Route::resource('apartamento', ApartamentoController::class);
 Route::get('apartamento/{id}', [ApartamentoController::class, 'destroy'])->name('apartamento_delete');
@@ -58,6 +59,7 @@ Route::resource('conta', ContaController::class);
 Route::get('conta/{id}', [ContaController::class, 'destroy'])->name('conta_delete');
 
 Route::resource('fecharConta', FecharContaController::class);
+Route::get('fecharConta/{id}', [FecharContaController::class, 'destroy'])->name('fecharConta_delete');
 
 Route::resource('fornecedor', FornecedorController::class);
 Route::get('fornecedor/{id}', [FornecedorController::class, 'destroy'])->name('fornecedor_delete');

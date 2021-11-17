@@ -45,7 +45,7 @@ class FecharContaController extends Controller
      */
     public function show($id)
     {
-        //
+        return \App\Models\FecharConta::findOrFail($id);
     }
 
     /**
@@ -79,6 +79,6 @@ class FecharContaController extends Controller
      */
     public function destroy($id)
     {
-        //
+        return \App\Models\FecharConta::destroy($id);
     }
 }

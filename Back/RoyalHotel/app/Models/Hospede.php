@@ -23,15 +23,4 @@ class Hospede extends Model
         'endereco',
         'complemento',
     ];
-
-    // public function reservas()
-    // {
-    //     return $this->hasMany('App\Models\Reserva');
-    // }
-
-    // public function pedidos()
-    // {
-    //     return $this->hasMany('App\Models\Pedido');
-    // }
-
 }
