@@ -487,7 +487,6 @@ export class InicioAdmComponent implements OnInit {
           this.contas.forEach((el2: any) => {
             if (el2.apartamento_id === el.idApartamento) {
               this.idContas.push(el2.id);
-              this.idContas.push(el2.id);
               this.valorTotalContaPedido += Number(el2.valor);
               this.fecharContaPedido.push(el2);
             }
@@ -544,6 +543,7 @@ export class InicioAdmComponent implements OnInit {
         if (el.numeroApartamento === id) {
           this.contas.forEach((el2: any) => {
             if (el2.apartamento_id === el.idApartamento) {
+              this.idContas.push(el2.id);
               this.valorTotalContaPedido += Number(el2.valor);
               this.fecharContaPedido.push(el2);
             }
@@ -571,6 +571,7 @@ export class InicioAdmComponent implements OnInit {
         if (el.numeroApartamento === id) {
           this.contas.forEach((el2: any) => {
             if (el2.apartamento_id === el.idApartamento) {
+              this.idContas.push(el2.id);
               this.valorTotalContaPedido += Number(el2.valor);
               this.fecharContaPedido.push(el2);
             }
@@ -598,6 +599,7 @@ export class InicioAdmComponent implements OnInit {
         if (el.numeroApartamento === id) {
           this.contas.forEach((el2: any) => {
             if (el2.apartamento_id === el.idApartamento) {
+              this.idContas.push(el2.id);
               this.valorTotalContaPedido += Number(el2.valor);
               this.fecharContaPedido.push(el2);
             }
@@ -625,6 +627,7 @@ export class InicioAdmComponent implements OnInit {
         if (el.numeroApartamento === id) {
           this.contas.forEach((el2: any) => {
             if (el2.apartamento_id === el.idApartamento) {
+              this.idContas.push(el2.id);
               this.valorTotalContaPedido += Number(el2.valor);
               this.fecharContaPedido.push(el2);
             }
@@ -652,6 +655,7 @@ export class InicioAdmComponent implements OnInit {
         if (el.numeroApartamento === id) {
           this.contas.forEach((el2: any) => {
             if (el2.apartamento_id === el.idApartamento) {
+              this.idContas.push(el2.id);
               this.valorTotalContaPedido += Number(el2.valor);
               this.fecharContaPedido.push(el2);
             }
@@ -679,6 +683,7 @@ export class InicioAdmComponent implements OnInit {
         if (el.numeroApartamento === id) {
           this.contas.forEach((el2: any) => {
             if (el2.apartamento_id === el.idApartamento) {
+              this.idContas.push(el2.id);
               this.valorTotalContaPedido += Number(el2.valor);
               this.fecharContaPedido.push(el2);
             }
@@ -706,6 +711,7 @@ export class InicioAdmComponent implements OnInit {
         if (el.numeroApartamento === id) {
           this.contas.forEach((el2: any) => {
             if (el2.apartamento_id === el.idApartamento) {
+              this.idContas.push(el2.id);
               this.valorTotalContaPedido += Number(el2.valor);
               this.fecharContaPedido.push(el2);
             }
